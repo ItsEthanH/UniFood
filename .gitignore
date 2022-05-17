@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# flask
+*.pyc
+config.py
+installation_instructions.txt
