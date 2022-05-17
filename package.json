@@ -31,7 +31,11 @@
       "last 1 safari version"
     ]
   },
+<<<<<<< Updated upstream
   "devDependencies": {
     "web-vitals": "^2.1.4"
   }
+=======
+  "proxy": "http://localhost:5000"
+>>>>>>> Stashed changes
 }
