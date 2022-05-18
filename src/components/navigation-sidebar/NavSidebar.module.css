@@ -1,0 +1,10 @@
+aside {
+  position: sticky;
+  display: flex;
+  height: calc(99% - var(--fs-header));
+  top: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: black;
+  width: min-content;
+}
