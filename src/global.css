@@ -1,5 +1,13 @@
 /* css reset, credits below */
 /* ! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -184,61 +192,61 @@ template {
 /* fonts */
 @font-face {
   font-family: Rubik;
-  src: url(../fonts/Rubik-Bold.ttf);
+  src: url(../src/assets/fonts/Rubik-Bold.ttf);
   font-weight: 700 900;
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(../fonts/Rubik-SemiBold.ttf);
+  src: url(../src/assets/fonts/Rubik-SemiBold.ttf);
   font-weight: 600;
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(../fonts/Rubik-Medium.ttf);
+  src: url(../src/assets/fonts/Rubik-Medium.ttf);
   font-weight: 500;
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(../fonts/Rubik-Regular.ttf);
+  src: url(../src/assets/fonts/Rubik-Regular.ttf);
   font-weight: 400;
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(../fonts/Rubik-Light.ttf);
+  src: url(../src/assets/fonts/Rubik-Light.ttf);
   font-weight: 100 300;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../fonts/Prompt-Bold.ttf);
+  src: url(../src/assets/fonts/Prompt-Bold.ttf);
   font-weight: 700 900;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../fonts/Prompt-SemiBold.ttf);
+  src: url(../src/assets/fonts/Prompt-SemiBold.ttf);
   font-weight: 600;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../fonts/Prompt-Medium.ttf);
+  src: url(../src/assets/fonts/Prompt-Medium.ttf);
   font-weight: 500;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../fonts/Prompt-Regular.ttf);
+  src: url(../src/assets/fonts/Prompt-Regular.ttf);
   font-weight: 400;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../fonts/Prompt-Light.ttf);
+  src: url(../src/assets/fonts/Prompt-Light.ttf);
   font-weight: 100 300;
 }
 
