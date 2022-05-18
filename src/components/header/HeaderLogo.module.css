@@ -1,0 +1,6 @@
+h1 {
+  font-size: var(--fs-header);
+  align-self: center;
+  color: white;
+  margin: 0 3rem;
+}
