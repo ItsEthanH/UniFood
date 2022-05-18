@@ -2,7 +2,7 @@ const recipes = {
   breakfast: [
     {
       title: 'Berry Banana Breakfast Smoothie',
-      img: 'static/images/landing/breakfast-1.jpg',
+      img: 'assets/images/breakfast-1.jpg',
       description:
         'If you have around 5 minutes to spend in the kitchen, Berry Banana Breakfast Smoothie might be a tremendous lacto ovo vegetarian recipe to try.',
       cost: 2.04,
@@ -10,7 +10,7 @@ const recipes = {
     },
     {
       title: 'Homemade Muesli Breakfast Cereal',
-      img: 'static/images/landing/breakfast-2.jpg',
+      img: 'assets/images/breakfast-2.jpg',
       description:
         'Homemade Muesli Breakfast Cereal might be just the morn meal you are searching for.',
       cost: 0.88,
@@ -18,7 +18,7 @@ const recipes = {
     },
     {
       title: 'Mini Quinoa Egg Breakfast Casserole',
-      img: 'static/images/landing/breakfast-3.jpg',
+      img: 'assets/images/breakfast-3.jpg',
       description:
         "Mini Quinoan Egg Breakfast Casserole might be a good recipe to expand your hor d'oeuvre collection.",
       cost: 1.46,
@@ -29,7 +29,7 @@ const recipes = {
   lunch: [
     {
       title: 'Turkey Ranch BLT',
-      img: 'static/images/landing/lunch-1.jpg',
+      img: 'assets/images/lunch-1.jpg',
       description:
         'Turkey, bacon, lettice and tomato in pita breads, dressed in ranch sauce.',
       cost: 1.54,
@@ -37,7 +37,7 @@ const recipes = {
     },
     {
       title: 'Thai Pasta Salad',
-      img: 'static/images/landing/lunch-2.jpg',
+      img: 'assets/images/lunch-2.jpg',
       description:
         'Satisfy your Asian craving, with a taste of Thailand. Works well on its own or as part of a larger meal.',
       cost: 3.25,
@@ -45,7 +45,7 @@ const recipes = {
     },
     {
       title: 'Orzo Salad With Vegetables and Herbs',
-      img: 'static/images/landing/lunch-3.jpg',
+      img: 'assets/images/lunch-3.jpg',
       description:
         'Orzo rice with a selection of fresh vegetables and seasonings. Perfect for a lighter lunch.',
       cost: 1.46,
@@ -56,7 +56,7 @@ const recipes = {
   dinner: [
     {
       title: 'BLT Pizza',
-      img: 'static/images/landing/dinner-1.jpg',
+      img: 'assets/images/dinner-1.jpg',
       description:
         'Colby jack cheese, pizza crust, turkey bacon, and a handful of other ingredients are all it takes to make this recipe so scrumptious.',
       cost: 2.78,
@@ -64,7 +64,7 @@ const recipes = {
     },
     {
       title: 'Mixed Paella',
-      img: 'static/images/landing/dinner-2.jpg',
+      img: 'assets/images/dinner-2.jpg',
       description:
         'A mixture of lemon zest, saffron threads, garlic, and a handful of other ingredients.',
       cost: 2.02,
@@ -72,7 +72,7 @@ const recipes = {
     },
     {
       title: 'Ozoni',
-      img: 'static/images/landing/dinner-3.jpg',
+      img: 'assets/images/dinner-3.jpg',
       description:
         "A good option if you're following a gluten free and dairy free diet.",
       cost: 3.05,
@@ -83,7 +83,7 @@ const recipes = {
   deserts: [
     {
       title: 'German Rhubarb Cake with Meringue',
-      img: 'static/images/landing/desert-1.jpg',
+      img: 'assets/images/desert-1.jpg',
       description:
         'A cake filled with rhubarb sandwiched between crisp bits of meringue - two excellent puddings in one!',
       cost: 0.61,
@@ -91,7 +91,7 @@ const recipes = {
     },
     {
       title: 'Coconut Cassava Pancakes',
-      img: 'static/images/landing/desert-2.jpg',
+      img: 'assets/images/desert-2.jpg',
       description:
         'Coconut flavoured pancakes dressed with honey and served with the freshest fruit.',
       cost: 2.53,
@@ -99,7 +99,7 @@ const recipes = {
     },
     {
       title: 'Strawberry Shortcake Cobbler',
-      img: 'static/images/landing/desert-3.jpg',
+      img: 'assets/images/desert-3.jpg',
       description:
         'The best parts of shortcake and cobbler fused in to one, delectable, strawberry-flavoured desert!',
       cost: 2.52,
@@ -158,5 +158,3 @@ for (const btn of recipeShowcaseButtons) {
     }
   });
 }
-
-// <img src="{{ url_for('static', filename='${item.img}') }}">
