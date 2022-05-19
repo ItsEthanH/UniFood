@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from './Welcome.module.css';
 
 function Welcome() {
   const hour = new Date().getHours();
@@ -12,7 +13,7 @@ function Welcome() {
     greeting = 'Good Evening, SAMPLE_NAME!';
   }
 
-  return <h2>{greeting}</h2>;
+  return <h2 className={classes.greeting}>{greeting}</h2>;
 }
 
 export default Welcome;

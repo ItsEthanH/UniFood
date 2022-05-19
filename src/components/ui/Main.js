@@ -1,11 +1,11 @@
 import React from 'react';
-import './Main.module.css';
+import classes from './Main.module.css';
 
 import Dashboard from '../dashboard/Dashboard';
 
 function Main() {
   let content = <Dashboard />;
-  return <main>{content}</main>;
+  return <main className={classes.dashboard}>{content}</main>;
 }
 
 export default Main;

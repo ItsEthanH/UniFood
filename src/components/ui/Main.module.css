@@ -1,4 +1,13 @@
 main {
+  margin: 1rem 2rem;
   grid-area: content;
-  z-index: -1;
+}
+
+.dashboard {
+  grid-template-rows: min-content 3fr minmax(0, 3fr);
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    'welcome welcome'
+    'next-meal nutrition'
+    'coming-up coming-up';
 }
