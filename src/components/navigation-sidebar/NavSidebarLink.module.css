@@ -4,6 +4,7 @@
   text-decoration: none;
   color: white;
   font-size: var(--fs-800);
+  margin: 0.8rem 0;
 }
 
 .link:hover {
@@ -14,6 +15,10 @@
 .link p {
   display: none;
   margin-left: 1rem;
+}
+
+.link img {
+  width: 3.5rem;
 }
 
 .show > p {

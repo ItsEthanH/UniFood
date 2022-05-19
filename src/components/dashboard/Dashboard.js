@@ -1,5 +1,7 @@
 import React from 'react';
+import ComingUp from './ComingUp';
 import NextMeal from './NextMeal';
+import Nutrition from './Nutrition';
 import Welcome from './Welcome';
 
 function Dashboard() {
@@ -7,6 +9,8 @@ function Dashboard() {
     <React.Fragment>
       <Welcome />
       <NextMeal />
+      <Nutrition />
+      <ComingUp />
     </React.Fragment>
   );
 }
