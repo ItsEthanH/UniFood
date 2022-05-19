@@ -1,0 +1,4 @@
+main {
+  grid-area: content;
+  z-index: -1;
+}

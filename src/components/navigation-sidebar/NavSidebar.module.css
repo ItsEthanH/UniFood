@@ -1,10 +1,11 @@
 aside {
-  position: sticky;
   display: flex;
-  height: calc(99% - var(--fs-header));
+  height: 100%;
   top: 0;
   flex-direction: column;
   justify-content: space-between;
   background-color: black;
-  width: min-content;
+  width: fit-content;
+  padding: 1rem;
+  grid-area: navigation;
 }

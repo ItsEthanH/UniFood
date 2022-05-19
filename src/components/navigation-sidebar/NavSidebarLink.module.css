@@ -1,0 +1,22 @@
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-weight: 300;
+  font-size: var(--fs-800);
+}
+
+.link:hover {
+  filter: brightness(0) saturate(100%) invert(51%) sepia(87%) saturate(5977%)
+    hue-rotate(104deg) brightness(107%) contrast(88%);
+}
+
+.link p {
+  display: none;
+  margin-left: 1rem;
+}
+
+.show > p {
+  display: block;
+}
