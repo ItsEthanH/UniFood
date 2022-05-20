@@ -1,38 +1,9 @@
 .next-meal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   grid-area: next-meal;
   min-height: 0;
   margin: 1rem 1rem 1rem 0;
   overflow: clip;
-}
-
-.next-meal__card {
-  position: relative;
-  min-height: 0;
-}
-
-.next-meal__image {
-  box-shadow: inset 300px 0px 150px -50px rgba(0, 0, 0, 0.75);
-}
-
-.next-meal__image img {
-  width: 100%;
-  z-index: -1;
-  position: relative;
-  height: 100%;
-}
-
-.next-meal__text {
-  position: absolute;
-  top: 0;
-  color: white;
-  font-family: var(--ff-body);
-  font-weight: 300;
-  margin: 0.5rem 1rem;
-  max-width: 70%;
-}
-
-.next-meal__text h4 {
-  font-size: var(--fs-900);
-  font-family: var(--ff-body);
-  font-weight: 300;
 }
