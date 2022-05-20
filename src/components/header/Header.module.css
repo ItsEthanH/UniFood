@@ -1,0 +1,7 @@
+header {
+  display: flex;
+  flex-flow: nowrap row;
+  grid-area: header;
+  z-index: 1;
+  background-color: black;
+}

@@ -1,0 +1,10 @@
+.wrapper {
+  display: grid;
+  grid-template-rows: min-content 93vh;
+  grid-template-columns: min-content auto;
+  grid-template-areas:
+    'header header'
+    'navigation content';
+  height: 100%;
+  width: 100%;
+}

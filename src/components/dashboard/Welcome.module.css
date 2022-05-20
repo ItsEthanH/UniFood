@@ -1,0 +1,6 @@
+.greeting {
+  grid-area: welcome;
+  font-size: var(--fs-sub-heading);
+  font-weight: 300;
+  margin: 1rem 0;
+}

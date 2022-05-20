@@ -1,0 +1,9 @@
+.next-meal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  grid-area: next-meal;
+  min-height: 0;
+  margin: 1rem 1rem 1rem 0;
+  overflow: clip;
+}
