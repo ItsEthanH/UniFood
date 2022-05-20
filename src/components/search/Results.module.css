@@ -1,0 +1,9 @@
+.results {
+  display: flex;
+  flex-flow: wrap row;
+  margin: 0 2rem 2rem 0;
+  grid-area: results;
+  justify-content: center;
+  gap: 5rem;
+  overflow-y: scroll;
+}

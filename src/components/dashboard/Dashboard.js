@@ -16,3 +16,5 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+// preferred image size for dashboard images = 636x393
