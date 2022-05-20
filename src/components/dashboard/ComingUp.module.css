@@ -3,4 +3,32 @@
   margin-bottom: 3rem;
   max-width: 100%;
   background: red;
+  overflow: clip;
+}
+
+.next-card {
+  position: relative;
+  min-height: 0;
+  overflow: clip;
+}
+
+.next-card__image {
+  box-shadow: inset 300px 0px 150px -50px rgba(0, 0, 0, 0.75);
+}
+
+.next-card__image img {
+  width: 100%;
+  z-index: -1;
+  position: relative;
+  height: 100%;
+}
+
+.next-meal__text {
+  position: absolute;
+  top: 0;
+  color: white;
+  font-family: var(--ff-body);
+  font-weight: 300;
+  margin: 0.5rem 1rem;
+  max-width: 70%;
 }
