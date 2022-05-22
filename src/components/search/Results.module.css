@@ -1,8 +1,8 @@
 .results {
   display: flex;
   flex-flow: wrap row;
-  padding: 3rem 0;
+  padding: 2rem 0;
   justify-content: center;
-  gap: 5rem;
+  gap: 3rem;
   overflow-y: scroll;
 }
