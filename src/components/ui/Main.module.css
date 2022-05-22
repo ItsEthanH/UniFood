@@ -13,3 +13,7 @@ main {
     'next-meal nutrition'
     'coming-up coming-up';
 }
+
+.results {
+  margin: 0;
+}
