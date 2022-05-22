@@ -12,6 +12,9 @@ function ResultSidebarCard(props) {
   }
 
   function decreaseQuantity() {
+    if (quantity === 0) {
+      return;
+    }
     setQuantity((qty) => qty - 1);
   }
 
