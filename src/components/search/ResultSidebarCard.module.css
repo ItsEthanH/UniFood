@@ -44,3 +44,7 @@
   background: black;
   padding: 0.5rem;
 }
+
+.servings {
+  font-size: var(--fs-400);
+}
