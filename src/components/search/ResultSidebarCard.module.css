@@ -1,0 +1,46 @@
+.card {
+  display: grid;
+  grid-template-areas:
+    'image text'
+    'date date';
+  width: 100%;
+  background-color: white;
+  font-size: var(--fs-600);
+  font-weight: 300;
+  margin: 1rem 0;
+}
+
+.card img {
+  display: inline;
+  height: 100%;
+}
+
+.text {
+  grid-area: text;
+  text-align: center;
+}
+
+.text p {
+  padding: 0.5rem;
+}
+
+.text button {
+  border: none;
+  outline: none;
+  background: none;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.text button,
+.qty {
+  display: inline;
+}
+
+.date {
+  grid-area: date;
+  text-align: center;
+  color: white;
+  background: black;
+  padding: 0.5rem;
+}

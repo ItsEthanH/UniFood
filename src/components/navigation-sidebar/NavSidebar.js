@@ -11,7 +11,7 @@ import profileIcon from '../../assets/nav-sidebar/profile.svg';
 import helpIcon from '../../assets/nav-sidebar/help.svg';
 import logoutIcon from '../../assets/nav-sidebar/logout.svg';
 
-import './NavSidebar.module.css';
+import classes from './NavSidebar.module.css';
 
 function NavSiderbar() {
   const [sidebarShown, setSidebarShown] = useState(false);
@@ -25,7 +25,11 @@ function NavSiderbar() {
   }
 
   return (
-    <aside onMouseEnter={showSidebar} onMouseLeave={hideSidebar}>
+    <aside
+      className={classes.navigation}
+      onMouseEnter={showSidebar}
+      onMouseLeave={hideSidebar}
+    >
       <nav className="nav-links">
         <NavSidebarLink
           shown={sidebarShown}

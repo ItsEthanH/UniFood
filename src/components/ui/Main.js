@@ -8,16 +8,20 @@ import PageContext from '../store/page-context';
 function Main() {
   const pageCtx = useContext(PageContext);
   let view = pageCtx.page;
-
   let style;
   let component;
 
-  if (view === 'Dashboard') {
-    style = classes.dashboard;
-    component = <Dashboard />;
-  } else if (view === 'Results') {
-    style = classes.results;
-    component = <Results />;
+  switch (view) {
+    case 'Dashboard':
+      style = classes.dashboard;
+      component = <Dashboard />;
+      break;
+    case 'Results':
+      style = classes.results;
+      component = <Results />;
+      break;
+    default:
+      break;
   }
 
   return <main className={style}>{component}</main>;

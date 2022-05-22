@@ -1,13 +1,13 @@
 import React from 'react';
 
-import DashboardTitle from './DashboardTitle';
+import SectionTitle from '../ui/SectionTitle';
 
 import classes from './Nutrition.module.css';
 
 function Nutrition() {
   return (
     <div className={classes['nutrition']}>
-      <DashboardTitle>Nutrition</DashboardTitle>
+      <SectionTitle>Nutrition</SectionTitle>
     </div>
   );
 }
