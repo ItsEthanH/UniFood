@@ -16,6 +16,6 @@ main {
 
 .results {
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 4.5fr;
   margin: 0;
 }

@@ -9,10 +9,10 @@ function ResultsPlaceholder(props) {
   }
 
   return (
-    <div className={classes.placeholder}>
+    <li className={classes.placeholder}>
       <p className={classes.plus}>+</p>
       <p className={classes.text}>{text}</p>
-    </div>
+    </li>
   );
 }
 

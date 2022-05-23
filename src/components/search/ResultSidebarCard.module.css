@@ -8,31 +8,42 @@
   font-size: var(--fs-600);
   font-weight: 300;
   margin: 1rem 0;
+  list-style: none;
+  grid-template-columns: 1.5fr 2fr;
 }
 
 .card img {
   display: inline;
-  height: 100%;
+  max-width: 100%;
+  min-height: 100%;
 }
 
 .text {
   grid-area: text;
+}
+
+.text > p {
+  padding: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.controls {
   text-align: center;
 }
 
-.text p {
-  padding: 0.5rem;
-}
-
-.text button {
+.controls button {
   border: none;
   outline: none;
   background: none;
   font-weight: 300;
   cursor: pointer;
+  margin: 0 0.5rem;
 }
 
-.text button,
+.controls button,
 .qty {
   display: inline;
 }

@@ -11,8 +11,14 @@ import classes from './ResultCard.module.css';
 function ResultCard(props) {
   const [tooltip, setTooltip] = useState('');
 
+  function drag(event) {
+    event.dataTransfer.setData('text/title', props.title);
+    event.dataTransfer.setData('text/src', props.src);
+    event.dataTransfer.effectAllowed = 'move';
+  }
+
   return (
-    <div className={classes.card}>
+    <div draggable="true" onDragStart={drag} className={classes.card}>
       <div className={classes.image}>
         <img src={props.src} alt="ALT" />
       </div>
