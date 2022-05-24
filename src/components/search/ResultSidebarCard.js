@@ -17,7 +17,7 @@ function ResultSidebarCard(props) {
   }
 
   return (
-    <li className={classes.card}>
+    <li id={props.id} className={classes.card}>
       <img src={props.src} alt="placeholder" />
       <div className={classes.text}>
         <p>{props.name}</p>
@@ -26,6 +26,9 @@ function ResultSidebarCard(props) {
           <p className={classes.qty}>{quantity}</p>
           <button onClick={increaseQuantity}>+</button>
         </div>
+        <button className={classes.remove} onClick={props.onRemove}>
+          X
+        </button>
       </div>
       <div className={classes.date}>
         <p>Uncatagorised</p>

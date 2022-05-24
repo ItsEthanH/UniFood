@@ -27,9 +27,14 @@ function ResultSidebar(props) {
 
   function drop(location, event) {
     event.preventDefault();
+    let name = event.dataTransfer.getData('text/title');
+    let src = event.dataTransfer.getData('text/src');
+    let id = name.replace(/\s+/g, '') + Math.floor(Math.random() * 10000);
+
     const item = {
-      name: event.dataTransfer.getData('text/title'),
-      src: event.dataTransfer.getData('text/src'),
+      id: id,
+      name: name,
+      src: src,
     };
 
     if (location === mealPlanRef) {
@@ -41,6 +46,19 @@ function ResultSidebar(props) {
     }
 
     dragExit(location);
+    console.log(id);
+  }
+
+  function handleRemove(id, list) {
+    const newList = list.filter((item) => item.id !== id);
+
+    if (list === mealPlanItems) {
+      setMealPlanItems(newList);
+    }
+
+    if (list === shoppingListItems) {
+      setShoppingListItems(newList);
+    }
   }
 
   return (
@@ -54,7 +72,15 @@ function ResultSidebar(props) {
         onDrop={drop.bind(null, mealPlanRef)}
       >
         {mealPlanItems.map((item) => {
-          return <ResultSidebarCard name={item.name} src={item.src} />;
+          return (
+            <ResultSidebarCard
+              id={item.id}
+              key={item.id}
+              name={item.name}
+              src={item.src}
+              onRemove={() => handleRemove(item.id, mealPlanItems)}
+            />
+          );
         })}
 
         <ResultsPlaceholder />
@@ -68,7 +94,15 @@ function ResultSidebar(props) {
         onDrop={drop.bind(null, shoppingListRef)}
       >
         {shoppingListItems.map((item) => {
-          return <ResultSidebarCard name={item.name} src={item.src} />;
+          return (
+            <ResultSidebarCard
+              id={item.id}
+              key={item.id}
+              name={item.name}
+              src={item.src}
+              onRemove={() => handleRemove(item.id, shoppingListItems)}
+            />
+          );
         })}
 
         <ResultsPlaceholder shoppingList={true} />

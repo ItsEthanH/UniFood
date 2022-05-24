@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import classes from './Recipe.module.css';
 import viewIcon from '../../assets/ui/view.png';
@@ -7,13 +7,36 @@ import planIcon from '../../assets/ui/plan.png';
 import cartIcon from '../../assets/ui/cart.png';
 
 import placeholder from '../../assets/dashboard/placeholder-meal.jpg';
-import placeholder2 from '../../assets/search/placeholder-search.jpg';
+import placeholder2 from '../../assets/search/placeholder-recipe.jpg';
 
 import RecipeSection from './RecipeSection';
 import SectionTitle from '../ui/SectionTitle';
 import RecipeIcon from './RecipeIcon';
+import RecipeInfoSubsection from './RecipeInfoSubsection';
 
 function Recipe(props) {
+  const [nutritionShow, setNutritionShow] = useState(false);
+  const [dietShow, setDietShow] = useState(false);
+  const [recommendedShow, setRecommendedShow] = useState(false);
+
+  function handleSubsectionClick(subsectionToShow) {
+    setDietShow(false);
+    setNutritionShow(false);
+    setRecommendedShow(false);
+
+    switch (subsectionToShow) {
+      case 'Nutritional Information':
+        setNutritionShow(true);
+        break;
+      case 'Dietary Information':
+        setDietShow(true);
+        break;
+      case 'Recommended Recipes':
+        setRecommendedShow(true);
+        break;
+    }
+  }
+
   return (
     <React.Fragment>
       <RecipeSection>
@@ -96,17 +119,26 @@ function Recipe(props) {
       </RecipeSection>
 
       <RecipeSection info={true}>
-        <div className={classes.subsection}>
-          <SectionTitle center={true}>Nutritional Information</SectionTitle>
-          <hr />
-        </div>
-        <div className={classes.subsection}>
-          <SectionTitle center={true}>Dietary Information</SectionTitle>
-          <hr />
-        </div>
-        <div className={classes.subsection}>
-          <SectionTitle center={true}>Related Recipes</SectionTitle>
-          <hr />
+        <RecipeInfoSubsection
+          title={'Nutritional Information'}
+          show={nutritionShow}
+          onClick={handleSubsectionClick}
+        >
+          test
+        </RecipeInfoSubsection>
+        <RecipeInfoSubsection
+          title={'Dietary Information'}
+          show={dietShow}
+          onClick={handleSubsectionClick}
+        >
+          test again
+        </RecipeInfoSubsection>
+
+        <RecipeInfoSubsection
+          title={'Recommended Recipes'}
+          show={recommendedShow}
+          onClick={handleSubsectionClick}
+        >
           <div className={classes.recommendation}>
             <img src={placeholder2} alt="" />
             <h4>Sample Recommendation</h4>
@@ -115,7 +147,7 @@ function Recipe(props) {
             <img src={placeholder2} alt="" />
             <h4>Sample Recommendation</h4>
           </div>
-        </div>
+        </RecipeInfoSubsection>
       </RecipeSection>
     </React.Fragment>
   );

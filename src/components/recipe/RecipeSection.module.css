@@ -9,5 +9,5 @@
 
 .info {
   display: grid;
-  grid-template-rows: 1fr 1fr 2fr;
+  grid-template-rows: repeat(3, min-content);
 }
