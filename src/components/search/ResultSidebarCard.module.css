@@ -74,3 +74,8 @@
 .servings {
   font-size: var(--fs-400);
 }
+
+.removed {
+  transform: translateX(-40rem);
+  transition: 0.5s;
+}

@@ -4,6 +4,7 @@ import classes from './ResultSidebarCard.module.css';
 
 function ResultSidebarCard(props) {
   const [quantity, setQuantity] = useState(1);
+  const [removed, setRemoved] = useState(false);
 
   function increaseQuantity() {
     setQuantity((qty) => qty + 1);
@@ -16,8 +17,18 @@ function ResultSidebarCard(props) {
     setQuantity((qty) => qty - 1);
   }
 
+  function remove() {
+    setRemoved(true);
+    setTimeout(() => {
+      props.onRemove();
+    }, 500);
+  }
+
   return (
-    <li id={props.id} className={classes.card}>
+    <li
+      id={props.id}
+      className={`${classes.card} ${removed ? classes.removed : ''}`}
+    >
       <img src={props.src} alt="placeholder" />
       <div className={classes.text}>
         <p>{props.name}</p>
@@ -26,7 +37,7 @@ function ResultSidebarCard(props) {
           <p className={classes.qty}>{quantity}</p>
           <button onClick={increaseQuantity}>+</button>
         </div>
-        <button className={classes.remove} onClick={props.onRemove}>
+        <button className={classes.remove} onClick={remove}>
           X
         </button>
       </div>
