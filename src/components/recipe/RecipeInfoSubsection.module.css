@@ -3,13 +3,14 @@
 }
 
 .subsection button {
-  padding: 0 1rem;
   display: grid;
   grid-template-columns: auto min-content;
   align-items: center;
-  background: none;
-  border: none;
   width: 100%;
+  padding: 0 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .subsection p {
