@@ -1,0 +1,26 @@
+.subsection {
+  margin: 0.5rem 0;
+}
+
+.subsection button {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: auto min-content;
+  align-items: center;
+  background: none;
+  border: none;
+  width: 100%;
+}
+
+.subsection p {
+  font-size: var(--fs-800);
+  font-weight: 300;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
