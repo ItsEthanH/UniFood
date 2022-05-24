@@ -1,0 +1,17 @@
+.placeholder {
+  color: white;
+  border: 2px dashed white;
+  text-align: center;
+  padding: 0.7rem;
+  border-radius: 1rem;
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.plus {
+  font-size: var(--fs-900);
+}
+
+.text {
+  font-weight: 300;
+}

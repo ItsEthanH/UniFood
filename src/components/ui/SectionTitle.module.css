@@ -1,0 +1,17 @@
+.title {
+  font-size: var(--fs-900);
+  font-weight: 300;
+  margin: 0.5rem 0;
+}
+
+.black {
+  color: black;
+}
+
+.white {
+  color: white;
+}
+
+.center {
+  text-align: center;
+}

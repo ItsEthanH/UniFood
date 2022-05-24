@@ -2,7 +2,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 
-import DashboardTitle from './DashboardTitle';
+import SectionTitle from '../ui/SectionTitle';
 import DashboardCard from './DashboardCard';
 
 import placeholder from '../../assets/dashboard/placeholder-meal.jpg';
@@ -13,7 +13,7 @@ import 'swiper/css';
 function ComingUp() {
   return (
     <div className={classes['coming-up']}>
-      <DashboardTitle>Coming Up</DashboardTitle>
+      <SectionTitle>Coming Up</SectionTitle>
       <Swiper
         modules={[Navigation]}
         spaceBetween={50}

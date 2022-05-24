@@ -1,0 +1,9 @@
+.results {
+  display: flex;
+  flex-flow: wrap row;
+  padding: 2rem 0;
+  justify-content: center;
+  gap: 3rem;
+  overflow-y: scroll;
+  max-height: 91vh;
+}
