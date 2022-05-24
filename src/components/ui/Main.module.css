@@ -2,11 +2,12 @@ main {
   display: grid;
   margin: 1rem 2rem;
   grid-area: content;
-  height: 100%;
+  max-height: 100%;
+  min-height: 0;
 }
 
 .dashboard {
-  grid-template-rows: min-content 3fr minmax(0, 3fr);
+  grid-template-rows: min-content auto auto;
   grid-template-columns: 1fr 2fr;
   grid-template-areas:
     'welcome welcome'
@@ -15,7 +16,10 @@ main {
 }
 
 .results {
-  display: grid;
   grid-template-columns: 1fr 4.5fr;
   margin: 0;
+}
+
+.recipe {
+  grid-template-columns: 1fr 1fr 1fr;
 }

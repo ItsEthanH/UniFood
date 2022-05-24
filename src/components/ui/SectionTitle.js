@@ -6,7 +6,7 @@ function SectionTitle(props) {
     <h3
       className={`${classes.title} ${
         props.white ? classes.white : classes.black
-      }`}
+      } ${props.center ? classes.center : ''}`}
     >
       {props.children}
     </h3>

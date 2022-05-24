@@ -291,6 +291,7 @@ body {
 
 hr {
   color: rgba(0, 0, 0, 0.2);
+  margin: 0 1rem;
 }
 
 .color-primary {

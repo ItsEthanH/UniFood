@@ -1,7 +1,7 @@
 .title {
   font-size: var(--fs-900);
   font-weight: 300;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
 }
 
 .black {
@@ -10,4 +10,8 @@
 
 .white {
   color: white;
+}
+
+.center {
+  text-align: center;
 }

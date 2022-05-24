@@ -3,6 +3,5 @@
   flex-direction: column;
   position: relative;
   grid-area: coming-up;
-  margin-bottom: 3rem;
   max-width: 100%;
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import classes from './ResultIcon.module.css';
+import classes from './RecipeIcon.module.css';
 
-function ResultIcon(props) {
+function RecipeIcon(props) {
   function showTooltip() {
     props.setTooltip(props.tooltip);
   }
@@ -17,10 +17,11 @@ function ResultIcon(props) {
       className={classes.button}
       onMouseEnter={showTooltip}
       onMouseLeave={hideTooltip}
+      onClick={props.onClick}
     >
       <img src={props.icon} alt={props.tooltip} />
     </button>
   );
 }
 
-export default ResultIcon;
+export default RecipeIcon;

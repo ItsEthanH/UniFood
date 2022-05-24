@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import PageContext from '../store/page-context';
 
-import ResultIcon from './ResultIcon';
+import RecipeIcon from '../recipe/RecipeIcon';
 
 import viewIcon from '../../assets/ui/view.png';
 import favouriteIcon from '../../assets/ui/favourite.png';
@@ -10,11 +11,16 @@ import classes from './ResultCard.module.css';
 
 function ResultCard(props) {
   const [tooltip, setTooltip] = useState('');
+  const pageCtx = useContext(PageContext);
 
   function drag(event) {
     event.dataTransfer.setData('text/title', props.title);
     event.dataTransfer.setData('text/src', props.src);
     event.dataTransfer.effectAllowed = 'move';
+  }
+
+  function viewRecipe() {
+    pageCtx.onChange('Recipe');
   }
 
   return (
@@ -26,14 +32,19 @@ function ResultCard(props) {
         <h5>{props.title}</h5>
         <hr />
         <div className={classes.buttons}>
-          <ResultIcon setTooltip={setTooltip} tooltip="View" icon={viewIcon} />
-          <ResultIcon
+          <RecipeIcon
+            onClick={viewRecipe}
+            setTooltip={setTooltip}
+            tooltip="View"
+            icon={viewIcon}
+          />
+          <RecipeIcon
             setTooltip={setTooltip}
             tooltip="Favourite"
             icon={favouriteIcon}
           />
-          <ResultIcon setTooltip={setTooltip} tooltip="Plan" icon={planIcon} />
-          <ResultIcon setTooltip={setTooltip} tooltip="Cart" icon={cartIcon} />
+          <RecipeIcon setTooltip={setTooltip} tooltip="Plan" icon={planIcon} />
+          <RecipeIcon setTooltip={setTooltip} tooltip="Cart" icon={cartIcon} />
         </div>
         <hr />
         <div className={classes.tooltip}>
