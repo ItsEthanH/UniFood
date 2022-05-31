@@ -1,6 +1,6 @@
 import time
 from flask import Flask, request
-from recipes.recipeSearch import searchbar
+from recipes.recipes import getRecipes, getRecipeInfo
 
 app = Flask(__name__)
 
@@ -14,9 +14,18 @@ def search():
 
     global results 
 
-    results = searchbar(request.args.get('query'))
+    results = getRecipes(request.args.get('query'))
 
     return results
+
+
+@app.route('/recipe', methods = ['GET'])
+def recipe():
+
+    recipeInfo = getRecipeInfo(request.args.get('recipeID'))
+
+    if len(results)
+
 
 if __name__ == "__main__":
     app.run()
