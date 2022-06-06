@@ -1,5 +1,5 @@
 from core.spoonacular import getRecipesBySearch, getRecipeInformation
-from core.securityServices import inputSanitiser
+# from core.securityServices import inputSanitiser
 import random
 
 def getRecipes(query):
@@ -14,6 +14,8 @@ def getRecipeInfo(recipeID):
     # Try and get the recipe information for a given ID (catching API quota exceptions, mainly)
     try:
         recipeInfo = getRecipeInformation(recipeID, False)
+
+        print("hit")
     except: return {}
 
     # Looping through recipe ingredients to capitalise and add units
