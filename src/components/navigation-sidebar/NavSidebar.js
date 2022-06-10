@@ -35,31 +35,31 @@ function NavSiderbar() {
           shown={sidebarShown}
           icon={dashboardIcon}
           text="Dashboard"
-          href=""
+          to="/dashboard"
         />
         <NavSidebarLink
           shown={sidebarShown}
           icon={planIcon}
           text="Meal Plan"
-          href=""
+          to=""
         />
         <NavSidebarLink
           shown={sidebarShown}
           icon={favouriteIcon}
           text="Favourites"
-          href=""
+          to=""
         />
         <NavSidebarLink
           shown={sidebarShown}
           icon={nutritionIcon}
           text="Nutrition"
-          href=""
+          to=""
         />
         <NavSidebarLink
           shown={sidebarShown}
           icon={pantryIcon}
           text="Pantry"
-          href=""
+          to=""
         />
       </nav>
       <nav className="account-links">
@@ -67,19 +67,19 @@ function NavSiderbar() {
           shown={sidebarShown}
           icon={profileIcon}
           text="Profile"
-          href=""
+          to=""
         />
         <NavSidebarLink
           shown={sidebarShown}
           icon={helpIcon}
           text="Help"
-          href=""
+          to=""
         />
         <NavSidebarLink
           shown={sidebarShown}
           icon={logoutIcon}
           text="Log Out"
-          href=""
+          to=""
         />
       </nav>
     </aside>

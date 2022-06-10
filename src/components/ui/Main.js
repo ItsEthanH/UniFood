@@ -1,35 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import classes from './Main.module.css';
 
 import Dashboard from '../dashboard/Dashboard';
 import Results from '../search/Results';
-import PageContext from '../store/page-context';
 import Recipe from '../recipe/Recipe';
 
 function Main() {
-  const pageCtx = useContext(PageContext);
-  let view = pageCtx.page;
+  const location = useLocation();
   let style;
-  let component;
 
-  switch (view) {
-    case 'Dashboard':
+  switch (true) {
+    case /\/dashboard/.test(location.pathname):
       style = classes.dashboard;
-      component = <Dashboard />;
       break;
-    case 'Results':
+    case /\/results./.test(location.pathname):
       style = classes.results;
-      component = <Results />;
       break;
-    case 'Recipe':
+    case /\/recipe./.test(location.pathname):
       style = classes.recipe;
-      component = <Recipe />;
-      break;
-    default:
       break;
   }
 
-  return <main className={style}>{component}</main>;
+  return (
+    <main className={style}>
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/results/:searchQuery" element={<Results />} />
+        <Route path="/recipe/:recipeId" element={<Recipe />} />
+      </Routes>
+    </main>
+  );
 }
 
 export default Main;

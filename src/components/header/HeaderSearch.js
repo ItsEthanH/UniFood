@@ -1,19 +1,25 @@
-import React, { useContext } from 'react';
-import PageContext from '../store/page-context';
+import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './HeaderSearch.module.css';
 
 function HeaderSearch() {
-  const pageCtx = useContext(PageContext);
+  const inputRef = useRef();
+  const navigate = useNavigate();
 
-  function search(event) {
+  function searchSubmitHandler(event) {
     event.preventDefault();
-    pageCtx.onChange('Results');
+    const query = inputRef.current.value.trim().replaceAll(' ', '+'); //cuts whitespace from start and end of query, replaces spaces with +
+    if (!query) {
+      return;
+    }
+
+    navigate('/results/' + query);
   }
 
   return (
-    <form onSubmit={search} action="POST">
-      <input type="text" placeholder="Search for Recipes" />
+    <form onSubmit={searchSubmitHandler} action="POST">
+      <input ref={inputRef} type="text" placeholder="Search for Recipes" />
     </form>
   );
 }
