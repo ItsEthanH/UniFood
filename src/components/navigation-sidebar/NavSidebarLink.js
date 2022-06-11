@@ -1,26 +1,17 @@
-import React, { useContext } from 'react';
-
-import PageContext from '../store/page-context';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import classes from './NavSidebarLink.module.css';
 
 function NavSiderbarLink(props) {
-  const pageCtx = useContext(PageContext);
-
-  function changePage(event) {
-    event.preventDefault();
-    pageCtx.onChange(props.text);
-  }
-
   return (
-    <a
-      href={props.href}
+    <NavLink
+      to={props.to}
       className={`${classes.link} ${props.shown ? classes.show : ''}`}
-      onClick={changePage}
     >
       <img src={props.icon} alt="icon" />
       <p>{props.text}</p>
-    </a>
+    </NavLink>
   );
 }
 

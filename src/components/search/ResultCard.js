@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import PageContext from '../store/page-context';
 
 import RecipeIcon from '../recipe/RecipeIcon';
 
@@ -11,7 +10,6 @@ import classes from './ResultCard.module.css';
 
 function ResultCard(props) {
   const [tooltip, setTooltip] = useState('');
-  const pageCtx = useContext(PageContext);
 
   function drag(event) {
     event.dataTransfer.setData('text/title', props.title);
@@ -19,9 +17,7 @@ function ResultCard(props) {
     event.dataTransfer.effectAllowed = 'move';
   }
 
-  function viewRecipe() {
-    pageCtx.onChange('Recipe');
-  }
+  function viewRecipe() {}
 
   return (
     <div draggable="true" onDragStart={drag} className={classes.card}>
