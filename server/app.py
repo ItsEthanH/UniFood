@@ -1,5 +1,5 @@
 import time
-from flask import Flask, request
+from flask import Flask, make_response, request
 from recipes.recipes import getRecipes, getRecipeInfo, getRelatedRecipes
 
 app = Flask(__name__)
@@ -16,7 +16,10 @@ def search():
 
     results = getRecipes(request.args.get('query'))
 
-    return results
+    resp = make_response(results)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+
+    return resp
 
 
 @app.route('/recipe', methods = ['GET'])
@@ -33,8 +36,10 @@ def recipe():
     # ADD THE BELOW TO THE RETURN JSON
 
     #  "relatedRecipes": [relatedRecipe1, relatedRecipe2]
+    resp = make_response({"recipeInfo": recipeInfo})
+    resp.headers['Access-Control-Allow-Origin'] = '*'
 
-    return {"recipeInfo": recipeInfo}
+    return resp
 
 
 if __name__ == "__main__":
