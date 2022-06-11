@@ -15,7 +15,6 @@ def getRecipeInfo(recipeID):
     try:
         recipeInfo = getRecipeInformation(recipeID, False)
 
-        print("hit")
     except: return {}
 
     # Looping through recipe ingredients to capitalise and add units
@@ -23,7 +22,7 @@ def getRecipeInfo(recipeID):
         ingredient["name"] = ingredient["name"].capitalize() + " ({} {})"
         ingredient["name"] = ingredient["name"].format(ingredient["amount"], ingredient["unit"])
 
-    recipeInfo["spoonacularScore"] = int(recipeInfo["spoonacularScore"])
+    # recipeInfo["spoonacularScore"] = int(recipeInfo["spoonacularScore"])
 
     return recipeInfo
 
