@@ -1,22 +1,30 @@
 import React from 'react';
-import useFetch from '../../hooks/useFetch';
 import { useParams } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch';
 
 import ResultCard from './ResultCard';
 
-import placeholder from '../../assets/search/placeholder-search.jpg';
 import classes from './Results.module.css';
 import ResultSidebar from './ResultSidebar';
 
 function Results() {
-  let params = useParams();
-  useFetch('/search?query=' + params.searchQuery);
+  // const params = useParams();
+  // const endpoint = '/search?query=' + params.searchQuery;
+
+  const endpoint = '/posts';
+  const { response, isLoading, error } = useFetch(endpoint);
+
+  console.log(response);
+  console.log(isLoading);
+  console.log(error);
 
   return (
     <React.Fragment>
       <ResultSidebar />
       <div className={classes.results}>
-        <ResultCard src={placeholder} title="Velvet Victoria Cake" />
+        {isLoading && <p>Loading</p>}
+        {error && <p>error</p>}
+        {response && response.map((item) => <ResultCard title={item.title} />)}
       </div>
     </React.Fragment>
   );
