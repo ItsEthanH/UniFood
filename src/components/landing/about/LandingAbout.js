@@ -1,8 +1,8 @@
-import LandingSection from './LandingSection';
+import MobileAccordion from './MobileAccordion';
+import LandingSection from '../LandingSection';
+import LandingTitle from '../LandingTitle';
 
 import classes from './LandingAbout.module.css';
-import LandingTitle from './LandingTitle';
-import MobileAccordion from './MobileAccordion';
 
 function LandingAbout() {
   return (

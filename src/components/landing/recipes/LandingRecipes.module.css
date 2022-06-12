@@ -1,0 +1,17 @@
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  flex-wrap: wrap;
+  grid-area: buttons;
+  margin-bottom: 3rem;
+}
+
+.cards {
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
+  flex-flow: wrap row;
+  height: max-content;
+  gap: 2.5rem;
+}

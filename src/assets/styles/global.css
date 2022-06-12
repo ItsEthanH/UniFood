@@ -187,73 +187,62 @@ template {
 /* fonts */
 @font-face {
   font-family: Rubik;
-  src: url(../src/assets/fonts/Rubik-Bold.ttf);
+  src: url(../fonts/Rubik-Bold.ttf);
   font-weight: 700 900;
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(../src/assets/fonts/Rubik-SemiBold.ttf);
+  src: url(../fonts/Rubik-SemiBold.ttf);
   font-weight: 600;
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(../src/assets/fonts/Rubik-Medium.ttf);
+  src: url(../fonts/Rubik-Medium.ttf);
   font-weight: 500;
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(../src/assets/fonts/Rubik-Regular.ttf);
+  src: url(../fonts/Rubik-Regular.ttf);
   font-weight: 400;
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(../src/assets/fonts/Rubik-Light.ttf);
+  src: url(../fonts/Rubik-Light.ttf);
   font-weight: 100 300;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../src/assets/fonts/Prompt-Bold.ttf);
+  src: url(../fonts/Prompt-Bold.ttf);
   font-weight: 700 900;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../src/assets/fonts/Prompt-SemiBold.ttf);
+  src: url(../fonts/Prompt-SemiBold.ttf);
   font-weight: 600;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../src/assets/fonts/Prompt-Medium.ttf);
+  src: url(../fonts/Prompt-Medium.ttf);
   font-weight: 500;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../src/assets/fonts/Prompt-Regular.ttf);
+  src: url(../fonts/Prompt-Regular.ttf);
   font-weight: 400;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../src/assets/fonts/Prompt-Light.ttf);
+  src: url(../fonts/Prompt-Light.ttf);
   font-weight: 100 300;
-}
-
-@keyframes slideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(10%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* general page styles */
@@ -276,17 +265,17 @@ template {
   --fs-400: 1.125rem;
 }
 
-#root {
-  height: 100vh;
-}
-
 html,
 body {
   font-size: 16px;
   font-family: var(--ff-body);
   color: var(--clr-dark);
   scroll-behavior: smooth;
-  overflow-y: clip;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
 }
 
 hr {

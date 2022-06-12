@@ -1,28 +1,15 @@
 import React, { useContext } from 'react';
 import AuthContext from './context/AuthContext';
 
-import './global.css';
-import classes from './App.module.css';
+import ApplicationPage from './pages/ApplicationPage';
+import LandingPage from './pages/LandingPage';
 
-import Main from './components/ui/Main';
-import Header from './components/header/Header';
-import NavSiderbar from './components/navigation-sidebar/NavSidebar';
-import LandingPage from './components/landing/LandingPage';
+import './assets/styles/global.css';
 
 function App() {
   const ctx = useContext(AuthContext);
 
-  if (ctx.isLoggedIn) {
-    return (
-      <div className={classes.wrapper}>
-        <Header />
-        <NavSiderbar />
-        <Main />
-      </div>
-    );
-  }
-
-  return <LandingPage />;
+  return ctx.isLoggedIn ? <ApplicationPage /> : <LandingPage />;
 }
 
 export default App;

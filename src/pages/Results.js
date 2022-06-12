@@ -1,11 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import useFetch from '../../hooks/useFetch';
+import useFetch from '../hooks/useFetch';
 
-import ResultCard from './ResultCard';
+import ResultCard from '../components/search/ResultCard';
 
-import classes from './Results.module.css';
-import ResultSidebar from './ResultSidebar';
+import classes from './styles/Results.module.css';
+import ResultSidebar from '../components/search/ResultSidebar';
 
 function Results() {
   // const params = useParams();

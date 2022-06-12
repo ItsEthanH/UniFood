@@ -1,6 +1,6 @@
 import classes from './LandingIntro.module.css';
-import appStore from '../../assets/landing/app-store.png';
-import googlePlay from '../../assets/landing/google-play.png';
+import appStore from '../../../assets/landing/app-store.png';
+import googlePlay from '../../../assets/landing/google-play.png';
 
 function LandingIntro() {
   return (
