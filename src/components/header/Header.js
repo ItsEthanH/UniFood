@@ -3,11 +3,11 @@ import React from 'react';
 import HeaderLogo from './HeaderLogo';
 import HeaderSearch from './HeaderSearch';
 
-import './Header.module.css';
+import classes from './Header.module.css';
 
 function Header(props) {
   return (
-    <header>
+    <header className={classes.header}>
       <HeaderLogo />
       <HeaderSearch />
     </header>

@@ -23,7 +23,7 @@ function Main() {
   }
 
   return (
-    <main className={style}>
+    <main className={`${style} ${classes.main}`}>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/results/:searchQuery" element={<Results />} />

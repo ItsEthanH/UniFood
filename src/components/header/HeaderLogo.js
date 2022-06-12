@@ -1,10 +1,10 @@
 import React from 'react';
 
-import './HeaderLogo.module.css';
+import classes from './HeaderLogo.module.css';
 
 function HeaderLogo() {
   return (
-    <h1>
+    <h1 className={classes.logo}>
       Uni<span className="color-primary">Food</span>
     </h1>
   );

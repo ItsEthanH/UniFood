@@ -1,0 +1,8 @@
+.title {
+  font-family: var(--ff-title);
+  font-size: var(--fs-sub-heading);
+  text-align: center;
+  font-weight: 500;
+  line-height: 1;
+  margin: 1rem 2rem;
+}

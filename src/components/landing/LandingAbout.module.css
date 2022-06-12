@@ -1,0 +1,7 @@
+.paragraph {
+  font-weight: 100;
+  font-size: var(--fs-600);
+  line-height: 1.6;
+  text-align: center;
+  margin: 1rem 0;
+}
