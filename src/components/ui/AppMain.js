@@ -6,7 +6,7 @@ import Dashboard from '../../pages/Dashboard';
 import Results from '../../pages/Results';
 import Recipe from '../../pages/Recipe';
 
-function Main() {
+function AppMain() {
   const location = useLocation();
   let style;
 
@@ -33,4 +33,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default AppMain;
