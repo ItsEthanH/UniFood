@@ -13,7 +13,15 @@ function ResultSidebar(props) {
   const mealPlanRef = useRef();
   const shoppingListRef = useRef();
 
-  function dragEnter(location) {
+  function checkDraggable(event) {
+    if (!event.dataTransfer.getData('text/title')) {
+      location.current.style.backgroundColor = 'transparent';
+      return;
+    }
+  }
+
+  function dragEnter(location, event) {
+    checkDraggable(event);
     location.current.style.backgroundColor = '#0fa50f38';
   }
 
@@ -27,6 +35,7 @@ function ResultSidebar(props) {
 
   function drop(location, event) {
     event.preventDefault();
+    checkDraggable(event);
     let name = event.dataTransfer.getData('text/title');
     let src = event.dataTransfer.getData('text/src');
     let id = name.replace(/\s+/g, '') + Math.floor(Math.random() * 10000);

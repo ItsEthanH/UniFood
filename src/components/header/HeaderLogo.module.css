@@ -1,6 +1,5 @@
-h1 {
+.logo {
   font-size: var(--fs-header);
-  align-self: center;
   color: white;
   margin: 0 3rem;
 }

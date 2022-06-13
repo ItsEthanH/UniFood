@@ -1,0 +1,59 @@
+.tab {
+  padding: 0.75rem 0.5rem;
+}
+
+.tab button {
+  width: 100%;
+  padding: 0.6rem 1.12rem;
+  border: none;
+  background-color: var(--clr-primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.tab h3 {
+  text-align: left;
+  font-size: var(--fs-900);
+  font-weight: 300;
+  color: var(--clr-light);
+}
+
+.tab p {
+  font-size: var(--fs-900);
+  font-weight: 300;
+  color: var(--clr-light);
+}
+
+.content {
+  padding: 0 0.5rem;
+  position: relative;
+  overflow: clip;
+  border: 1px solid var(--clr-primary);
+}
+
+.show {
+  transition: 0.4s ease;
+  max-height: 10rem;
+}
+
+.hide {
+  max-height: 0rem;
+  transition: 0.4s ease;
+}
+
+.content h4 {
+  font-family: var(--ff-title);
+  font-weight: 500;
+  font-size: var(--fs-800);
+  padding: 0.6rem 0;
+  line-height: 2rem;
+}
+
+.content p {
+  font-weight: 100;
+  font-size: var(--fs-600);
+  line-height: 1.6;
+  color: black;
+}

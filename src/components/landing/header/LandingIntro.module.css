@@ -1,0 +1,27 @@
+.intro h2 {
+  font-size: var(--fs-sub-heading);
+  text-align: center;
+  line-height: 1.2;
+  margin: 1rem 0;
+}
+
+.intro p {
+  font-size: var(--fs-900);
+  font-family: var(--ff-body);
+  font-weight: 100;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.downloads {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: center;
+  gap: 2rem;
+  padding-bottom: 1rem;
+}
+
+.downloads img {
+  width: 100%;
+  max-width: 18rem;
+}

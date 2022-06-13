@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import classes from './Main.module.css';
 
-import Dashboard from '../dashboard/Dashboard';
-import Results from '../search/Results';
-import Recipe from '../recipe/Recipe';
+import Dashboard from '../../pages/Dashboard';
+import Results from '../../pages/Results';
+import Recipe from '../../pages/Recipe';
 
 function Main() {
   const location = useLocation();
@@ -23,7 +23,7 @@ function Main() {
   }
 
   return (
-    <main className={style}>
+    <main className={`${style} ${classes.main}`}>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/results/:searchQuery" element={<Results />} />

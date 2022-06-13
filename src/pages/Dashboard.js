@@ -1,8 +1,8 @@
 import React from 'react';
-import ComingUp from './ComingUp';
-import NextMeal from './NextMeal';
-import Nutrition from './Nutrition';
-import Welcome from './Welcome';
+import ComingUp from '../components/dashboard/ComingUp';
+import NextMeal from '../components/dashboard/NextMeal';
+import Nutrition from '../components/dashboard/Nutrition';
+import Welcome from '../components/dashboard/Welcome';
 
 function Dashboard() {
   return (
