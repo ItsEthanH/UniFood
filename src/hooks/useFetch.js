@@ -13,8 +13,10 @@ function useFetch(endpoint) {
       if (!res.ok) {
         throw Error('Something went wrong!');
       }
+
       const returnedData = await res.json();
-      setResponse(returnedData);
+
+      setResponse(returnedData.results);
     } catch (err) {
       console.log(err);
       setError(err);
@@ -25,9 +27,7 @@ function useFetch(endpoint) {
 
   useEffect(() => {
     sendRequest();
-  }, []);
-
-  console.log(response);
+  }, [endpoint]);
 
   return { response, isLoading, error };
 }

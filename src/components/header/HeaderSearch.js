@@ -9,12 +9,15 @@ function HeaderSearch() {
 
   function searchSubmitHandler(event) {
     event.preventDefault();
-    const query = inputRef.current.value.trim().replaceAll(' ', '+'); //cuts whitespace from start and end of query, replaces spaces with +
+    const query = inputRef.current.value
+      .trim()
+      .replaceAll(' ', '+') //cuts whitespace from start and end of query, replaces spaces with +, all to lowercase
+      .toLowerCase();
     if (!query) {
       return;
     }
 
-    navigate('/results/' + query);
+    navigate('/results/' + query, { replace: true });
   }
 
   return (
