@@ -2,4 +2,11 @@
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 2rem;
+}
+
+@media only screen and (min-width: 1280px) {
+  .wrapper main {
+    max-width: 2000px;
+  }
 }

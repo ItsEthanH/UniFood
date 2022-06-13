@@ -13,8 +13,6 @@ function Results() {
   const endpoint = '/search?query=' + params.searchQuery;
   const { response, isLoading, error } = useFetch(endpoint, 'SEARCH');
 
-  console.log(response);
-
   return (
     <React.Fragment>
       <ResultSidebar />

@@ -1,0 +1,12 @@
+.paragraph {
+  font-size: var(--fs-900);
+  line-height: 1.4;
+  font-weight: 100;
+  text-align: center;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  margin-top: 3rem;
+}

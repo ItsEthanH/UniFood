@@ -13,7 +13,9 @@ function LandingNav() {
         <li>
           <a>Pricing</a>
         </li>
-        <li>Sign In</li>
+        <li>
+          <a>Sign In</a>
+        </li>
       </ul>
     </nav>
   );

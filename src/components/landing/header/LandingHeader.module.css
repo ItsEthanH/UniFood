@@ -7,5 +7,12 @@
 
 .hr {
   border: 1.5px solid var(--clr-primary);
-  margin: 1rem;
+}
+
+@media only screen and (min-width: 1280px) {
+  header {
+    max-width: 2000px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
