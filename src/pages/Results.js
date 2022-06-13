@@ -8,10 +8,9 @@ import classes from './styles/Results.module.css';
 import ResultSidebar from '../components/search/ResultSidebar';
 
 function Results() {
-  // const params = useParams();
-  // const endpoint = '/search?query=' + params.searchQuery;
+  const params = useParams();
+  const endpoint = '/search?query=' + params.searchQuery;
 
-  const endpoint = '/posts';
   const { response, isLoading, error } = useFetch(endpoint);
 
   console.log(response);
