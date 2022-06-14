@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import './HeaderSearch.module.css';
+import classes from './HeaderSearch.module.css';
 
 function HeaderSearch() {
   const inputRef = useRef();
@@ -21,7 +21,11 @@ function HeaderSearch() {
   }
 
   return (
-    <form onSubmit={searchSubmitHandler} action="POST">
+    <form
+      className={classes.searchbar}
+      onSubmit={searchSubmitHandler}
+      action="POST"
+    >
       <input ref={inputRef} type="text" placeholder="Search for Recipes" />
     </form>
   );

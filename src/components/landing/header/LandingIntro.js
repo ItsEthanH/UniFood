@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import LandingSection from '../LandingSection';
 
 import classes from './LandingIntro.module.css';
@@ -22,10 +24,10 @@ function LandingIntro() {
       </div>
       <div className={classes.buttons}>
         <button class="primary-button">
-          <a href="/">Sign in</a>
+          <Link to="/portal/signin">Sign in</Link>
         </button>
         <button class="outline-button">
-          <a href="/">Register</a>
+          <Link to="/portal/register">Register</Link>
         </button>
       </div>
       <p className={classes.guest}>

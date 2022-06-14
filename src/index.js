@@ -10,13 +10,18 @@ import './assets/styles/global.css';
 import Dashboard from './pages/Dashboard';
 import Results from './pages/Results';
 import Recipe from './pages/Recipe';
+import LoginForm from './components/portal/LoginForm';
+import RegisterForm from './components/portal/RegisterForm';
 
 function Index() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/portal" element={<Portal />} />
+        <Route path="/portal" element={<Portal />}>
+          <Route path="/portal/signin" element={<LoginForm />} />
+          <Route path="/portal/register" element={<RegisterForm />} />
+        </Route>
 
         <Route path="/app" element={<App />}>
           <Route path="/app/dashboard" element={<Dashboard />} />

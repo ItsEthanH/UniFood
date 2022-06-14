@@ -291,7 +291,7 @@ hr {
   cursor: pointer;
 }
 
-.primary-button > a {
+.primary-button > * {
   color: white;
   display: block;
   padding: 0.5rem 3.5rem;
@@ -308,7 +308,7 @@ hr {
   cursor: pointer;
 }
 
-.outline-button > a {
+.outline-button > * {
   color: var(--clr-primary);
   display: block;
   padding: 0.5rem 3.5rem;

@@ -16,7 +16,7 @@ function LandingNav() {
           <a href="#pricing">Pricing</a>
         </li>
         <li className={classes.signin}>
-          <Link to="/portal">Sign In</Link>
+          <Link to="/portal/signin">Sign In</Link>
         </li>
       </ul>
     </nav>
