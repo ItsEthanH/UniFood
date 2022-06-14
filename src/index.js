@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import App from './pages/App';
 import Landing from './pages/Landing';
 import Portal from './pages/Portal';
 
-import './assets/styles/global.css';
 import Dashboard from './pages/Dashboard';
 import Results from './pages/Results';
 import Recipe from './pages/Recipe';
 import LoginForm from './components/portal/LoginForm';
 import RegisterForm from './components/portal/RegisterForm';
+
+import './assets/styles/global.css';
 
 function Index() {
   return (
@@ -30,7 +31,9 @@ function Index() {
           </Route>
           <Route path="/app/recipe/:recipeId" element={<Recipe />} />
           <Route path="/app/dashboard" element={<Dashboard />} />
+          <Route path="/app/*" element={<Navigate to="/app/dashboard" />} />
         </Route>
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );

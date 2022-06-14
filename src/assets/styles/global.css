@@ -270,11 +270,6 @@ body {
   font-family: var(--ff-body);
   color: var(--clr-dark);
   scroll-behavior: smooth;
-  height: 100%;
-}
-
-#root {
-  height: 100%;
 }
 
 hr {

@@ -79,7 +79,7 @@ function NavSiderbar() {
           shown={sidebarShown}
           icon={logoutIcon}
           text="Log Out"
-          to=""
+          to="/"
         />
       </nav>
     </aside>

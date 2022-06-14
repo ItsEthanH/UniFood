@@ -1,14 +1,13 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import classes from './styles/App.module.css';
+import '../assets/styles/global-app.css';
 
-import Dashboard from './Dashboard';
-import Results from './Results';
-import Recipe from './Recipe';
 import Header from '../components/header/Header';
 import NavSiderbar from '../components/navigation-sidebar/NavSidebar';
 
 function App() {
+  const location = useLocation();
   let style;
 
   switch (true) {
