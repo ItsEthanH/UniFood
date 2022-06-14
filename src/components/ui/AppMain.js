@@ -6,7 +6,7 @@ import Dashboard from '../../pages/Dashboard';
 import Results from '../../pages/Results';
 import Recipe from '../../pages/Recipe';
 
-function Main() {
+function AppMain() {
   const location = useLocation();
   let style;
 
@@ -23,14 +23,14 @@ function Main() {
   }
 
   return (
-    <main className={`${style} ${classes.main}`}>
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/results/:searchQuery" element={<Results />} />
-        <Route path="/recipe/:recipeId" element={<Recipe />} />
-      </Routes>
-    </main>
+    // <main className={`${style} ${classes.main}`}>
+    //   <Routes>
+    //     <Route path="/dashboard" element={<Dashboard />} />
+    //     <Route path="/results/:searchQuery" element={<Results />} />
+    //     <Route path="/recipe/:recipeId" element={<Recipe />} />
+    //   </Routes>
+    // </main>
   );
 }
 
-export default Main;
+export default AppMain;

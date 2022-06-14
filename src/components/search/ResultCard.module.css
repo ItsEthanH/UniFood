@@ -3,7 +3,25 @@
   width: min-content;
   height: min-content;
   padding-bottom: 0.6rem;
-  animation: slideUp 1s;
+  list-style-type: none;
+  animation: slideup 1s;
+}
+
+@keyframes slideup {
+  from {
+    transform: translateY(25px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animation {
+  transform: translateY(0);
+  opacity: 1;
+  transition: 0.5s;
 }
 
 .text {

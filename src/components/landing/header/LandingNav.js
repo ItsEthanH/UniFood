@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import classes from './LandingNav.module.css';
 
 function LandingNav() {
@@ -5,15 +7,17 @@ function LandingNav() {
     <nav className={classes.navigation}>
       <ul>
         <li>
-          <a>About</a>
+          <a href="#about">About</a>
         </li>
         <li>
-          <a>Recipes</a>
+          <a href="#recipes">Recipes</a>
         </li>
         <li>
-          <a>Pricing</a>
+          <a href="#pricing">Pricing</a>
         </li>
-        <li>Sign In</li>
+        <li className={classes.signin}>
+          <Link to="/portal/signin">Sign In</Link>
+        </li>
       </ul>
     </nav>
   );

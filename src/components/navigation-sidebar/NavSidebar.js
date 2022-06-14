@@ -35,7 +35,7 @@ function NavSiderbar() {
           shown={sidebarShown}
           icon={dashboardIcon}
           text="Dashboard"
-          to="/dashboard"
+          to="/app/dashboard"
         />
         <NavSidebarLink
           shown={sidebarShown}
@@ -79,7 +79,7 @@ function NavSiderbar() {
           shown={sidebarShown}
           icon={logoutIcon}
           text="Log Out"
-          to=""
+          to="/"
         />
       </nav>
     </aside>

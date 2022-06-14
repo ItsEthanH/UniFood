@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import './HeaderSearch.module.css';
+import classes from './HeaderSearch.module.css';
 
 function HeaderSearch() {
   const inputRef = useRef();
@@ -9,16 +9,23 @@ function HeaderSearch() {
 
   function searchSubmitHandler(event) {
     event.preventDefault();
-    const query = inputRef.current.value.trim().replaceAll(' ', '+'); //cuts whitespace from start and end of query, replaces spaces with +
+    const query = inputRef.current.value
+      .trim()
+      .replaceAll(' ', '+') //cuts whitespace from start and end of query, replaces spaces with +, all to lowercase
+      .toLowerCase();
     if (!query) {
       return;
     }
 
-    navigate('/results/' + query);
+    navigate('/app/results/' + query, { replace: true });
   }
 
   return (
-    <form onSubmit={searchSubmitHandler} action="POST">
+    <form
+      className={classes.searchbar}
+      onSubmit={searchSubmitHandler}
+      action="POST"
+    >
       <input ref={inputRef} type="text" placeholder="Search for Recipes" />
     </form>
   );

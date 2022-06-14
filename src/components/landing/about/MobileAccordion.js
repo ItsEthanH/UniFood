@@ -1,4 +1,3 @@
-import classes from './MobileAccordion.module.css';
 import MobileAccordionTab from './MobileAccordionTab';
 
 function MobileAccordion() {

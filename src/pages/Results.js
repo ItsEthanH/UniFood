@@ -1,30 +1,31 @@
 import React from 'react';
+
 import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 
 import ResultCard from '../components/search/ResultCard';
+import ResultSidebar from '../components/search/ResultSidebar';
 
 import classes from './styles/Results.module.css';
-import ResultSidebar from '../components/search/ResultSidebar';
 
 function Results() {
   const params = useParams();
   const endpoint = '/search?query=' + params.searchQuery;
-
-  const { response, isLoading, error } = useFetch(endpoint);
+  const { response, isLoading, error } = useFetch(endpoint, 'SEARCH');
 
   console.log(response);
-  console.log(isLoading);
-  console.log(error);
 
   return (
     <React.Fragment>
       <ResultSidebar />
-      <div className={classes.results}>
+      <ul className={classes.results}>
         {isLoading && <p>Loading</p>}
         {error && <p>error</p>}
-        {response && response.map((item) => <ResultCard title={item.title} />)}
-      </div>
+        {response &&
+          response.map((item) => (
+            <ResultCard title={item.title} src={item.image} id={item.id} />
+          ))}
+      </ul>
     </React.Fragment>
   );
 }

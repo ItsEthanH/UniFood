@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import RecipeIcon from '../recipe/RecipeIcon';
 
@@ -10,6 +11,7 @@ import classes from './ResultCard.module.css';
 
 function ResultCard(props) {
   const [tooltip, setTooltip] = useState('');
+  const navigate = useNavigate();
 
   function drag(event) {
     event.dataTransfer.setData('text/title', props.title);
@@ -17,10 +19,19 @@ function ResultCard(props) {
     event.dataTransfer.effectAllowed = 'move';
   }
 
-  function viewRecipe() {}
+  function viewRecipe() {
+    navigate('/app/recipe/' + props.id);
+    console.log(props.id);
+  }
 
   return (
-    <div draggable="true" onDragStart={drag} className={classes.card}>
+    <li
+      key={props.id}
+      id={props.id}
+      draggable="true"
+      onDragStart={drag}
+      className={`${classes.card} ${props.title ? classes.animation : ''}`}
+    >
       <div className={classes.image}>
         <img src={props.src} alt="ALT" />
       </div>
@@ -47,7 +58,7 @@ function ResultCard(props) {
           <p>{tooltip}</p>
         </div>
       </div>
-    </div>
+    </li>
   );
 }
 

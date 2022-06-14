@@ -84,7 +84,6 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit;
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
@@ -271,16 +270,44 @@ body {
   font-family: var(--ff-body);
   color: var(--clr-dark);
   scroll-behavior: smooth;
-  height: 100%;
-}
-
-#root {
-  height: 100%;
 }
 
 hr {
   color: rgba(0, 0, 0, 0.2);
   margin: 0 1rem;
+}
+
+.primary-button {
+  background: var(--clr-primary);
+  border: none;
+  font-size: var(--fs-800);
+  border-radius: 50px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.primary-button > * {
+  color: white;
+  display: block;
+  padding: 0.5rem 3.5rem;
+  text-decoration: none;
+}
+
+.outline-button {
+  background: transparent;
+  border: 3px solid var(--clr-primary);
+  font-size: var(--fs-800);
+  color: var(--clr-primary);
+  border-radius: 50px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.outline-button > * {
+  color: var(--clr-primary);
+  display: block;
+  padding: 0.5rem 3.5rem;
+  text-decoration: none;
 }
 
 .color-primary {

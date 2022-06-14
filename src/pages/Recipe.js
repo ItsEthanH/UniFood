@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import useFetch from '../hooks/useFetch';
 
 import classes from './styles/Recipe.module.css';
 import viewIcon from '../assets/ui/view.png';
@@ -19,6 +21,10 @@ function Recipe(props) {
   const [dietShow, setDietShow] = useState(false);
   const [recommendedShow, setRecommendedShow] = useState(false);
 
+  const params = useParams();
+  const endpoint = '/recipe?recipeID=' + params.recipeId;
+  const { response, isLoading, error } = useFetch(endpoint, 'RECIPE');
+
   function handleSubsectionClick(subsectionToShow) {
     setDietShow(false);
     setNutritionShow(false);
@@ -37,26 +43,36 @@ function Recipe(props) {
     }
   }
 
+  if (!response) {
+    return;
+  }
+
+  console.log(
+    response.analyzedInstructions[0].steps.map((item) => console.log(item.step))
+  );
+
   return (
     <React.Fragment>
       <RecipeSection>
-        <img className={classes.image} src={placeholder} alt="" />
-        <SectionTitle center={true}>Recipe Title</SectionTitle>
+        <img className={classes.image} src={response.image} alt="" />
+        <SectionTitle center={true}>{response.title}</SectionTitle>
         <div className={classes.stats}>
           <p>
-            60<span>mins</span>
+            {response.readyInMinutes}
+            <span> mins</span>
           </p>
           <div className={classes.divider}></div>
           <p>
-            xxx<span>cal</span>
+            ???<span> cal</span>
           </p>
           <div className={classes.divider}></div>
           <p>
-            90<span>/100</span>
+            ??<span> /100</span>
           </p>
           <div className={classes.divider}></div>
           <p>
-            4<span>serves</span>
+            {response.servings}
+            <span> serves</span>
           </p>
         </div>
         <hr />
@@ -69,16 +85,9 @@ function Recipe(props) {
         <hr />
         <div className={classes.ingredients}>
           <ul>
-            <li>Lorem, ipsum.</li>
-            <li>Incidunt, laboriosam?</li>
-            <li>Atque, praesentium!</li>
-            <li>Hic, labore?</li>
-            <li>Porro, obcaecati.</li>
-            <li>Distinctio, nihil?</li>
-            <li>Sapiente, magni.</li>
-            <li>Corporis, amet.</li>
-            <li>Modi, sapiente?</li>
-            <li>Tempore, saepe!</li>
+            {response.extendedIngredients.map((item) => (
+              <li>{item.name}</li>
+            ))}
           </ul>
         </div>
       </RecipeSection>
@@ -87,34 +96,9 @@ function Recipe(props) {
         <SectionTitle center={true}>Instructions</SectionTitle>
         <hr />
         <ol className={classes.instructions}>
-          <li>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit
-            voluptatem ducimus nostrum, vel delectus fugiat.
-          </li>
-          <li>
-            Delectus ex id fugiat soluta, amet ab provident sequi facere
-            repellat minima quas voluptas nemo.
-          </li>
-          <li>
-            Deserunt, officia maxime. Ipsum aut itaque id amet soluta atque esse
-            laborum laboriosam libero est!
-          </li>
-          <li>
-            Numquam facere tenetur repellat temporibus, saepe neque enim animi
-            voluptatum. Explicabo nulla laborum veniam quis.
-          </li>
-          <li>
-            Ea id, quod dolore iure, veniam soluta adipisci corporis maxime
-            voluptates tenetur nemo placeat fugit.
-          </li>
-          <li>
-            Illum, molestiae ea voluptatum labore numquam doloremque quo
-            reiciendis tenetur dolor debitis unde voluptatibus cumque!
-          </li>
-          <li>
-            Recusandae, quibusdam! Necessitatibus, magnam illum, iste
-            accusantium saepe placeat in, nam debitis illo aliquam minima.
-          </li>
+          {response.analyzedInstructions[0].steps.map((instruction) => (
+            <li>{instruction.step}</li>
+          ))}
         </ol>
       </RecipeSection>
 

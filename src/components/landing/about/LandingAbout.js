@@ -1,12 +1,24 @@
-import MobileAccordion from './MobileAccordion';
-import LandingSection from '../LandingSection';
+import { useState, useEffect } from 'react';
+
 import LandingTitle from '../LandingTitle';
+import LandingSection from '../LandingSection';
+import MobileAccordion from './MobileAccordion';
+import DesktopShowcase from './DesktopShowcase';
 
 import classes from './LandingAbout.module.css';
 
 function LandingAbout() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const breakpoint = 1280;
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setWindowWidth(window.innerWidth);
+    });
+  });
+
   return (
-    <LandingSection>
+    <LandingSection id="about">
       <LandingTitle>
         About <span className="color-primary">us</span>
       </LandingTitle>
@@ -16,7 +28,7 @@ function LandingAbout() {
         access to over 5000 recipes and 2600 ingredients, so you are sure to
         find a recipe you will love.
       </p>
-      <MobileAccordion />
+      {windowWidth >= breakpoint ? <DesktopShowcase /> : <MobileAccordion />}
     </LandingSection>
   );
 }
