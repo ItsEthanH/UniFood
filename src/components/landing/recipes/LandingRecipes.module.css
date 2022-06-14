@@ -1,17 +1,50 @@
+.title {
+  grid-area: title;
+}
+
 .buttons {
+  grid-area: buttons;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   flex-wrap: wrap;
   grid-area: buttons;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .cards {
+  grid-area: recipes;
   display: flex;
   align-content: center;
   justify-content: space-evenly;
   flex-flow: wrap row;
   height: max-content;
   gap: 2.5rem;
+}
+
+@media only screen and (min-width: 1280px) {
+  .title {
+    margin-bottom: 2rem;
+  }
+
+  .desktop {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      'title   title   title   title'
+      'buttons recipes recipes recipes'
+      'buttons recipes recipes recipes'
+      'buttons recipes recipes recipes';
+  }
+
+  .buttons {
+    grid-template-columns: 1fr;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  .cards {
+    flex-flow: wrap row;
+  }
 }

@@ -9,9 +9,9 @@ function LandingPricing() {
     <LandingSection>
       <LandingTitle>Pricing</LandingTitle>
       <div className={classes.cards}>
-        <PricingCard type={0} />
-        <PricingCard type={1} />
-        <PricingCard type={2} />
+        <PricingCard styles={classes.bronze} type={0} />
+        <PricingCard styles={classes.silver} type={1} />
+        <PricingCard styles={classes.gold} type={2} />
       </div>
     </LandingSection>
   );

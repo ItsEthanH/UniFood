@@ -13,7 +13,7 @@ function LandingNav() {
         <li>
           <a>Pricing</a>
         </li>
-        <li>
+        <li className={classes.signin}>
           <a>Sign In</a>
         </li>
       </ul>

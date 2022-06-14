@@ -34,7 +34,7 @@ function PricingCard(props) {
   }
 
   return (
-    <div className={classes.card}>
+    <div className={`${classes.card} ${props.styles}`}>
       <div className={`${classes.header} ${colour}`}>
         <h2>{tier}</h2>
         {price}

@@ -50,8 +50,19 @@
   line-height: 1.6;
 }
 
+.card li {
+  margin: 1rem 0;
+}
+
 .card sup,
 .card sub {
   font-weight: 300;
   font-size: var(--fs-600);
+}
+
+@media only screen and (min-width: 1280px) {
+  .card {
+    max-width: 25rem;
+    min-height: 37rem;
+  }
 }

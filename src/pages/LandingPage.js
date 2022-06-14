@@ -6,21 +6,17 @@ import LandingRecipes from '../components/landing/recipes/LandingRecipes';
 import LandingApps from '../components/landing/apps/LandingApps';
 import LandingFooter from '../components/landing/footer/LandingFooter';
 
-import classes from './styles/LandingPage.module.css';
-
 function LandingPage() {
   return (
     <>
-      <div className={classes.wrapper}>
-        <LandingHeader />
-        <main>
-          <LandingIntro />
-          <LandingAbout />
-          <LandingRecipes />
-          <LandingPricing />
-          <LandingApps />
-        </main>
-      </div>
+      <LandingHeader />
+      <main>
+        <LandingIntro />
+        <LandingAbout />
+        <LandingRecipes />
+        <LandingPricing />
+        <LandingApps />
+      </main>
       <LandingFooter />
     </>
   );

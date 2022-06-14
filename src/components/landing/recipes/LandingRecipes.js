@@ -29,9 +29,9 @@ function LandingRecipes() {
   }
 
   return (
-    <LandingSection>
-      <LandingTitle>
-        Some of our <span className="color-primary">delicious</span> recipes
+    <LandingSection styles={classes.desktop}>
+      <LandingTitle styles={classes.title}>
+        Some of our <span className="color-primary">delicious</span> recipes...
       </LandingTitle>
       <div className={classes.buttons}>
         <LandingRecipeButton

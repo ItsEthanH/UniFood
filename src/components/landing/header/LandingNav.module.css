@@ -9,4 +9,32 @@
   padding: 0.5rem;
   text-decoration: none;
   color: black;
+  cursor: pointer;
+}
+
+.signin {
+  display: none;
+  background: var(--clr-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+}
+
+@media only screen and (min-width: 1280px) {
+  .navigation ul {
+    height: 100%;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .navigation li {
+    height: max-content;
+  }
+
+  .navigation a {
+    color: white;
+  }
+
+  .signin {
+    display: block;
+  }
 }

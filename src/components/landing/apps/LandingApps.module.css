@@ -10,3 +10,15 @@
   height: auto;
   margin-top: 3rem;
 }
+
+@media only screen and (min-width: 1280px) {
+  .apps {
+    display: grid;
+  }
+
+  .img {
+    max-height: 30rem;
+    width: auto;
+    justify-self: center;
+  }
+}

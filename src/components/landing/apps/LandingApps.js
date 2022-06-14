@@ -6,7 +6,7 @@ import appImg from '../../../assets/landing/devices.png';
 
 function LandingApps() {
   return (
-    <LandingSection>
+    <LandingSection styles={classes.apps}>
       <LandingTitle>
         Takeaway the Uni<span className="color-primary">Food</span> apps!
       </LandingTitle>
