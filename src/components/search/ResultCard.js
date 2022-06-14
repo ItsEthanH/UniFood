@@ -20,7 +20,7 @@ function ResultCard(props) {
   }
 
   function viewRecipe() {
-    navigate('/recipe/' + props.id);
+    navigate('/app/recipe/' + props.id);
     console.log(props.id);
   }
 

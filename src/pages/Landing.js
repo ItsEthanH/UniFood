@@ -6,7 +6,7 @@ import LandingRecipes from '../components/landing/recipes/LandingRecipes';
 import LandingApps from '../components/landing/apps/LandingApps';
 import LandingFooter from '../components/landing/footer/LandingFooter';
 
-function LandingPage() {
+function Landing() {
   return (
     <>
       <LandingHeader />
@@ -22,4 +22,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default Landing;

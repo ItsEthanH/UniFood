@@ -29,7 +29,7 @@ function LandingRecipes() {
   }
 
   return (
-    <LandingSection styles={classes.desktop}>
+    <LandingSection id="recipes" styles={classes.desktop}>
       <LandingTitle styles={classes.title}>
         Some of our <span className="color-primary">delicious</span> recipes...
       </LandingTitle>

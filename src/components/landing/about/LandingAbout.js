@@ -18,7 +18,7 @@ function LandingAbout() {
   });
 
   return (
-    <LandingSection>
+    <LandingSection id="about">
       <LandingTitle>
         About <span className="color-primary">us</span>
       </LandingTitle>

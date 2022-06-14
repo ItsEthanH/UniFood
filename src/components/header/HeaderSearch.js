@@ -17,7 +17,7 @@ function HeaderSearch() {
       return;
     }
 
-    navigate('/results/' + query, { replace: true });
+    navigate('/app/results/' + query, { replace: true });
   }
 
   return (

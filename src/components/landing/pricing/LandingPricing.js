@@ -6,7 +6,7 @@ import classes from './LandingPricing.module.css';
 
 function LandingPricing() {
   return (
-    <LandingSection>
+    <LandingSection id="pricing">
       <LandingTitle>Pricing</LandingTitle>
       <div className={classes.cards}>
         <PricingCard styles={classes.bronze} type={0} />
