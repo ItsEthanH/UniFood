@@ -7,6 +7,7 @@ import ResultCard from '../components/search/ResultCard';
 import ResultSidebar from '../components/search/ResultSidebar';
 
 import classes from './styles/Results.module.css';
+import '../assets/styles/global-app.css';
 
 function Results() {
   const params = useParams();
@@ -16,9 +17,9 @@ function Results() {
   console.log(response);
 
   return (
-    <React.Fragment>
+    <main className={classes.results}>
       <ResultSidebar />
-      <ul className={classes.results}>
+      <ul className={classes.list}>
         {isLoading && <p>Loading</p>}
         {error && <p>error</p>}
         {response &&
@@ -26,7 +27,7 @@ function Results() {
             <ResultCard title={item.title} src={item.image} id={item.id} />
           ))}
       </ul>
-    </React.Fragment>
+    </main>
   );
 }
 

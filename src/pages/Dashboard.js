@@ -4,14 +4,17 @@ import NextMeal from '../components/dashboard/NextMeal';
 import Nutrition from '../components/dashboard/Nutrition';
 import Welcome from '../components/dashboard/Welcome';
 
+import classes from './styles/Dashboard.module.css';
+import '../assets/styles/global-app.css';
+
 function Dashboard() {
   return (
-    <React.Fragment>
+    <main className={classes.dashboard}>
       <Welcome />
       <NextMeal />
       <Nutrition />
       <ComingUp />
-    </React.Fragment>
+    </main>
   );
 }
 

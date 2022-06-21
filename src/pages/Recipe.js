@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 
+import RecipeSection from '../components/recipe/RecipeSection';
+import SectionTitle from '../components/ui/SectionTitle';
+import RecipeIcon from '../components/recipe/RecipeIcon';
+import RecipeInfoSubsection from '../components/recipe/RecipeInfoSubsection';
+
+import '../assets/styles/global-app.css';
 import classes from './styles/Recipe.module.css';
 import viewIcon from '../assets/ui/view.png';
 import favouriteIcon from '../assets/ui/favourite.png';
 import planIcon from '../assets/ui/plan.png';
 import cartIcon from '../assets/ui/cart.png';
 
-import placeholder from '../assets/dashboard/placeholder-meal.jpg';
 import placeholder2 from '../assets/search/placeholder-recipe.jpg';
-
-import RecipeSection from '../components/recipe/RecipeSection';
-import SectionTitle from '../components/ui/SectionTitle';
-import RecipeIcon from '../components/recipe/RecipeIcon';
-import RecipeInfoSubsection from '../components/recipe/RecipeInfoSubsection';
 
 function Recipe(props) {
   const [nutritionShow, setNutritionShow] = useState(false);
@@ -52,7 +52,7 @@ function Recipe(props) {
   );
 
   return (
-    <React.Fragment>
+    <main className={classes.recipe}>
       <RecipeSection>
         <img className={classes.image} src={response.image} alt="" />
         <SectionTitle center={true}>{response.title}</SectionTitle>
@@ -133,7 +133,7 @@ function Recipe(props) {
           </div>
         </RecipeInfoSubsection>
       </RecipeSection>
-    </React.Fragment>
+    </main>
   );
 }
 
