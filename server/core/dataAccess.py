@@ -1,7 +1,7 @@
 import json
 from core.tokens import jwtGenerate
 from core.spoonacular import mealPlanConnectUser
-from core.securityServices import hash
+from core.securityServices import hash, encrypt, decrypt
 
 # Registering a new user (Signing up)
 def registerUser(user):
@@ -21,14 +21,14 @@ def registerUser(user):
     # Check if password and confirm-password fields match; return if not
     if user["password"] == user["confirm-password"]:
 
-        # try:
-        #     apiUsername, apiHash = mealPlanConnectUser(user)
-        # except: return False
+        try:
+            apiUsername, apiHash = mealPlanConnectUser(user)
+        except: return False
 
         # Compile user information
         user["password"], user["salt"] = hash(user["password"])
-        # user["apiUsername"] = apiUsername
-        # user["apiHash"] = apiHash
+        user["apiUsername"] = apiUsername
+        user["apiHash"] = apiHash
         user["tier"] = 0
         user["timezone"] = "Europe/London"
         user["theme"] = 0
