@@ -1,6 +1,7 @@
 import time
 from flask import Flask, make_response, request
 from recipes.recipes import getRecipes, getRecipeInfo, getRelatedRecipes
+from core.dataAccess import registerUser, authenticateUser
 
 app = Flask(__name__)
 
@@ -40,6 +41,24 @@ def recipe():
     resp.headers['Access-Control-Allow-Origin'] = '*'
 
     return resp
+
+
+@app.route('/register', methods = ['POST'])
+def register():
+
+    resp = make_response(registerUser(request.form))
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+
+    return resp
+
+
+@app.route('/login', methods = ['POST'])
+def login():
+
+    resp = make_response(authenticateUser(request.form))
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+
+    return
 
 
 if __name__ == "__main__":
