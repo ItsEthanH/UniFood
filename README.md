@@ -48,14 +48,14 @@ Flask and JWTs allows for accounts to be created, stored in a database and used 
 ### Dashboard
 
 <a name="features-dashboard" />
-An overview of the users meals, providing information on upcoming meals and nutritional information (coming soon). Carousel provided by Gliderjs.
+An overview of the users meals, providing information on upcoming meals and nutritional information. Carousel provided by Gliderjs. Note the placeholder name and images are temporary while we are undergoing work on the meal plan features.
 
 ![Dashboard page](./github/dashboard.png)
 
 ### Search Results
 
 <a name="features-search" />
-Results from the spoonacular API are provided, allowing the user to view the recipe, favourite it or add it to their meal plan or shopping list.
+Results from the spoonacular API are provided, allowing the user to view the recipe, favourite it or add it to their meal plan or shopping list. A sidebar allows dragging and dropping of recipes to quickly select recipes to go into the meal plan and shopping list.
 
 ![Search results](./github/search.png)
 
