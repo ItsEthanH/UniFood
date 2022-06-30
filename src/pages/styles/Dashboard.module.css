@@ -1,0 +1,9 @@
+.dashboard {
+  display: grid;
+  grid-template-rows: min-content auto auto;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    'welcome welcome'
+    'next-meal nutrition'
+    'coming-up coming-up';
+}

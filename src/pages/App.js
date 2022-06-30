@@ -10,35 +10,13 @@ function App() {
   const location = useLocation();
   let style;
 
-  switch (true) {
-    case /\/app\/dashboard/.test(location.pathname):
-      style = classes.dashboard;
-      break;
-    case /\/app\/results./.test(location.pathname):
-      style = classes.results;
-      break;
-    case /\/app\/recipe./.test(location.pathname):
-      style = classes.recipe;
-      break;
-  }
-
   return (
     <div className={classes.wrapper}>
       <Header />
       <NavSiderbar />
-      <main className={`${style} ${classes.main}`}>
-        <Outlet />
-      </main>
+      <Outlet />
     </div>
   );
-
-  // return (
-  //   <div className={classes.wrapper}>
-  //     <Header />
-  //     <NavSiderbar />
-  //     <AppMain />
-  //   </div>
-  // );
 }
 
 export default App;

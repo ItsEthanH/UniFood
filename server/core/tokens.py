@@ -1,6 +1,6 @@
 from config import enc_key
 import jwt, time, re, json
-from core.dataAccess import insertInto
+# from core.dataAccess import insertInto
 
 # Generate a fresh JWT
 def jwtGenerate(userDetails):
@@ -22,7 +22,16 @@ def jwtGenerate(userDetails):
     signature = splitJWT[2]
 
     # Store JWT details
-    insertInto("../database/jwt.json", {"sig": signature, "exp": payload["exp"]})
+    f = open("../database/jwt.json", "r")
+    x = json.loads(f.read())
+    f.close()
+
+    x.append({"sig": signature, "exp": payload["exp"]})
+    x = json.dumps(x, indent=4)
+
+    f = open("../database/jwt.json", "w")
+    f.write(x)
+    f.close()
 
     # Return encoded JWT
     return encodedJWT
