@@ -8,20 +8,23 @@ import ResultSidebar from '../components/search/ResultSidebar';
 
 import classes from './styles/Results.module.css';
 import '../assets/styles/global-app.css';
+import { useEffect } from 'react';
 
 function Results() {
   const params = useParams();
   const endpoint = '/search?query=' + params.searchQuery;
-  const { response, isLoading, error } = useFetch(endpoint, 'SEARCH');
+  const { sendRequest, response, isLoading, error } = useFetch();
 
-  console.log(response);
+  useEffect(() => {
+    sendRequest(endpoint, {}, 'SEARCH');
+  }, []);
 
   return (
     <main className={classes.results}>
       <ResultSidebar />
       <ul className={classes.list}>
         {isLoading && <p>Loading</p>}
-        {error && <p>error</p>}
+        {error && <p>{error.message}</p>}
         {response &&
           response.map((item) => (
             <ResultCard title={item.title} src={item.image} id={item.id} />
