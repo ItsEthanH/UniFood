@@ -3,22 +3,6 @@
   flex-direction: column;
 }
 
-.form label {
-  display: block;
-  color: var(--clr-primary);
-  font-weight: 600;
-  text-align: left;
-}
-
-.form input {
-  margin: 1rem 0 2rem 0;
-  border: 0;
-  border-bottom: 1px solid var(--clr-primary);
-  font-size: var(--fs-400);
-  outline: none;
-  width: 100%;
-}
-
 .form button {
   color: var(--clr-light);
   background-color: var(--clr-primary);
@@ -29,4 +13,8 @@
   padding: 1rem 2rem;
   margin: 1rem auto;
   font-size: var(--fs-800);
+}
+
+.errors {
+  color: #ca3e51;
 }
