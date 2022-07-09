@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
+import PortalInput from './PortalInput';
+
 import classes from './PortalForm.module.css';
 
 function LoginForm() {
@@ -12,11 +14,26 @@ function LoginForm() {
 
   return (
     <form className={classes.form}>
-      <label for="email">Email</label>
-      <input type="text" name="email" />
+      <PortalInput
+        id="email"
+        label="Email"
+        type="text"
+        // value={emailValue}
+        // onChange={emailValueChangeHandler}
+        // onBlur={emailInputBlurHandler}
+        // hasError={emailHasError}
+      />
 
-      <label for="password">Password</label>
-      <input type="password" name="password" />
+      <PortalInput
+        id="password"
+        label="Password"
+        type="password"
+        // value={passwordValue}
+        // onChange={passwordValueChangeHandler}
+        // onBlur={passwordInputBlurHandler}
+        // hasError={passwordHasError}
+      />
+
       <a href="">Forgotton your password?</a>
       <button onClick={submitHandler}>Sign In</button>
     </form>
