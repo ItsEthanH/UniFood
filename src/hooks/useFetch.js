@@ -1,20 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-function useFetch(endpoint, fetchType) {
-  const URL = 'http://127.0.0.1:5000';
+function useFetch() {
+  const url = 'http://127.0.0.1:5000';
   const [response, setResponse] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  async function sendRequest() {
+  async function sendRequest(endpoint, options, fetchType) {
     try {
-      const res = await fetch(URL + endpoint, { mode: 'cors' });
+      const res = await fetch(url + endpoint, options);
 
       if (!res.ok) {
         throw Error('Something went wrong!');
       }
 
       const returnedData = await res.json();
+      console.log(returnedData);
 
       switch (fetchType) {
         case 'SEARCH':
@@ -27,19 +28,16 @@ function useFetch(endpoint, fetchType) {
           setResponse(returnedData.results);
       }
     } catch (err) {
-      console.log(err);
       setError(err);
     } finally {
       setIsLoading(false);
     }
   }
 
-  useEffect(() => {
-    sendRequest();
-  }, [endpoint]);
-
-  console.log(response);
-  return { response, isLoading, error };
+  // useEffect(() => {
+  //   sendRequest();
+  // }, [endpoint]);
+  return { sendRequest, response, isLoading, error };
 }
 
 export default useFetch;

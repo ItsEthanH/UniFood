@@ -15,6 +15,7 @@ import planIcon from '../assets/ui/plan.png';
 import cartIcon from '../assets/ui/cart.png';
 
 import placeholder2 from '../assets/search/placeholder-recipe.jpg';
+import { useEffect } from 'react';
 
 function Recipe(props) {
   const [nutritionShow, setNutritionShow] = useState(false);
@@ -23,7 +24,11 @@ function Recipe(props) {
 
   const params = useParams();
   const endpoint = '/recipe?recipeID=' + params.recipeId;
-  const { response, isLoading, error } = useFetch(endpoint, 'RECIPE');
+  const { sendRequest, response, isLoading, error } = useFetch();
+
+  useEffect(() => {
+    sendRequest(endpoint, {}, 'RECIPE');
+  }, []);
 
   function handleSubsectionClick(subsectionToShow) {
     setDietShow(false);

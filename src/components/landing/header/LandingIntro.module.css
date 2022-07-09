@@ -60,7 +60,7 @@
     align-content: center;
     height: calc(100vh - 10rem);
     width: 55%;
-    margin: 0 2rem;
+    margin: 0;
   }
 
   .tagline {
