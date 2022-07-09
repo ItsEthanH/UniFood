@@ -14,7 +14,7 @@ function Results() {
 
   useEffect(() => {
     sendRequest(endpoint, {}, 'SEARCH');
-  }, []);
+  }, [endpoint]);
 
   return (
     <main className={classes.results}>
