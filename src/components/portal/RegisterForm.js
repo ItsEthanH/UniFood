@@ -6,7 +6,7 @@ import PortalInput from './PortalInput';
 import classes from './PortalForm.module.css';
 
 // hasRegisterBeenSubmitted is used so error messages don't show the first time the form is loaded
-let hasRegisterBeenSubmitted = false;
+let hasRegisterBeenSubmitted;
 
 function RegisterForm() {
   // refs are set up on the passwords to allow a more reactive validation. using the passwordValue and confirmPasswordValue cant be done, due to one being initialised after the other
@@ -116,6 +116,12 @@ function RegisterForm() {
     passwordsMatch,
   ]);
 
+  // another useEffect to reset error messages and submit status for switching between register/sign in
+  useEffect(() => {
+    hasRegisterBeenSubmitted = false;
+    setErrorMessages([]);
+  }, []);
+
   function submitHandler(event) {
     event.preventDefault();
     hasRegisterBeenSubmitted = true;
@@ -194,11 +200,12 @@ function RegisterForm() {
         hasError={confirmPasswordHasError}
         ref={confirmPasswordRef}
       />
-      <div className={classes.errors}>
-        {errorMessages.map((msg) => (
-          <p key={msg}>{msg}</p>
-        ))}
-      </div>
+
+      {errorMessages.map((msg) => (
+        <p className={classes.error} key={msg}>
+          {msg}
+        </p>
+      ))}
       <button>Sign Up</button>
     </form>
   );

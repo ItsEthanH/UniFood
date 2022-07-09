@@ -5,11 +5,16 @@ const PortalInput = forwardRef((props, ref) => {
   const errorStyles = props.hasError ? classes.invalid : '';
 
   return (
-    <div className={`${classes.entry} ${errorStyles}`}>
-      <label typeof={props.type} htmlFor={props.id}>
+    <>
+      <label
+        className={`${classes.label} ${errorStyles}`}
+        typeof={props.type}
+        htmlFor={props.id}
+      >
         {props.label}
       </label>
       <input
+        className={`${classes.input} ${errorStyles}`}
         id={props.id}
         type={props.type}
         value={props.value}
@@ -17,7 +22,7 @@ const PortalInput = forwardRef((props, ref) => {
         onBlur={props.onBlur}
         ref={ref}
       />
-    </div>
+    </>
   );
 });
 
