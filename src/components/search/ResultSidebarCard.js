@@ -11,7 +11,9 @@ function ResultSidebarCard(props) {
   }
 
   function decreaseQuantity() {
-    if (quantity === 0) {
+    if (quantity === 1) {
+      setQuantity(0);
+      remove();
       return;
     }
     setQuantity((qty) => qty - 1);
@@ -21,7 +23,7 @@ function ResultSidebarCard(props) {
     setRemoved(true);
     setTimeout(() => {
       props.onRemove();
-    }, 500);
+    }, 250);
   }
 
   return (
