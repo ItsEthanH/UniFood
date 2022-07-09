@@ -1,9 +1,9 @@
 .card {
-  box-shadow: -2px 2px 25px rgba(0, 0, 0, 0.05);
-  width: min-content;
   height: min-content;
+  width: min-content;
   padding-bottom: 0.6rem;
-  list-style-type: none;
+  list-style: none;
+  box-shadow: -2px 2px 25px rgba(0, 0, 0, 0.05);
   animation: slideup 1s;
 }
 

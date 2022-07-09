@@ -3,10 +3,14 @@ import { useState } from 'react';
 function useFetch() {
   const url = 'http://127.0.0.1:5000';
   const [response, setResponse] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(null);
   const [error, setError] = useState(null);
 
   async function sendRequest(endpoint, options, fetchType) {
+    setResponse(null);
+    setError(null);
+    setIsLoading(true);
+
     try {
       const res = await fetch(url + endpoint, options);
 
@@ -15,7 +19,6 @@ function useFetch() {
       }
 
       const returnedData = await res.json();
-      console.log(returnedData);
 
       switch (fetchType) {
         case 'SEARCH':

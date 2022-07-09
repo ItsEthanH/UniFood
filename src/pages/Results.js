@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 
@@ -7,8 +6,6 @@ import ResultCard from '../components/search/ResultCard';
 import ResultSidebar from '../components/search/ResultSidebar';
 
 import classes from './styles/Results.module.css';
-import '../assets/styles/global-app.css';
-import { useEffect } from 'react';
 
 function Results() {
   const params = useParams();
@@ -17,7 +14,7 @@ function Results() {
 
   useEffect(() => {
     sendRequest(endpoint, {}, 'SEARCH');
-  }, []);
+  }, [endpoint]);
 
   return (
     <main className={classes.results}>
