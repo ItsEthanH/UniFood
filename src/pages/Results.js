@@ -14,7 +14,7 @@ function Results() {
   const { sendRequest, response, isLoading, error } = useFetch();
 
   useEffect(() => {
-    sendRequest(endpoint, {}, 'SEARCH');
+    sendRequest(endpoint, {});
   }, [endpoint]);
 
   return (

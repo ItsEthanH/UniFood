@@ -26,7 +26,7 @@ function Recipe(props) {
   const { sendRequest, response, isLoading, error } = useFetch();
 
   useEffect(() => {
-    sendRequest(endpoint, {}, 'RECIPE');
+    sendRequest(endpoint, {});
   }, []);
 
   function handleSubsectionClick(subsectionToShow) {
