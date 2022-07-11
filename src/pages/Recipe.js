@@ -136,7 +136,6 @@ function Recipe(props) {
           </RecipeSection>
         </>
       )}{' '}
-      */
     </main>
   );
 }
