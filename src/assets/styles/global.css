@@ -252,6 +252,8 @@ template {
   --clr-grey: #d3d1d1;
   --clr-light: #ffffff;
 
+  --swiper-theme-color: #0b860b;
+
   --ff-title: 'Prompt', sans-serif;
   --ff-body: 'Rubik', sans-serif;
 
