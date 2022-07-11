@@ -1,0 +1,14 @@
+.day {
+  margin: 0 2rem;
+}
+
+.day h2 {
+  font-weight: 400;
+  font-size: var(--fs-800);
+  text-decoration: underline;
+  margin-top: 1rem;
+}
+
+.day li {
+  margin: 1.5rem 0;
+}

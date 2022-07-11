@@ -1,29 +1,32 @@
-import classes from './MealPlanWeekDayCard.module.css';
+import { Link } from 'react-router-dom';
 
-import placeholder from '../../assets/meal-plan/placeholder-breakfast.jpg';
+import classes from './MealPlanWeekDayCard.module.css';
 
 function MealPlanWeekDayCard(props) {
   return (
-    <div className={classes.card}>
+    <li key={props.id} className={classes.card}>
       <div className={classes.image}>
-        <img src={placeholder} alt="placeholder" />
+        <img
+          src={`https://spoonacular.com/recipeImages/${props.id}-90x90.jpg`}
+          alt="placeholder"
+        />
       </div>
       <div className={classes.text}>
-        <h3>Breakfast</h3>
-        <h4>Raisin and Walnut Granola</h4>
-        <p>xxx calories</p>
+        <h3>{props.type}</h3>
+        <h4>{props.name}</h4>
+        <p>{props.calories} calories</p>
         <div className={classes.macros}>
-          <p>xxg carbs</p>
+          <p>{props.carbs}g carbs</p>
           <div className={classes.divider}></div>
-          <p>xxg fat</p>
+          <p>{props.fat}g fat</p>
           <div className={classes.divider}></div>
-          <p>xxg protein</p>
+          <p>{props.protein}g protein</p>
         </div>
       </div>
       <div className={classes.view}>
-        <a href="/app/meal-plan">View Recipe</a>
+        <Link to={`/app/recipe/${props.id}`}>View Recipe</Link>
       </div>
-    </div>
+    </li>
   );
 }
 

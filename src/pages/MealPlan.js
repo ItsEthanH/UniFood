@@ -1,5 +1,5 @@
 import MealPlanOptions from '../components/meal-plan/MealPlanOptions';
-import MealPlanWeekDayCard from '../components/meal-plan/MealPlanWeekDayCard';
+import MealPlanWeekView from '../components/meal-plan/MealPlanWeekView';
 
 import classes from './styles/MealPlan.module.css';
 
@@ -7,9 +7,7 @@ function MealPlan() {
   return (
     <main className={classes.main}>
       <MealPlanOptions />
-      <MealPlanWeekDayCard />
-      <MealPlanWeekDayCard />
-      <MealPlanWeekDayCard />
+      <MealPlanWeekView />
     </main>
   );
 }
