@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import useInput from '../../hooks/useInput';
+import useFetch from '../../hooks/useFetch';
 
 import PortalInput from './PortalInput';
 
@@ -11,6 +12,7 @@ let hasRegisterBeenSubmitted;
 function RegisterForm() {
   // refs are set up on the passwords to allow a more reactive validation. using the passwordValue and confirmPasswordValue cant be done, due to one being initialised after the other
   // ref values are included in the validation function for the passwords, highlighting them red if they dont match, and clearing it if they do.
+  const { sendRequest, response, isLoading, error } = useFetch();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
@@ -144,7 +146,22 @@ function RegisterForm() {
       return;
     }
 
-    console.log('Sent!');
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        firstName: fnameValue,
+        lastName: lnameValue,
+        email: emailValue,
+        password: passwordValue,
+        confirmPassword: confirmPasswordValue,
+      }),
+      header: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    };
+
+    sendRequest('/register', options);
+    console.log('works!');
   }
 
   return (

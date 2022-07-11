@@ -19,6 +19,7 @@ function useFetch() {
       }
 
       const returnedData = await res.json();
+      console.log(returnedData);
 
       switch (fetchType) {
         case 'SEARCH':
