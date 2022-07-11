@@ -79,7 +79,16 @@ function LoginForm() {
       return;
     }
 
-    navigate('/app/dashboard/');
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        email: emailValue,
+        password: passwordValue,
+      }),
+    };
+
+    sendRequest('/login', options);
+    console.log('works!');
   }
 
   return (

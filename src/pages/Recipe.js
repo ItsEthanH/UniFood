@@ -135,7 +135,7 @@ function Recipe(props) {
             </RecipeInfoSubsection>
           </RecipeSection>
         </>
-      )}{' '}
+      )}
     </main>
   );
 }
