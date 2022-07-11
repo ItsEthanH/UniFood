@@ -26,7 +26,7 @@ def search():
 @app.route('/recipe', methods = ['GET'])
 def recipe():
 
-    recipeInfo = getRecipeInfo(request.args.get('recipeID'))
+    results = getRecipeInfo(request.args.get('recipeID'))
     # TO BE ADDED LATER WHEN HOOKED UP
 
     # if len(results["results"]) > 2:
@@ -37,7 +37,7 @@ def recipe():
     # ADD THE BELOW TO THE RETURN JSON
 
     #  "relatedRecipes": [relatedRecipe1, relatedRecipe2]
-    resp = make_response({"results": recipeInfo})
+    resp = make_response({"results": results})
     resp.headers['Access-Control-Allow-Origin'] = '*'
 
     return resp
