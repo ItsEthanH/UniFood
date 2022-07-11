@@ -37,7 +37,7 @@ def recipe():
     # ADD THE BELOW TO THE RETURN JSON
 
     #  "relatedRecipes": [relatedRecipe1, relatedRecipe2]
-    resp = make_response({"recipeInfo": recipeInfo})
+    resp = make_response({"results": recipeInfo})
     resp.headers['Access-Control-Allow-Origin'] = '*'
 
     return resp
