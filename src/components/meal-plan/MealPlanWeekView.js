@@ -1,6 +1,11 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
+
 import MealPlanWeekDay from './MealPlanWeekDay';
 
 import classes from './MealPlanWeekView.module.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 function MealPlanWeekView() {
   const DUMMY_MEAL_DAY = [
@@ -35,9 +40,28 @@ function MealPlanWeekView() {
 
   return (
     <section className={classes.view}>
-      <MealPlanWeekDay day="Monday" meals={DUMMY_MEAL_DAY} />
-      <MealPlanWeekDay day="Tuesday" meals={DUMMY_MEAL_DAY} />
-      <MealPlanWeekDay day="Wednesday" meals={DUMMY_MEAL_DAY} />
+      <Swiper
+        modules={[Navigation]}
+        spaceBetween={0}
+        slidesPerView={3.5}
+        navigation
+      >
+        <SwiperSlide>
+          <MealPlanWeekDay day="Monday" meals={DUMMY_MEAL_DAY} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <MealPlanWeekDay day="Tuesday" meals={DUMMY_MEAL_DAY} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <MealPlanWeekDay day="Wednesday" meals={DUMMY_MEAL_DAY} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <MealPlanWeekDay day="Thursday" meals={DUMMY_MEAL_DAY} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <MealPlanWeekDay day="Friday" meals={DUMMY_MEAL_DAY} />
+        </SwiperSlide>
+      </Swiper>
     </section>
   );
 }

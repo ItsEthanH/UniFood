@@ -7,8 +7,8 @@ import DashboardCard from './DashboardCard';
 
 import placeholder from '../../assets/dashboard/placeholder-meal.jpg';
 import classes from './ComingUp.module.css';
-import 'swiper/css/navigation';
 import 'swiper/css';
+import 'swiper/css/navigation';
 
 function ComingUp() {
   return (
