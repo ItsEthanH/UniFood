@@ -41,7 +41,7 @@ function NavSiderbar() {
           shown={sidebarShown}
           icon={planIcon}
           text="Meal Plan"
-          to=""
+          to="/app/meal-plan"
         />
         <NavSidebarLink
           shown={sidebarShown}

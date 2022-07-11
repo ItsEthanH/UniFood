@@ -5,10 +5,11 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import App from './pages/App';
 import Landing from './pages/Landing';
 import Portal from './pages/Portal';
-
 import Dashboard from './pages/Dashboard';
 import Results from './pages/Results';
 import Recipe from './pages/Recipe';
+import MealPlan from './pages/MealPlan';
+
 import LoginForm from './components/portal/LoginForm';
 import RegisterForm from './components/portal/RegisterForm';
 
@@ -30,7 +31,7 @@ function Index() {
             <Route path="/app/results/:searchQuery" />
           </Route>
           <Route path="/app/recipe/:recipeId" element={<Recipe />} />
-          <Route path="/app/dashboard" element={<Dashboard />} />
+          <Route path="/app/meal-plan" element={<MealPlan />} />
           <Route path="/app/*" element={<Navigate to="/app/dashboard" />} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
