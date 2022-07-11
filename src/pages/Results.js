@@ -6,6 +6,7 @@ import ResultCard from '../components/search/ResultCard';
 import ResultSidebar from '../components/search/ResultSidebar';
 
 import classes from './styles/Results.module.css';
+import LoadingSpinner from '../components/ui/LoadingSpinner';
 
 function Results() {
   const params = useParams();
@@ -20,7 +21,7 @@ function Results() {
     <main className={classes.results}>
       <ResultSidebar />
       <ul className={classes.list}>
-        {isLoading && <p>Loading</p>}
+        {isLoading && <LoadingSpinner />}
         {error && <p>{error.message}</p>}
         {response &&
           response.map((item) => (
