@@ -1,4 +1,4 @@
-import json
+import json, uuid
 from core.tokens import jwtGenerate
 from core.spoonacular import mealPlanConnectUser
 from core.securityServices import hash, encrypt, decrypt
@@ -6,7 +6,8 @@ from core.securityServices import hash, encrypt, decrypt
 # Registering a new user (Signing up)
 def registerUser(user):
 
-    user = user.to_dict()
+    # user = user.to_dict()
+    user = json.loads(user)
 
     # Open file and check email is not already registered
     f = open("../database/users.json", "r")
@@ -19,20 +20,20 @@ def registerUser(user):
 
 
     # Check if password and confirm-password fields match; return if not
-    if user["password"] == user["confirm-password"]:
+    if user["password"] == user["confirmPassword"]:
 
         try:
             apiUsername, apiHash = mealPlanConnectUser(user)
         except: return False
 
         # Compile user information
-        user["password"], user["salt"] = hash(user["password"])
+        user["password"], user["salt"] = hash(user["password"], uuid.uuid4().hex)
         user["apiUsername"] = apiUsername
         user["apiHash"] = apiHash
         user["tier"] = 0
         user["timezone"] = "Europe/London"
         user["theme"] = 0
-        user.pop("confirm-password")
+        user.pop("confirmPassword")
 
         # Insert user into database
         insertInto("../database/users.json", user)

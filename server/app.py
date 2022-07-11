@@ -46,7 +46,7 @@ def recipe():
 @app.route('/register', methods = ['POST'])
 def register():
 
-    resp = make_response(registerUser(request.form))
+    resp = make_response({"results": registerUser(request.data)})
     resp.headers['Access-Control-Allow-Origin'] = '*'
 
     return resp
@@ -55,10 +55,13 @@ def register():
 @app.route('/login', methods = ['POST'])
 def login():
 
-    resp = make_response(authenticateUser(request.form))
+    print("hello")
+
+    resp = make_response({"results": authenticateUser(request.data)})
     resp.headers['Access-Control-Allow-Origin'] = '*'
 
-    return
+    print("login resp", resp.response)
+    return resp
 
 
 if __name__ == "__main__":
