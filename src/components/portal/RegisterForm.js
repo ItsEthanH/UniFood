@@ -97,7 +97,7 @@ function RegisterForm() {
       ]);
     }
 
-    if (hasRegisterBeenSubmitted && !passwordIsValid) {
+    if (hasRegisterBeenSubmitted && passwordHasError) {
       setErrorMessages((prevMsgs) => [
         ...prevMsgs,
         'Passwords need to be 8 characters or longer',
@@ -196,13 +196,12 @@ function RegisterForm() {
         hasError={emailHasError}
       />
 
-      <PortalInput
+      <PortalInput // Both password inputs have not got blur handlers to prevent a false error on the first input
         id="password"
         label="Password"
         type="password"
         value={passwordValue}
         onChange={passwordValueChangeHandler}
-        onBlur={passwordInputBlurHandler}
         hasError={passwordHasError}
         ref={passwordRef}
       />
@@ -213,7 +212,6 @@ function RegisterForm() {
         type="password"
         value={confirmPasswordValue}
         onChange={confirmPasswordValueChangeHandler}
-        onBlur={confirmPasswordInputBlurHandler}
         hasError={confirmPasswordHasError}
         ref={confirmPasswordRef}
       />
