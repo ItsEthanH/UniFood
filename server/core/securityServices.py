@@ -6,11 +6,13 @@ from cryptography.fernet import Fernet
 
 f = Fernet(enc_key)
 
-def hash(input, *salt):
+def hash(input, salt):
 
-    if salt == None: salt = uuid.uuid4().hex
+    print("salt begin ", salt)
+
+    print("salt mid ", salt)
     
-    input = (input + salt).encode()
+    input = (str(input) + str(salt)).encode()
 
     digest = hashlib.sha256(input).hexdigest()
 

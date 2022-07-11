@@ -7,7 +7,7 @@ def jwtGenerate(userDetails):
 
     # Assemble JWT payload
     payload = {
-        "usr": userDetails["fname"] + " " + userDetails["lname"],
+        "usr": userDetails["firstName"] + " " + userDetails["lastName"],
         "lvl": userDetails["tier"],
         "tmz": userDetails["timezone"],
         "thm": userDetails["theme"],
@@ -22,14 +22,14 @@ def jwtGenerate(userDetails):
     signature = splitJWT[2]
 
     # Store JWT details
-    f = open("../database/jwt.json", "r")
+    f = open("../database/tokens.json", "r")
     x = json.loads(f.read())
     f.close()
 
     x.append({"sig": signature, "exp": payload["exp"]})
     x = json.dumps(x, indent=4)
 
-    f = open("../database/jwt.json", "w")
+    f = open("../database/tokens.json", "w")
     f.write(x)
     f.close()
 
@@ -40,7 +40,7 @@ def jwtGenerate(userDetails):
 # Validate an existing JWT
 def jwtValidate(token):
 
-    f = open("../database/jwt.json", "r")
+    f = open("../database/tokens.json", "r")
     jwts = json.loads(f.read())
     f.close()
 
@@ -81,7 +81,7 @@ def jwtRemove(*jwt):
         splitJWT = re.split("\.", jwt)
         signature = splitJWT[2]
 
-        f = open("../database/jwt.json", "r")
+        f = open("../database/tokens.json", "r")
         tokens = json.loads(f.read())
         f.close()
 
@@ -95,7 +95,7 @@ def jwtRemove(*jwt):
 
         tokens = json.dumps(tokens, indent=4)
 
-        f = open("../database/jwt.json", "w")
+        f = open("../database/tokens.json", "w")
         f.write(tokens)
         f.close()
 
