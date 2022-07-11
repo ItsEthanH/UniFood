@@ -1,6 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 import useFetch from '../../hooks/useFetch';
+import AuthContext from '../../context/AuthContext';
 
 import PortalInput from './PortalInput';
 
@@ -13,6 +15,8 @@ function RegisterForm() {
   // refs are set up on the passwords to allow a more reactive validation. using the passwordValue and confirmPasswordValue cant be done, due to one being initialised after the other
   // ref values are included in the validation function for the passwords, highlighting them red if they dont match, and clearing it if they do.
   const { sendRequest, response, isLoading, error } = useFetch();
+  const authCtx = useContext(AuthContext);
+  const navigate = useNavigate();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
@@ -161,8 +165,14 @@ function RegisterForm() {
     };
 
     sendRequest('/register', options);
-    console.log('works!');
   }
+
+  useEffect(() => {
+    if (response && response[0]) {
+      authCtx.login();
+      navigate('/app');
+    }
+  }, [response]);
 
   return (
     <form className={classes.form} action="POST" onSubmit={submitHandler}>
@@ -196,7 +206,7 @@ function RegisterForm() {
         hasError={emailHasError}
       />
 
-      <PortalInput // Both password inputs have not got blur handlers to prevent a false error on the first input
+      <PortalInput // Both password inputs have not got blur handlers, to prevent a false error on the first password input
         id="password"
         label="Password"
         type="password"

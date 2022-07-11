@@ -32,7 +32,7 @@ function LandingIntro() {
       </div>
       <p className={classes.guest}>
         Visiting from one of our portfoilos, and just want to test what we've
-        done? <Link to="/app/dashboard">Click here!</Link>
+        done? <Link to="/app">Click here!</Link>
       </p>
     </LandingSection>
   );

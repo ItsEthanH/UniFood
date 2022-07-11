@@ -1,2 +1,86 @@
 [
+    {
+        "firstName": "e",
+        "lastName": "e",
+        "email": "test@test.com",
+        "password": "96a2f4c664cda7b7cbafa640427bdbfecb750631303beda4f231dd50cd6232b8",
+        "salt": "242d5f7699e946e281e3dbdfda167937",
+        "apiUsername": "cc9084df-43fe-42bb-8214-17125e5fae17",
+        "apiHash": "a085e915f8ecd71561adebd16a817046b2af3bb0",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
+    },
+    {
+        "firstName": "e",
+        "lastName": "e",
+        "email": "test1@test1.com",
+        "password": "68ac01b1219ca3e8c2b9bf58291514a477e8047b1179fa8b613e0f48a8cef615",
+        "salt": "f630168b2a6e4897a340f51f711db9cb",
+        "apiUsername": "342f18e0-aec1-4317-aea6-7d2ebfaf8715",
+        "apiHash": "41638940f94c3ecf5b8e1fe5a27c46dcf1dae966",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
+    },
+    {
+        "firstName": "e",
+        "lastName": "e",
+        "email": "test2@test2.com",
+        "password": "ea0aca35fddd66ed5da740c8bb5a4dd96d40d66808a8a2599de23b890b7ff229",
+        "salt": "e7c54725647a4402b183614696081d05",
+        "apiUsername": "1b10ac63-4f5f-4ab6-9a49-e0aed4d6b5a2",
+        "apiHash": "dc8d9282accc85af2a1f6fcf58a99b51c8277487",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
+    },
+    {
+        "firstName": "e",
+        "lastName": "e",
+        "email": "test5@test.com",
+        "password": "13a26ccd0f09b0c17f37c9f460d23e68ce173fcaf8eea389bbe3255d8b079c41",
+        "salt": "877e3cbb4a5f4e33b4893c0e9264cc2f",
+        "apiUsername": "6846b970-b721-4eed-9211-47eff11df2fc",
+        "apiHash": "87008b08a6f9b24b3b081bf610fb35cb34910fe0",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
+    },
+    {
+        "firstName": "e",
+        "lastName": "ee",
+        "email": "test7@test.com",
+        "password": "8add85f8d914691eb6d50e29246969535966b2b813125929d8038c0a809dbffc",
+        "salt": "65563c5d38b64143a110c57e20776838",
+        "apiUsername": "95daffc0-304e-4bfb-9845-7460db3d8043",
+        "apiHash": "480f39896783e45fefdc2bf07ed8a84be776d844",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
+    },
+    {
+        "firstName": "e",
+        "lastName": "e",
+        "email": "testing@testemail.com",
+        "password": "70cf2f10976dd149467928b968be603229b9faedc2d01c88fdfbd99d5fb04794",
+        "salt": "c4912e612ea1484487f225a49b64d640",
+        "apiUsername": "15f40e7c-1f6b-4ed9-9e40-5c89a357c732",
+        "apiHash": "e32f354fd2926aa53b26b6f1d0a9b63799b64f09",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
+    },
+    {
+        "firstName": "Ethan",
+        "lastName": "Hawes",
+        "email": "ethansfakeemail@gmail.com",
+        "password": "19635090480e3d1e60fcc76cde8424f5300e8662f68363f0e53b190f68eab0e9",
+        "salt": "490ac3f0e8a24a5891996382de3006a3",
+        "apiUsername": "ff460c81-ad6a-438a-81b0-d5f50ad6d810",
+        "apiHash": "018a3355da8c38ca759815d9758fc2f3792dd8e0",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
+    }
 ]
