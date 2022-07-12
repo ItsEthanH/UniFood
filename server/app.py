@@ -55,12 +55,9 @@ def register():
 @app.route('/login', methods = ['POST'])
 def login():
 
-    print("hello")
-
     resp = make_response({"results": authenticateUser(request.data)})
     resp.headers['Access-Control-Allow-Origin'] = '*'
 
-    print("login resp", resp.response)
     return resp
 
 

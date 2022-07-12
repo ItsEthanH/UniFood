@@ -47,7 +47,7 @@ def registerUser(user):
 # Authenticate an existing user (Logging in)
 def authenticateUser(credentials):
 
-    credentials = credentials.to_dict()
+    credentials = json.loads(credentials)
 
     # Open file and check email is not already registered
     f = open("../database/users.json", "r")
@@ -59,9 +59,11 @@ def authenticateUser(credentials):
         if credentials["email"] == user["email"]:
 
             # Hash password credential with salt of found user
-            password = hash(credentials["password"], user["salt"])
+            password, __salt = hash(credentials["password"], user["salt"])
 
-            if password == user["password"]: return jwtGenerate(user)
+            if password == user["password"]: 
+                jwtGenerate(user)
+                return True
             else: return False
 
         else: continue
