@@ -19,8 +19,8 @@ function useFetch() {
       }
 
       const returnedData = await res.json();
-
       setResponse(returnedData.results);
+      console.log('hook done');
     } catch (err) {
       setError(err);
     } finally {

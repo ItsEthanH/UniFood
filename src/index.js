@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthContextProvider } from './context/AuthContext';
+import AuthContext, { AuthContextProvider } from './context/AuthContext';
 
 import App from './pages/App';
 import Landing from './pages/Landing';
@@ -17,6 +17,8 @@ import RegisterForm from './components/portal/RegisterForm';
 import './assets/styles/global.css';
 
 function Index() {
+  const authCtx = useContext(AuthContext);
+
   return (
     <AuthContextProvider>
       <BrowserRouter>
@@ -26,16 +28,18 @@ function Index() {
             <Route path="/portal/signin" element={<LoginForm />} />
             <Route path="/portal/register" element={<RegisterForm />} />
           </Route>
-
-          <Route path="/app" element={<App />}>
-            <Route path="/app" element={<Dashboard />} />
-            <Route path="/app/results" element={<Results />}>
-              <Route path=":searchQuery" />
+          {!authCtx.isLoggedIn && ( // im not gunna lie, i have no idea why this works with !authCtx.isLoggedIn, but this really hurt my head. its staying
+            <Route path="/app" element={<App />}>
+              <Route path="/app" element={<Dashboard />} />
+              <Route path="/app/results" element={<Results />}>
+                <Route path=":searchQuery" />
+              </Route>
+              <Route path="/app/recipe/:recipeId" element={<Recipe />} />
+              <Route path="/app/meal-plan" element={<MealPlan />} />
+              <Route path="/app/*" element={<Navigate to="/app" />} />
             </Route>
-            <Route path="/app/recipe/:recipeId" element={<Recipe />} />
-            <Route path="/app/meal-plan" element={<MealPlan />} />
-            <Route path="/app/*" element={<Navigate to="/app" />} />
-          </Route>
+          )}
+
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>

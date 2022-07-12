@@ -164,15 +164,19 @@ function RegisterForm() {
       },
     };
 
-    sendRequest('/register', options);
+    sendRequest('/register', options)
+      .then(() => {
+        console.log('hook received, setting context');
+        authCtx.login();
+      })
+      .then(() => {
+        console.log('authed');
+      })
+      .then(() => {
+        console.log('navigating');
+        navigate('/app', { replace: true });
+      });
   }
-
-  useEffect(() => {
-    if (response && response[0]) {
-      authCtx.login();
-      navigate('/app');
-    }
-  }, [response]);
 
   return (
     <form className={classes.form} action="POST" onSubmit={submitHandler}>
@@ -231,7 +235,9 @@ function RegisterForm() {
           {msg}
         </p>
       ))}
-      <button>Sign Up</button>
+      {isLoading && <p>Sending...</p>}
+      {!isLoading && <button>Sign Up</button>}
+      {authCtx.isLoggedIn && <p>test</p>}
     </form>
   );
 }
