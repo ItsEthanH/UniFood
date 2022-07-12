@@ -7,10 +7,6 @@ from cryptography.fernet import Fernet
 f = Fernet(enc_key)
 
 def hash(input, salt):
-
-    print("salt begin ", salt)
-
-    print("salt mid ", salt)
     
     input = (str(input) + str(salt)).encode()
 
