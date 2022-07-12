@@ -38,12 +38,28 @@ function MealPlanWeekView() {
     },
   ];
 
+  const carouselBreakpoints = {
+    700: {
+      slidesPerView: 2,
+    },
+    1100: {
+      slidesPerView: 3,
+    },
+    1500: {
+      slidesPerView: 4,
+    },
+    1900: {
+      slidesPerView: 5,
+    },
+  };
+
   return (
     <section className={classes.view}>
       <Swiper
         modules={[Navigation]}
         spaceBetween={0}
         slidesPerView={3.5}
+        breakpoints={carouselBreakpoints}
         navigation
       >
         <SwiperSlide>
