@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AuthContext from '../../context/AuthContext';
 
 import NavSidebarLink from './NavSidebarLink';
 
@@ -15,6 +16,7 @@ import classes from './NavSidebar.module.css';
 
 function NavSiderbar() {
   const [sidebarShown, setSidebarShown] = useState(false);
+  const authCtx = useContext(AuthContext);
 
   function showSidebar() {
     setSidebarShown(true);
@@ -24,18 +26,22 @@ function NavSiderbar() {
     setSidebarShown(false);
   }
 
+  function logoutHandler() {
+    authCtx.logout();
+  }
+
   return (
     <aside
       className={classes.navigation}
       onMouseEnter={showSidebar}
       onMouseLeave={hideSidebar}
     >
-      <nav className="nav-links">
+      <nav>
         <NavSidebarLink
           shown={sidebarShown}
           icon={dashboardIcon}
           text="Dashboard"
-          to="/app/dashboard"
+          to="/app"
         />
         <NavSidebarLink
           shown={sidebarShown}
@@ -62,7 +68,7 @@ function NavSiderbar() {
           to=""
         />
       </nav>
-      <nav className="account-links">
+      <nav>
         <NavSidebarLink
           shown={sidebarShown}
           icon={profileIcon}
@@ -79,6 +85,7 @@ function NavSiderbar() {
           shown={sidebarShown}
           icon={logoutIcon}
           text="Log Out"
+          onClick={logoutHandler}
           to="/"
         />
       </nav>

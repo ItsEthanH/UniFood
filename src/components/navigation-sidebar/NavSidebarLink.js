@@ -7,6 +7,7 @@ function NavSiderbarLink(props) {
   return (
     <NavLink
       to={props.to}
+      onClick={props.onClick}
       className={`${classes.link} ${props.shown ? classes.show : ''}`}
     >
       <img src={props.icon} alt="icon" />

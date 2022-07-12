@@ -1,6 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 import useFetch from '../../hooks/useFetch';
+import AuthContext from '../../context/AuthContext';
 
 import PortalInput from './PortalInput';
 
@@ -12,9 +14,12 @@ let hasRegisterBeenSubmitted;
 function RegisterForm() {
   // refs are set up on the passwords to allow a more reactive validation. using the passwordValue and confirmPasswordValue cant be done, due to one being initialised after the other
   // ref values are included in the validation function for the passwords, highlighting them red if they dont match, and clearing it if they do.
-  const { sendRequest, response, isLoading, error } = useFetch();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+
+  const { sendRequest, response, isLoading, error } = useFetch();
+  const { isLoggedIn, login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [errorMessages, setErrorMessages] = useState([]);
   const emailRegex =
@@ -97,7 +102,7 @@ function RegisterForm() {
       ]);
     }
 
-    if (hasRegisterBeenSubmitted && !passwordIsValid) {
+    if (hasRegisterBeenSubmitted && passwordHasError) {
       setErrorMessages((prevMsgs) => [
         ...prevMsgs,
         'Passwords need to be 8 characters or longer',
@@ -160,8 +165,13 @@ function RegisterForm() {
       },
     };
 
-    sendRequest('/register', options);
-    console.log('works!');
+    sendRequest('/register', options)
+      .then(() => {
+        login();
+      })
+      .then(() => {
+        navigate('/app', { replace: true });
+      });
   }
 
   return (
@@ -196,13 +206,12 @@ function RegisterForm() {
         hasError={emailHasError}
       />
 
-      <PortalInput
+      <PortalInput // Both password inputs have not got blur handlers, to prevent a false error on the first password input
         id="password"
         label="Password"
         type="password"
         value={passwordValue}
         onChange={passwordValueChangeHandler}
-        onBlur={passwordInputBlurHandler}
         hasError={passwordHasError}
         ref={passwordRef}
       />
@@ -213,7 +222,6 @@ function RegisterForm() {
         type="password"
         value={confirmPasswordValue}
         onChange={confirmPasswordValueChangeHandler}
-        onBlur={confirmPasswordInputBlurHandler}
         hasError={confirmPasswordHasError}
         ref={confirmPasswordRef}
       />
@@ -223,7 +231,9 @@ function RegisterForm() {
           {msg}
         </p>
       ))}
-      <button>Sign Up</button>
+      {isLoading && <p>Sending...</p>}
+      {!isLoading && <button>Sign Up</button>}
+      {isLoggedIn && <p>test</p>}
     </form>
   );
 }

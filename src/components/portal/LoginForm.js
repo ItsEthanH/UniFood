@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch';
 import useInput from '../../hooks/useInput';
 
 import PortalInput from './PortalInput';
@@ -10,6 +11,7 @@ let hasLoginBeenSubmitted;
 
 function LoginForm() {
   const [errorMessages, setErrorMessages] = useState([]);
+  const { sendRequest, response, isLoading, error } = useFetch();
   const navigate = useNavigate();
 
   const emailRegex =
@@ -88,7 +90,6 @@ function LoginForm() {
     };
 
     sendRequest('/login', options);
-    console.log('works!');
   }
 
   return (

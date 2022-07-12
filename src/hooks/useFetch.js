@@ -6,7 +6,7 @@ function useFetch() {
   const [isLoading, setIsLoading] = useState(null);
   const [error, setError] = useState(null);
 
-  async function sendRequest(endpoint, options, fetchType) {
+  async function sendRequest(endpoint, options) {
     setResponse(null);
     setError(null);
     setIsLoading(true);
@@ -19,18 +19,7 @@ function useFetch() {
       }
 
       const returnedData = await res.json();
-      console.log(returnedData);
-
-      switch (fetchType) {
-        case 'SEARCH':
-          setResponse(returnedData.results);
-          break;
-        case 'RECIPE':
-          setResponse(returnedData.recipeInfo);
-          break;
-        default:
-          setResponse(returnedData.results);
-      }
+      setResponse(returnedData.results);
     } catch (err) {
       setError(err);
     } finally {
@@ -38,9 +27,6 @@ function useFetch() {
     }
   }
 
-  // useEffect(() => {
-  //   sendRequest();
-  // }, [endpoint]);
   return { sendRequest, response, isLoading, error };
 }
 
