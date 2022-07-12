@@ -1,2 +1,14 @@
 [
+    {
+        "firstName": "Ethan",
+        "lastName": "Hawes",
+        "email": "ethanhawes@outlook.com",
+        "password": "cbb2790382f2b92a4cd7bcc520a2f7df5b7268383211ac78b42f50c6a2364335",
+        "salt": "8db52e34ecd54e2b8bef2482a07dce2b",
+        "apiUsername": "aea53f54-7a1c-4d2d-8fa4-51e5b38e5712",
+        "apiHash": "77ed23af6cd7393acb49abc3d88a4f38523055e5",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
+    }
 ]

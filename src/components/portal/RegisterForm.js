@@ -165,13 +165,10 @@ function RegisterForm() {
       },
     };
 
-    sendRequest('/register', options)
-      .then(() => {
-        login();
-      })
-      .then(() => {
-        navigate('/app', { replace: true });
-      });
+    sendRequest('/register', options).then(() => {
+      login();
+      navigate('/app', { replace: true });
+    });
   }
 
   return (

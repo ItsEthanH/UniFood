@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import useInput from '../../hooks/useInput';
+import AuthContext from '../../context/AuthContext';
 
 import PortalInput from './PortalInput';
 
@@ -10,6 +11,7 @@ import classes from './PortalForm.module.css';
 let hasLoginBeenSubmitted;
 
 function LoginForm() {
+  const { login } = useContext(AuthContext);
   const [errorMessages, setErrorMessages] = useState([]);
   const { sendRequest, response, isLoading, error } = useFetch();
   const navigate = useNavigate();
@@ -87,9 +89,15 @@ function LoginForm() {
         email: emailValue,
         password: passwordValue,
       }),
+      header: {
+        'Access-Control-Allow-Origin': '*',
+      },
     };
 
-    sendRequest('/login', options);
+    sendRequest('/login', options).then(() => {
+      login();
+      navigate('/app', { replace: true });
+    });
   }
 
   return (
