@@ -14,11 +14,12 @@ let hasRegisterBeenSubmitted;
 function RegisterForm() {
   // refs are set up on the passwords to allow a more reactive validation. using the passwordValue and confirmPasswordValue cant be done, due to one being initialised after the other
   // ref values are included in the validation function for the passwords, highlighting them red if they dont match, and clearing it if they do.
-  const { sendRequest, response, isLoading, error } = useFetch();
-  const authCtx = useContext(AuthContext);
-  const navigate = useNavigate();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+
+  const { sendRequest, response, isLoading, error } = useFetch();
+  const { isLoggedIn, login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [errorMessages, setErrorMessages] = useState([]);
   const emailRegex =
@@ -166,14 +167,9 @@ function RegisterForm() {
 
     sendRequest('/register', options)
       .then(() => {
-        console.log('hook received, setting context');
-        authCtx.login();
+        login();
       })
       .then(() => {
-        console.log('authed');
-      })
-      .then(() => {
-        console.log('navigating');
         navigate('/app', { replace: true });
       });
   }
@@ -237,7 +233,7 @@ function RegisterForm() {
       ))}
       {isLoading && <p>Sending...</p>}
       {!isLoading && <button>Sign Up</button>}
-      {authCtx.isLoggedIn && <p>test</p>}
+      {isLoggedIn && <p>test</p>}
     </form>
   );
 }

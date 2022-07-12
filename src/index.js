@@ -15,37 +15,38 @@ import LoginForm from './components/portal/LoginForm';
 import RegisterForm from './components/portal/RegisterForm';
 
 import './assets/styles/global.css';
-
 function Index() {
-  const authCtx = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
-    <AuthContextProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/portal" element={<Portal />}>
-            <Route path="/portal/signin" element={<LoginForm />} />
-            <Route path="/portal/register" element={<RegisterForm />} />
-          </Route>
-          {!authCtx.isLoggedIn && ( // im not gunna lie, i have no idea why this works with !authCtx.isLoggedIn, but this really hurt my head. its staying
-            <Route path="/app" element={<App />}>
-              <Route path="/app" element={<Dashboard />} />
-              <Route path="/app/results" element={<Results />}>
-                <Route path=":searchQuery" />
-              </Route>
-              <Route path="/app/recipe/:recipeId" element={<Recipe />} />
-              <Route path="/app/meal-plan" element={<MealPlan />} />
-              <Route path="/app/*" element={<Navigate to="/app" />} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/portal" element={<Portal />}>
+          <Route path="/portal/signin" element={<LoginForm />} />
+          <Route path="/portal/register" element={<RegisterForm />} />
+        </Route>
+        {isLoggedIn && (
+          <Route path="/app" element={<App />}>
+            <Route path="/app" element={<Dashboard />} />
+            <Route path="/app/results" element={<Results />}>
+              <Route path=":searchQuery" />
             </Route>
-          )}
+            <Route path="/app/recipe/:recipeId" element={<Recipe />} />
+            <Route path="/app/meal-plan" element={<MealPlan />} />
+            <Route path="/app/*" element={<Navigate to="/app" />} />
+          </Route>
+        )}
 
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </BrowserRouter>
-    </AuthContextProvider>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Index />);
+root.render(
+  <AuthContextProvider>
+    <Index />
+  </AuthContextProvider>
+);

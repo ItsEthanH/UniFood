@@ -17,13 +17,13 @@ export function AuthContextProvider(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(initialLoggedInState);
 
   function loginHandler() {
-    setIsLoggedIn(true);
     localStorage.setItem('isLoggedIn', true);
+    setIsLoggedIn(true);
   }
 
   function logoutHandler() {
-    setIsLoggedIn(false);
     localStorage.removeItem('isLoggedIn');
+    setIsLoggedIn(false);
   }
 
   const contextValue = {
