@@ -19,26 +19,16 @@ function LoginForm() {
   const emailRegex =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-  const {
-    value: emailValue,
-    isValid: emailIsValid,
-    hasError: emailHasError,
-    setIsTouched: emailSetIsTouched,
-    valueChangeHandler: emailValueChangeHandler,
-    inputBlurHandler: emailInputBlurHandler,
-  } = useInput((value) => emailRegex.test(value));
+  const emailInput = useInput((value) => emailRegex.test(value));
+  const passwordInput = useInput((value) => value.length >= 8);
 
-  const {
-    value: passwordValue,
-    isValid: passwordIsValid,
-    hasError: passwordHasError,
-    setIsTouched: passwordSetIsTouched,
-    valueChangeHandler: passwordValueChangeHandler,
-    inputBlurHandler: passwordInputBlurHandler,
-  } = useInput((value) => value.length >= 8);
+  const inputsToRender = [
+    { id: 'email', label: 'Email', type: 'text', ...emailInput },
+    { id: 'password', label: 'Password', type: 'password', ...passwordInput },
+  ];
 
   const fieldIsIncomplete =
-    emailValue.trim() === '' || passwordValue.trim() === '';
+    emailInput.value.trim() === '' || passwordInput.value.trim() === '';
 
   useEffect(() => {
     setErrorMessages([]);
@@ -50,20 +40,25 @@ function LoginForm() {
       ]);
     }
 
-    if (hasLoginBeenSubmitted && !emailIsValid) {
+    if (hasLoginBeenSubmitted && !emailInput.isValid) {
       setErrorMessages((prevMsgs) => [
         ...prevMsgs,
         'Please enter a valid email',
       ]);
     }
 
-    if (hasLoginBeenSubmitted && !passwordIsValid) {
+    if (hasLoginBeenSubmitted && !passwordInput.isValid) {
       setErrorMessages((prevMsgs) => [
         ...prevMsgs,
         'Your password should be 8 characters or longer',
       ]);
     }
-  }, [hasLoginBeenSubmitted, fieldIsIncomplete, emailIsValid, passwordIsValid]);
+  }, [
+    hasLoginBeenSubmitted,
+    fieldIsIncomplete,
+    emailInput.isValid,
+    passwordInput.isValid,
+  ]);
 
   // another useEffect to reset error messages and submit status for switching between register/sign in
   useEffect(() => {
@@ -117,25 +112,20 @@ function LoginForm() {
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
-      <PortalInput
-        id="email"
-        label="Email"
-        type="text"
-        value={emailValue}
-        onChange={emailValueChangeHandler}
-        onBlur={emailInputBlurHandler}
-        hasError={emailHasError}
-      />
-
-      <PortalInput
-        id="password"
-        label="Password"
-        type="password"
-        value={passwordValue}
-        onChange={passwordValueChangeHandler}
-        onBlur={passwordInputBlurHandler}
-        hasError={passwordHasError}
-      />
+      {inputsToRender.map((input) => {
+        return (
+          <PortalInput
+            key={input.id}
+            id={input.id}
+            label={input.label}
+            type={input.type}
+            value={input.value}
+            onChange={input.valueChangeHandler}
+            onBlur={input.inputBlurHandler}
+            hasError={input.hasError}
+          />
+        );
+      })}
 
       <a href="">Forgotton your password?</a>
       {errorMessages.map((msg) => (
