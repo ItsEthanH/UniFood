@@ -11,7 +11,8 @@ import SearchPage from './pages/search/_SearchPage';
 import RecipePage from './pages/recipe/_RecipePage';
 import MealPlanPage from './pages/mealplan/_MealPlanPage';
 
-import PortalForm from './pages/portal/PortalForm';
+import LoginForm from './pages/portal/LoginForm';
+import RegisterForm from './pages/portal/RegisterForm';
 
 import './assets/global.css';
 function Index() {
@@ -22,8 +23,8 @@ function Index() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/portal" element={<PortalPage />}>
-          <Route path="/portal/signin" element={<PortalForm />} />
-          <Route path="/portal/register" element={<PortalForm />} />
+          <Route path="/portal/signin" element={<LoginForm />} />
+          <Route path="/portal/register" element={<RegisterForm />} />
         </Route>
         {isLoggedIn && (
           <Route path="/app" element={<App />}>

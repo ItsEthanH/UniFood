@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../../context/AuthContext';
 
 import LandingSection from '../LandingSection';
 
@@ -8,6 +10,12 @@ import googlePlay from '../../../assets/landing/google-play.png';
 import headerImage from '../../../assets/landing/header-image.png';
 
 function LandingIntro() {
+  const { login } = useContext(AuthContext);
+
+  function guestLogin() {
+    login();
+  }
+
   return (
     <LandingSection styles={classes.intro}>
       <img src={headerImage} alt="Header image of a pizza" />
@@ -15,8 +23,7 @@ function LandingIntro() {
         Struggling with <span class="color-primary">meal</span> ideas?
       </h2>
       <p className={classes.tagline}>
-        UniFood makes meals simpler by providing you delicious, easy to prepare
-        recipes.
+        UniFood makes meals simpler by providing you delicious, easy to prepare recipes.
       </p>
       <div className={classes.downloads}>
         <img src={appStore} alt="Download on the app store" />
@@ -31,8 +38,10 @@ function LandingIntro() {
         </button>
       </div>
       <p className={classes.guest}>
-        Visiting from one of our portfoilos, and just want to test what we've
-        done? <Link to="/app">Click here!</Link>
+        Visiting from one of our portfoilos, and just want to test what we've done?{' '}
+        <Link onClick={guestLogin} to="/app">
+          Click here!
+        </Link>
       </p>
     </LandingSection>
   );
