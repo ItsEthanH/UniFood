@@ -15,6 +15,10 @@
   font-size: var(--fs-800);
 }
 
+form .swap {
+  text-align: center;
+}
+
 .error {
   color: #ca3e51;
 }

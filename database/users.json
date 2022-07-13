@@ -46,5 +46,17 @@
         "tier": 0,
         "timezone": "Europe/London",
         "theme": 0
+    },
+    {
+        "firstName": "test",
+        "lastName": "test",
+        "email": "e@h.com",
+        "password": "2d136472576ff5a26bfe00e472694a1f3e9cfb42def3f8fcc196b4fd37659016",
+        "salt": "0014eb6e7bbf46039f56a3ebb6b3eb28",
+        "apiUsername": "ae2c7eb4-3903-4026-b2bd-93cb6a3ba607",
+        "apiHash": "4f9ab6c5ec499006aeedc840e5d7a54f955de542",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
     }
 ]

@@ -1,10 +1,9 @@
-import { useState, useEffect, useRef, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import useInput from '../../hooks/useInput';
-import useFetch from '../../hooks/useFetch';
-import AuthContext from '../../context/AuthContext';
 
 import PortalInput from './PortalInput';
+import PortalActions from './PortalActions';
 
 import classes from './styles/PortalForm.module.css';
 
@@ -17,109 +16,68 @@ function RegisterForm() {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
-  const { sendRequest, response, isLoading, error } = useFetch();
-  const { isLoggedIn, login } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { isFormLogin, changeForm, authoriseAccess, fetchInfo, errorMessages, setErrorMessages } =
+    useOutletContext();
 
-  const [errorMessages, setErrorMessages] = useState([]);
   const emailRegex =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-  const {
-    value: fnameValue,
-    isValid: fnameIsValid,
-    hasError: fnameHasError,
-    setIsTouched: fnameSetIsTouched,
-    valueChangeHandler: fnameValueChangeHandler,
-    inputBlurHandler: fnameInputBlurHandler,
-  } = useInput((value) => value.trim() !== '');
-
-  const {
-    value: lnameValue,
-    isValid: lnameIsValid,
-    hasError: lnameHasError,
-    setIsTouched: lnameSetIsTouched,
-    valueChangeHandler: lnameValueChangeHandler,
-    inputBlurHandler: lnameInputBlurHandler,
-  } = useInput((value) => value.trim() !== '');
-
-  const {
-    value: emailValue,
-    isValid: emailIsValid,
-    hasError: emailHasError,
-    setIsTouched: emailSetIsTouched,
-    valueChangeHandler: emailValueChangeHandler,
-    inputBlurHandler: emailInputBlurHandler,
-  } = useInput((value) => emailRegex.test(value));
-
-  const {
-    value: passwordValue,
-    isValid: passwordIsValid,
-    hasError: passwordHasError,
-    setIsTouched: passwordSetIsTouched,
-    valueChangeHandler: passwordValueChangeHandler,
-    inputBlurHandler: passwordInputBlurHandler,
-  } = useInput(
+  const fnameInput = useInput((value) => value.trim() !== '');
+  const lnameInput = useInput((value) => value.trim() !== '');
+  const emailInput = useInput((value) => emailRegex.test(value));
+  const passwordInput = useInput(
     (value) => value.length >= 8 && value === confirmPasswordRef.current.value
   );
-
-  const {
-    value: confirmPasswordValue,
-    isValid: confirmPasswordIsValid,
-    hasError: confirmPasswordHasError,
-    setIsTouched: confirmPasswordSetIsTouched,
-    valueChangeHandler: confirmPasswordValueChangeHandler,
-    inputBlurHandler: confirmPasswordInputBlurHandler,
-  } = useInput(
+  const confirmPasswordInput = useInput(
     (value) => value.length >= 8 && value === passwordRef.current.value
   );
 
+  const passwordsMatch = passwordInput.value === confirmPasswordInput.value;
   const fieldIsIncomplete =
-    fnameHasError ||
-    lnameHasError ||
-    emailValue.trim() === '' ||
-    passwordValue.trim() === '' ||
-    confirmPasswordValue.trim() === '';
+    fnameInput.value === '' ||
+    lnameInput.value === '' ||
+    emailInput.value === '' ||
+    passwordInput.value === '' ||
+    confirmPasswordInput.value === '';
 
-  const passwordsMatch = passwordValue === confirmPasswordValue;
+  const inputsToRender = [
+    { id: 'fname', label: 'First Name', type: 'text', ...fnameInput },
+    { id: 'lname', label: 'Last Name', type: 'test', ...lnameInput },
+    { id: 'email', label: 'Email', type: 'email', ...emailInput },
+    { id: 'password', label: 'Password', type: 'password', ...passwordInput },
+    {
+      id: 'confirm-password',
+      label: 'Confirm Password',
+      type: 'password',
+      ...confirmPasswordInput,
+    },
+  ];
+
+  const errorCheckArray = [
+    { value: fieldIsIncomplete, message: 'Please ensure all fields are completed' },
+    { value: !emailInput.isValid, message: 'Please enter a valid email' },
+    {
+      value: passwordInput.value.length < 8 || confirmPasswordInput.value.length < 8,
+      message: 'Your password should be 8 characters or longer',
+    },
+    { value: !passwordsMatch, message: 'Please ensure both passwords match' },
+  ];
 
   // error handling code runs whenever a value in the depenedencies array changes. won't run the first time the page is loaded due to hasRegisterBeenSubmitted
   // allows for the error messages to clear as the user inputs values. very nice UX, if i do say so myself!
   useEffect(() => {
     setErrorMessages([]);
 
-    if (hasRegisterBeenSubmitted && fieldIsIncomplete) {
-      setErrorMessages((prevMsgs) => [
-        ...prevMsgs,
-        'Please ensure all fields are completed',
-      ]);
-    }
-
-    if (hasRegisterBeenSubmitted && !emailIsValid) {
-      setErrorMessages((prevMsgs) => [
-        ...prevMsgs,
-        'Please enter a valid email',
-      ]);
-    }
-
-    if (hasRegisterBeenSubmitted && passwordHasError) {
-      setErrorMessages((prevMsgs) => [
-        ...prevMsgs,
-        'Passwords need to be 8 characters or longer',
-      ]);
-    }
-
-    if (hasRegisterBeenSubmitted && !passwordsMatch) {
-      setErrorMessages((prevMsgs) => [
-        ...prevMsgs,
-        'Please ensure both passwords match',
-      ]);
+    for (const check of errorCheckArray) {
+      if (hasRegisterBeenSubmitted && check.value) {
+        setErrorMessages((prevMsgs) => [...prevMsgs, check.message]);
+      }
     }
   }, [
     hasRegisterBeenSubmitted,
-    emailIsValid,
-    passwordIsValid,
     fieldIsIncomplete,
+    !emailInput.isValid,
+    !passwordInput.hasError,
     passwordsMatch,
   ]);
 
@@ -132,20 +90,14 @@ function RegisterForm() {
   function submitHandler(event) {
     event.preventDefault();
     hasRegisterBeenSubmitted = true;
+    let formIsValid = true;
 
-    fnameSetIsTouched(true);
-    lnameSetIsTouched(true);
-    emailSetIsTouched(true);
-    passwordSetIsTouched(true);
-    confirmPasswordSetIsTouched(true);
-
-    const formIsValid =
-      fnameIsValid &&
-      lnameIsValid &&
-      emailIsValid &&
-      passwordIsValid &&
-      confirmPasswordIsValid &&
-      passwordsMatch;
+    for (const input of inputsToRender) {
+      input.setIsTouched(true);
+      if (!input.isValid) {
+        formIsValid = false;
+      }
+    }
 
     if (!formIsValid) {
       return;
@@ -154,103 +106,59 @@ function RegisterForm() {
     const options = {
       method: 'POST',
       body: JSON.stringify({
-        firstName: fnameValue,
-        lastName: lnameValue,
-        email: emailValue,
-        password: passwordValue,
-        confirmPassword: confirmPasswordValue,
+        firstName: fnameInput.value,
+        lastName: lnameInput.value,
+        email: emailInput.value,
+        password: passwordInput.value,
+        confirmPassword: confirmPasswordInput.value,
       }),
       header: {
         'Access-Control-Allow-Origin': '*',
       },
     };
 
-    sendRequest('/register', options);
+    authoriseAccess(options);
   }
 
-  useEffect(() => {
-    // a failed login means response === false. return an error message in that case
-    if (response === false) {
-      console.log(response);
-      setErrorMessages([
-        'There was an error with registration. Please try again!',
-      ]);
-      return;
+  function renderInputs(input) {
+    let ref;
+    let blur = input.inputBlurHandler;
+
+    // Both password inputs have not got blur handlers, to prevent a false error on the first password input
+    if (input.id === 'password') {
+      blur = null;
+      ref = passwordRef;
     }
 
-    // on component mount, response is initialised as null. this returns the function without an error message, as no submission has occured
-    if (!response) {
-      return;
+    if (input.id === 'confirm-password') {
+      blur = null;
+      ref = confirmPasswordRef;
     }
 
-    login();
-    navigate('/app', { replace: true });
-  }, [response]);
+    return (
+      <PortalInput
+        key={input.id}
+        id={input.id}
+        label={input.label}
+        type={input.type}
+        value={input.value}
+        onChange={input.valueChangeHandler}
+        onBlur={blur}
+        hasError={input.hasError}
+        ref={ref}
+      />
+    );
+  }
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
-      <PortalInput
-        id="fname"
-        label="First Name"
-        type="text"
-        value={fnameValue}
-        onChange={fnameValueChangeHandler}
-        onBlur={fnameInputBlurHandler}
-        hasError={fnameHasError}
+      {inputsToRender.map((input) => renderInputs(input))}
+      <PortalActions
+        changeForm={changeForm}
+        isFormLogin={isFormLogin}
+        fetchInfo={fetchInfo}
+        errorMessages={errorMessages}
       />
-
-      <PortalInput
-        id="lname"
-        label="Last Name"
-        type="text"
-        value={lnameValue}
-        onChange={lnameValueChangeHandler}
-        onBlur={lnameInputBlurHandler}
-        hasError={lnameHasError}
-      />
-
-      <PortalInput
-        id="email"
-        label="Email"
-        type="text"
-        value={emailValue}
-        onChange={emailValueChangeHandler}
-        onBlur={emailInputBlurHandler}
-        hasError={emailHasError}
-      />
-
-      <PortalInput // Both password inputs have not got blur handlers, to prevent a false error on the first password input
-        id="password"
-        label="Password"
-        type="password"
-        value={passwordValue}
-        onChange={passwordValueChangeHandler}
-        hasError={passwordHasError}
-        ref={passwordRef}
-      />
-
-      <PortalInput
-        id="confirm-password"
-        label="Confirm Password"
-        type="password"
-        value={confirmPasswordValue}
-        onChange={confirmPasswordValueChangeHandler}
-        hasError={confirmPasswordHasError}
-        ref={confirmPasswordRef}
-      />
-
-      {errorMessages.map((msg) => (
-        <p className={classes.error} key={msg}>
-          {msg}
-        </p>
-      ))}
-      {error && (
-        <p className={classes.error}>
-          There was an error sending the request. Please try again later!
-        </p>
-      )}
-      {isLoading && <p>Sending...</p>}
-      {!isLoading && <button>Sign Up</button>}
     </form>
   );
 }
