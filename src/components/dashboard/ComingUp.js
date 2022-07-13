@@ -5,7 +5,7 @@ import { Navigation } from 'swiper';
 import SectionTitle from '../ui/SectionTitle';
 import DashboardCard from './DashboardCard';
 
-import placeholder from '../../assets/dashboard/placeholder-meal.jpg';
+import placeholder from '../../assets/placeholders/placeholder-dashboard.jpg';
 import classes from './ComingUp.module.css';
 import 'swiper/css';
 import 'swiper/css/navigation';

@@ -14,7 +14,7 @@ import MealPlan from './pages/MealPlan';
 import LoginForm from './components/portal/LoginForm';
 import RegisterForm from './components/portal/RegisterForm';
 
-import './assets/styles/global.css';
+import './assets/global.css';
 function Index() {
   const { isLoggedIn } = useContext(AuthContext);
 

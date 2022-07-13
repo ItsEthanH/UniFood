@@ -186,61 +186,61 @@ template {
 /* fonts */
 @font-face {
   font-family: Rubik;
-  src: url(../fonts/Rubik-Bold.ttf);
+  src: url(./fonts/Rubik-Bold.ttf);
   font-weight: 700 900;
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(../fonts/Rubik-SemiBold.ttf);
+  src: url(./fonts/Rubik-SemiBold.ttf);
   font-weight: 600;
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(../fonts/Rubik-Medium.ttf);
+  src: url(./fonts/Rubik-Medium.ttf);
   font-weight: 500;
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(../fonts/Rubik-Regular.ttf);
+  src: url(./fonts/Rubik-Regular.ttf);
   font-weight: 400;
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(../fonts/Rubik-Light.ttf);
+  src: url(./fonts/Rubik-Light.ttf);
   font-weight: 100 300;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../fonts/Prompt-Bold.ttf);
+  src: url(./fonts/Prompt-Bold.ttf);
   font-weight: 700 900;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../fonts/Prompt-SemiBold.ttf);
+  src: url(./fonts/Prompt-SemiBold.ttf);
   font-weight: 600;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../fonts/Prompt-Medium.ttf);
+  src: url(./fonts/Prompt-Medium.ttf);
   font-weight: 500;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../fonts/Prompt-Regular.ttf);
+  src: url(./fonts/Prompt-Regular.ttf);
   font-weight: 400;
 }
 
 @font-face {
   font-family: Prompt;
-  src: url(../fonts/Prompt-Light.ttf);
+  src: url(./fonts/Prompt-Light.ttf);
   font-weight: 100 300;
 }
 

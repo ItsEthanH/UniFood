@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 
 import RecipeIcon from '../recipe/RecipeIcon';
 
-import viewIcon from '../../assets/ui/view.png';
-import favouriteIcon from '../../assets/ui/favourite.png';
-import planIcon from '../../assets/ui/plan.png';
-import cartIcon from '../../assets/ui/cart.png';
+import viewIcon from '../../assets/icons/view.png';
+import favouriteIcon from '../../assets/icons/favourite.png';
+import planIcon from '../../assets/icons/plan.png';
+import cartIcon from '../../assets/icons/cart.png';
 import classes from './ResultCard.module.css';
 
 function ResultCard(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './NextMeal.module.css';
 
-import placeholder from '../../assets/dashboard/placeholder-meal.jpg';
+import placeholder from '../../assets/placeholders/placeholder-dashboard.jpg';
 
 import SectionTitle from '../ui/SectionTitle';
 import DashboardCard from './DashboardCard';

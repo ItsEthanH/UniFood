@@ -3,14 +3,14 @@ import AuthContext from '../../context/AuthContext';
 
 import NavSidebarLink from './NavSidebarLink';
 
-import dashboardIcon from '../../assets/nav-sidebar/dashboard.svg';
-import planIcon from '../../assets/nav-sidebar/plan.svg';
-import favouriteIcon from '../../assets/nav-sidebar/favourite.svg';
-import nutritionIcon from '../../assets/nav-sidebar/nutrition.svg';
-import pantryIcon from '../../assets/nav-sidebar/pantry.svg';
-import profileIcon from '../../assets/nav-sidebar/profile.svg';
-import helpIcon from '../../assets/nav-sidebar/help.svg';
-import logoutIcon from '../../assets/nav-sidebar/logout.svg';
+import dashboardIcon from '../../assets/svgs/dashboard.svg';
+import planIcon from '../../assets/svgs/plan.svg';
+import favouriteIcon from '../../assets/svgs/favourite.svg';
+import nutritionIcon from '../../assets/svgs/nutrition.svg';
+import pantryIcon from '../../assets/svgs/pantry.svg';
+import profileIcon from '../../assets/svgs/profile.svg';
+import helpIcon from '../../assets/svgs/help.svg';
+import logoutIcon from '../../assets/svgs/logout.svg';
 
 import classes from './NavSidebar.module.css';
 

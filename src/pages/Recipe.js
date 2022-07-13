@@ -8,13 +8,13 @@ import RecipeIcon from '../components/recipe/RecipeIcon';
 import RecipeInfoSubsection from '../components/recipe/RecipeInfoSubsection';
 
 import classes from './styles/Recipe.module.css';
-import viewIcon from '../assets/ui/view.png';
-import favouriteIcon from '../assets/ui/favourite.png';
-import planIcon from '../assets/ui/plan.png';
-import cartIcon from '../assets/ui/cart.png';
+import viewIcon from '../assets/icons/view.png';
+import favouriteIcon from '../assets/icons/favourite.png';
+import planIcon from '../assets/icons/plan.png';
+import cartIcon from '../assets/icons/cart.png';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 
-import placeholder2 from '../assets/search/placeholder-recipe.jpg';
+import placeholder2 from '../assets/placeholders/placeholder-recommendation.jpg';
 
 function Recipe(props) {
   const [nutritionShow, setNutritionShow] = useState(false);
