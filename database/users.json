@@ -10,5 +10,17 @@
         "tier": 0,
         "timezone": "Europe/London",
         "theme": 0
+    },
+    {
+        "firstName": "Ethan",
+        "lastName": "Hawes",
+        "email": "ethan@hawes.com",
+        "password": "480816b3f765c5a399c07c199fa9ccd2df8ba2e3800ee36cf094ae41b62f1c4a",
+        "salt": "033ae0428a0a40948212cffaf91c5755",
+        "apiUsername": "9402bc1a-9434-4967-88cc-0e6b2f598e0f",
+        "apiHash": "fc8fb48c143f8d99e89b6c543a8b95e5daae8de4",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
     }
 ]

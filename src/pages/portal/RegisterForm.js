@@ -166,6 +166,13 @@ function RegisterForm() {
     };
 
     sendRequest('/register', options).then(() => {
+      console.log(response);
+      if (!response) {
+        setErrorMessages([
+          'There was an error with registration. Please try again!',
+        ]);
+        return;
+      }
       login();
       navigate('/app', { replace: true });
     });

@@ -7,6 +7,7 @@ function useFetch() {
   const [error, setError] = useState(null);
 
   async function sendRequest(endpoint, options) {
+    console.log('first - send request starts');
     setResponse(null);
     setError(null);
     setIsLoading(true);
@@ -20,7 +21,7 @@ function useFetch() {
 
       const returnedData = await res.json();
       setResponse(returnedData.results);
-      console.log(returnedData);
+      console.log('second - response set: ' + response);
     } catch (err) {
       setError(err);
     } finally {

@@ -95,6 +95,12 @@ function LoginForm() {
     };
 
     sendRequest('/login', options).then(() => {
+      if (!response) {
+        setErrorMessages([
+          'Your email or password is incorrect. Please try again!',
+        ]);
+        return;
+      }
       login();
       navigate('/app', { replace: true });
     });
