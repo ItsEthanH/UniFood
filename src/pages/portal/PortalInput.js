@@ -3,6 +3,7 @@ import classes from './styles/PortalInput.module.css';
 
 const PortalInput = forwardRef((props, ref) => {
   const errorStyles = props.hasError ? classes.invalid : '';
+  const onBlur = props.type === 'password' ? null : props.onblur;
 
   return (
     <>
@@ -19,7 +20,7 @@ const PortalInput = forwardRef((props, ref) => {
         type={props.type}
         value={props.value}
         onChange={props.onChange}
-        onBlur={props.onBlur}
+        onBlur={onBlur}
         ref={ref}
       />
     </>
