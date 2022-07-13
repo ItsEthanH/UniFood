@@ -10,5 +10,17 @@
         "tier": 0,
         "timezone": "Europe/London",
         "theme": 0
+    },
+    {
+        "firstName": "Etienne",
+        "lastName": "Brand",
+        "email": "e@b.com",
+        "password": "7f69d3d1bc1378c07be90786cbff8e30623f2c51f4b417526416742e2e0f567b",
+        "salt": "f2e8b3b9ee6243e98dda11733c5ac850",
+        "apiUsername": "fdc7efac-a3de-41a6-a1fc-3574358805ad",
+        "apiHash": "0adc17dfef5602bd7108cbecb230bb7d460f0e34",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
     }
 ]
