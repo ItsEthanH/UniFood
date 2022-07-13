@@ -12,7 +12,7 @@ let hasRegisterBeenSubmitted;
 
 function RegisterForm() {
   // refs are set up on the passwords to allow a more reactive validation. using the passwordValue and confirmPasswordValue cant be done, due to one being initialised after the other
-  // ref values are included in the validation function for the passwords, highlighting them red if they dont match, and clearing it if they do.
+  // ref values are forwarded and included in the validation function for the passwords, highlighting them red if they dont match, and clearing it if they do.
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
@@ -63,30 +63,6 @@ function RegisterForm() {
     { value: !passwordsMatch, message: 'Please ensure both passwords match' },
   ];
 
-  // error handling code runs whenever a value in the depenedencies array changes. won't run the first time the page is loaded due to hasRegisterBeenSubmitted
-  // allows for the error messages to clear as the user inputs values. very nice UX, if i do say so myself!
-  useEffect(() => {
-    setErrorMessages([]);
-
-    for (const check of errorCheckArray) {
-      if (hasRegisterBeenSubmitted && check.value) {
-        setErrorMessages((prevMsgs) => [...prevMsgs, check.message]);
-      }
-    }
-  }, [
-    hasRegisterBeenSubmitted,
-    fieldIsIncomplete,
-    !emailInput.isValid,
-    !passwordInput.hasError,
-    passwordsMatch,
-  ]);
-
-  // another useEffect to reset error messages and submit status for switching between register/sign in
-  useEffect(() => {
-    hasRegisterBeenSubmitted = false;
-    setErrorMessages([]);
-  }, []);
-
   function submitHandler(event) {
     event.preventDefault();
     hasRegisterBeenSubmitted = true;
@@ -120,11 +96,36 @@ function RegisterForm() {
     authoriseAccess(options);
   }
 
+  // error handling code runs whenever a value in the depenedencies array changes. won't run the first time the page is loaded due to hasRegisterBeenSubmitted
+  // allows for the error messages to clear as the user inputs values. very nice UX, if i do say so myself!
+  useEffect(() => {
+    setErrorMessages([]);
+
+    for (const check of errorCheckArray) {
+      if (hasRegisterBeenSubmitted && check.value) {
+        setErrorMessages((prevMsgs) => [...prevMsgs, check.message]);
+      }
+    }
+  }, [
+    hasRegisterBeenSubmitted,
+    fieldIsIncomplete,
+    !emailInput.isValid,
+    !passwordInput.hasError,
+    passwordsMatch,
+  ]);
+
+  // another useEffect to reset error messages and submit status for switching between register/sign in
+  useEffect(() => {
+    hasRegisterBeenSubmitted = false;
+    setErrorMessages([]);
+  }, []);
+
   function renderInputs(input) {
     let ref;
     let blur = input.inputBlurHandler;
 
-    // Both password inputs have not got blur handlers, to prevent a false error on the first password input
+    // both password inputs have not got blur handlers, to prevent a false error on the first password input
+    // password refs are also forwarded here too
     if (input.id === 'password') {
       blur = null;
       ref = passwordRef;

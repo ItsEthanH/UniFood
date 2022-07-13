@@ -31,22 +31,6 @@ function LoginForm() {
     { value: !passwordInput.isValid, message: 'Your password should be 8 characters or longer' },
   ];
 
-  useEffect(() => {
-    setErrorMessages([]);
-
-    for (const check of errorCheckArray) {
-      if (hasLoginBeenSubmitted && check.value) {
-        setErrorMessages((prevMsgs) => [...prevMsgs, check.message]);
-      }
-    }
-  }, [hasLoginBeenSubmitted, fieldIsIncomplete, emailInput.isValid, passwordInput.isValid]);
-
-  // another useEffect to reset error messages and submit status for switching between register/sign in
-  useEffect(() => {
-    hasLoginBeenSubmitted = false;
-    setErrorMessages([]);
-  }, []);
-
   function submitHandler(event) {
     event.preventDefault();
     hasLoginBeenSubmitted = true;
@@ -76,6 +60,22 @@ function LoginForm() {
 
     authoriseAccess(options);
   }
+
+  useEffect(() => {
+    setErrorMessages([]);
+
+    for (const check of errorCheckArray) {
+      if (hasLoginBeenSubmitted && check.value) {
+        setErrorMessages((prevMsgs) => [...prevMsgs, check.message]);
+      }
+    }
+  }, [hasLoginBeenSubmitted, fieldIsIncomplete, emailInput.isValid, passwordInput.isValid]);
+
+  // another useEffect to reset error messages and submit status for switching between register/sign in
+  useEffect(() => {
+    hasLoginBeenSubmitted = false;
+    setErrorMessages([]);
+  }, []);
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>

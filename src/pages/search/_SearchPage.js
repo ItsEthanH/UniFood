@@ -5,7 +5,7 @@ import useFetch from '../../hooks/useFetch';
 import ResultCard from './ResultCard';
 import ResultSidebar from './ResultSidebar';
 
-import classes from './styles/Search.module.css';
+import classes from './styles/SearchPage.module.css';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 
 function _SearchPage() {
@@ -24,9 +24,7 @@ function _SearchPage() {
         {isLoading && <LoadingSpinner />}
         {error && <p>{error.message}</p>}
         {response &&
-          response.map((item) => (
-            <ResultCard title={item.title} src={item.image} id={item.id} />
-          ))}
+          response.map((item) => <ResultCard title={item.title} src={item.image} id={item.id} />)}
       </ul>
     </main>
   );

@@ -5,7 +5,7 @@ import AuthContext from '../../context/AuthContext';
 
 import LandingTitle from '../landing/LandingTitle';
 
-import classes from './styles/Portal.module.css';
+import classes from './styles/_PortalPage.module.css';
 import image from '../../assets/landing/portal.jpg';
 
 function PortalPage() {
@@ -31,7 +31,6 @@ function PortalPage() {
 
   function authoriseAccess(requestOptions) {
     event.preventDefault();
-    let formIsValid = true;
     let endpoint = '/login';
 
     if (!isFormLogin) {
