@@ -28,7 +28,13 @@ function useFetch() {
     }
   }
 
-  return { sendRequest, response, isLoading, error };
+  function clearStates() {
+    setResponse(null);
+    setError(null);
+    setError(null);
+  }
+
+  return { sendRequest, clearStates, response, isLoading, error };
 }
 
 export default useFetch;
