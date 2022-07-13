@@ -165,21 +165,30 @@ function RegisterForm() {
       },
     };
 
-    sendRequest('/register', options).then(() => {
-      console.log(response);
-      if (!response) {
-        setErrorMessages([
-          'There was an error with registration. Please try again!',
-        ]);
-        return;
-      }
-      login();
-      navigate('/app', { replace: true });
-    });
+    sendRequest('/register', options);
   }
 
+  useEffect(() => {
+    // a failed login means response === false. return an error message in that case
+    if (response === false) {
+      console.log(response);
+      setErrorMessages([
+        'There was an error with registration. Please try again!',
+      ]);
+      return;
+    }
+
+    // on component mount, response is initialised as null. this returns the function without an error message, as no submission has occured
+    if (!response) {
+      return;
+    }
+
+    login();
+    navigate('/app', { replace: true });
+  }, [response]);
+
   return (
-    <form className={classes.form} action="POST" onSubmit={submitHandler}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <PortalInput
         id="fname"
         label="First Name"
@@ -235,9 +244,13 @@ function RegisterForm() {
           {msg}
         </p>
       ))}
+      {error && (
+        <p className={classes.error}>
+          There was an error sending the request. Please try again later!
+        </p>
+      )}
       {isLoading && <p>Sending...</p>}
       {!isLoading && <button>Sign Up</button>}
-      {isLoggedIn && <p>test</p>}
     </form>
   );
 }

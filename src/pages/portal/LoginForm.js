@@ -94,20 +94,29 @@ function LoginForm() {
       },
     };
 
-    sendRequest('/login', options).then(() => {
-      if (!response) {
-        setErrorMessages([
-          'Your email or password is incorrect. Please try again!',
-        ]);
-        return;
-      }
-      login();
-      navigate('/app', { replace: true });
-    });
+    sendRequest('/login', options);
   }
 
+  useEffect(() => {
+    // a failed login means response === false. return an error message in that case
+    if (response === false) {
+      setErrorMessages([
+        'Your email or password is incorrect. Please try again!',
+      ]);
+      return;
+    }
+
+    // on component mount, response is initialised as null. this returns the function without an error message, as no submission has occured
+    if (!response) {
+      return;
+    }
+
+    login();
+    navigate('/app', { replace: true });
+  }, [response]);
+
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <PortalInput
         id="email"
         label="Email"
@@ -134,7 +143,13 @@ function LoginForm() {
           {msg}
         </p>
       ))}
-      <button onClick={submitHandler}>Sign In</button>
+      {error && (
+        <p className={classes.error}>
+          There was an error sending the request. Please try again later!
+        </p>
+      )}
+      {isLoading && <p>Sending...</p>}
+      {!isLoading && <button>Sign In</button>}
     </form>
   );
 }
