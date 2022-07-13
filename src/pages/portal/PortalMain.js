@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 import useFetch from '../../hooks/useFetch';
-import useValidate from '../../hooks/useValidate';
 
 import LandingTitle from '../landing/LandingTitle';
 
@@ -26,68 +25,105 @@ function PortalMain() {
   const emailRegex =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-  const fnameInput = useInput(
-    'fname',
-    'First Name',
-    (value) => value.trim() !== ''
-  );
-
-  const lnameInput = useInput(
-    'lname',
-    'Last Name',
-    (value) => value.trim() !== ''
-  );
-
-  const emailInput = useInput('email', 'Email', (value) =>
-    emailRegex.test(value)
-  );
-
-  const passwordLoginInput = useInput(
-    'password',
-    'Password',
-    (value) => value.length >= 8
-  );
-
+  // using useInput to generate form validation functions
+  const fnameInput = useInput((value) => value.trim() !== '');
+  const lnameInput = useInput((value) => value.trim() !== '');
+  const emailInput = useInput((value) => emailRegex.test(value));
+  const passwordLoginInput = useInput((value) => value.length >= 8);
   const passwordRegisterInput = useInput(
-    'password',
-    'Password',
     (value) => value.length >= 8 && value === confirmPasswordRef.current.value
   );
-
   const confirmPasswordInput = useInput(
-    'confirm-password',
-    'Confirm Password',
     (value) => value.length >= 8 && value === passwordRef.current.value
   );
 
-  const loginInputs = [emailInput, passwordLoginInput];
-  const registerInputs = [
-    fnameInput,
-    lnameInput,
-    emailInput,
-    passwordRegisterInput,
-    confirmPasswordInput,
-  ];
+  // generating input objects to pass onto PortalForm
+  const loginInputs = {
+    email: {
+      ...emailInput,
+      id: 'email',
+      label: 'Email',
+      type: 'text',
+      ref: null,
+    },
+    password: {
+      ...passwordLoginInput,
+      id: 'password',
+      label: 'Password',
+      type: 'password',
+      ref: null,
+    },
+  };
 
+  const registerInputs = {
+    fname: {
+      ...fnameInput,
+      id: 'fname',
+      label: 'First Name',
+      type: 'text',
+      ref: null,
+    },
+    lname: {
+      ...lnameInput,
+      id: 'lname',
+      label: 'Last Name',
+      type: 'text',
+      ref: null,
+    },
+    email: {
+      ...emailInput,
+      id: 'email',
+      label: 'Email',
+      type: 'text',
+      ref: null,
+    },
+    password: {
+      ...passwordRegisterInput,
+      id: 'password',
+      label: 'Password',
+      type: 'password',
+      ref: passwordRef,
+    },
+    confirmPassword: {
+      ...confirmPasswordInput,
+      id: 'confirm-password',
+      label: 'Confirm Password',
+      type: 'password',
+      ref: confirmPasswordRef,
+    },
+  };
+
+  // all form handling and validation is handled here, as register/login logic is mostly the same
   function changeForm() {
+    isFormSubmitted = false;
     if (isFormLogin) {
       navigate('/portal/register');
     } else {
       navigate('/portal/signin');
     }
+
+    // clear all inputs when changing forms
+    Object.keys(registerInputs).map((input) => {
+      registerInputs[input].reset();
+      if (loginInputs[input]) {
+        loginInputs[input].reset();
+      }
+    });
+
     setIsFormLogin((prev) => !prev);
   }
 
   function checkFormValidity(inputArray) {
-    inputArray.forEach((input) => input.setIsTouched(true));
+    let formIsValid = true;
 
-    for (const input of inputArray) {
-      if (!input.isValid) {
-        return false;
+    Object.keys(inputArray).map((input) => {
+      inputArray[input].setIsTouched(true);
+      if (!inputArray[input].isValid) {
+        formIsValid = false;
       }
-    }
+    });
 
-    return true;
+    return formIsValid;
   }
 
   function submitHandler(event, options) {
@@ -139,6 +175,8 @@ function PortalMain() {
       </p>
       <Outlet
         context={{
+          isFormLogin,
+          isFormSubmitted,
           submitHandler,
           fetchHook,
           formInputs: isFormLogin ? loginInputs : registerInputs,

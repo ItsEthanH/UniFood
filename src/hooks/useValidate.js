@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 
-function useValidate(submissionStatus, ...fieldsToValidate) {
+function adfs(submissionStatus, ...fieldsToValidate) {
   const [errorMessages, setErrorMessages] = useState([]);
   let dependancies = [submissionStatus];
 
   for (const field of fieldsToValidate) {
+    console.log(field);
     dependancies.push(field.value);
   }
+
+  console.log(dependancies);
 
   useEffect(() => {
     setErrorMessages([]);
