@@ -1,23 +1,31 @@
 import classes from './styles/PortalForm.module.css';
 
 function PortalActions(props) {
-  const { error, isLoading } = props.fetchInfo;
-  const buttonText = props.isFormLogin ? 'Sign In' : 'Sign Up';
+  const { changeForm, isFormLogin, fetchInfo, errorMessages } = props;
+
+  const changeText = isFormLogin
+    ? "Don't have an account? Sign up!"
+    : 'Already have an account? Sign in!';
+
+  const buttonText = isFormLogin ? 'Sign In' : 'Sign Up';
 
   return (
     <>
-      {props.errorMessages.map((msg) => (
+      {errorMessages.map((msg) => (
         <p className={classes.error} key={msg}>
           {msg}
         </p>
       ))}
-      {error && (
+      {fetchInfo.error && (
         <p className={classes.error}>
           There was an error sending the request. Please try again later!
         </p>
       )}
-      {isLoading && <p>Sending...</p>}
-      {!isLoading && <button>{buttonText}</button>}
+      {fetchInfo.isLoading && <p>Sending...</p>}
+      {!fetchInfo.isLoading && <button>{buttonText}</button>}
+      <a className={classes.swap} onClick={changeForm}>
+        {changeText}
+      </a>
     </>
   );
 }

@@ -19,6 +19,7 @@ function useFetch() {
       }
 
       const returnedData = await res.json();
+      console.log(returnedData);
       setResponse(returnedData.results);
     } catch (err) {
       setError(err);

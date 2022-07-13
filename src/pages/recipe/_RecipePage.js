@@ -7,7 +7,7 @@ import SectionTitle from '../../components/ui/SectionTitle';
 import RecipeIcon from './RecipeIcon';
 import RecipeInfoSubsection from './RecipeInfoSubsection';
 
-import classes from './styles/Recipe.module.css';
+import classes from './styles/RecipePage.module.css';
 import viewIcon from '../../assets/icons/view.png';
 import favouriteIcon from '../../assets/icons/favourite.png';
 import planIcon from '../../assets/icons/plan.png';

@@ -4,7 +4,7 @@ import NextMeal from './NextMeal';
 import Nutrition from './Nutrition';
 import Welcome from './Welcome';
 
-import classes from './styles/Dashboard.module.css';
+import classes from './styles/DashboardPage.module.css';
 
 function DashboardPage() {
   return (

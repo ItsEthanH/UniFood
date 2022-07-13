@@ -1,7 +1,7 @@
 import MealPlanOptions from './MealPlanOptions';
 import MealPlanWeekView from './MealPlanWeekView';
 
-import classes from './styles/MealPlan.module.css';
+import classes from './styles/MealPlanPage.module.css';
 
 function MealPlanPage() {
   return (

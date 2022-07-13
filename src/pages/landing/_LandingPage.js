@@ -8,7 +8,7 @@ import LandingRecipes from './recipes/LandingRecipes';
 import LandingApps from './apps/LandingApps';
 import LandingFooter from './footer/LandingFooter';
 
-import classes from './styles/Landing.module.css';
+import classes from './styles/LandingPage.module.css';
 
 function LandingPage() {
   // sets the height to initial for when the user logs out. undo's the setting of height to 100vh when App.js is initialised
