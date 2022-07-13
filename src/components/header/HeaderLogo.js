@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from './HeaderLogo.module.css';
+import classes from './styles/HeaderLogo.module.css';
 
 function HeaderLogo() {
   return (

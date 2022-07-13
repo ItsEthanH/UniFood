@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import classes from './styles/App.module.css';
+import classes from './App.module.css';
 
 import Header from '../components/header/Header';
-import NavSiderbar from '../components/navigation-sidebar/NavSidebar';
+import NavSiderbar from '../components/sidebar/NavSidebar';
 
 function App() {
   // sets the height to 100vh when the user logs in. this is reset in Landing.js for when the user logs out
