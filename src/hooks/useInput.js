@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
-function useInput(validateFn) {
+function useInput(id, name, validateFn, isPassword = false) {
   const [value, setValue] = useState('');
   const [isTouched, setIsTouched] = useState(false);
+  const type = isPassword ? 'password' : 'text';
 
   const isValid = validateFn(value);
   const hasError = !isValid && isTouched;
@@ -16,6 +17,9 @@ function useInput(validateFn) {
   }
 
   return {
+    id,
+    name,
+    type,
     value,
     isValid,
     hasError,
