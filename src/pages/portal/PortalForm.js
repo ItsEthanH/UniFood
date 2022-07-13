@@ -7,18 +7,34 @@ import PortalInput from './PortalInput';
 import classes from './styles/PortalForm.module.css';
 
 function PortalForm() {
-  const [errorMessages, setErrorMessages] = useState([]);
-  const { isFormLogin, isFormSubmitted, submitHandler, fetchHook, formInputs } =
-    useOutletContext();
+  const {
+    path,
+    errorMessages,
+    setErrorMessages,
+    isFormLogin,
+    isFormSubmitted,
+    submitHandler,
+    fetchHook,
+    formInputs,
+  } = useOutletContext();
 
+  // dynamic error messages shown with useEffect. only shown if the form is submitted
   useEffect(() => {
     setErrorMessages([]);
-    // if (hasLoginBeenSubmitted && fieldIsIncomplete) {
-    //   setErrorMessages((prevMsgs) => [
-    //     ...prevMsgs,
-    //     'Please ensure all fields are completed',
-    //   ]);
-    // }
+    let formIncomplete = false;
+
+    Object.keys(formInputs).map((input) => {
+      if (formInputs[input].value.trim() === '') {
+        formIncomplete = true;
+      }
+    });
+
+    if (isFormSubmitted && formIncomplete) {
+      setErrorMessages((prevMsgs) => [
+        ...prevMsgs,
+        'Please ensure all fields are completed',
+      ]);
+    }
 
     if (isFormSubmitted && !formInputs.email.isValid) {
       setErrorMessages((prevMsgs) => [
@@ -33,11 +49,24 @@ function PortalForm() {
         'Your password should be 8 characters or longer',
       ]);
     }
+
+    if (
+      isFormSubmitted &&
+      !isFormLogin &&
+      formInputs.password.value !== formInputs.confirmPassword.value
+    ) {
+      setErrorMessages((prevMsgs) => [
+        ...prevMsgs,
+        'Please make sure both passwords match',
+      ]);
+    }
   }, [formInputs]);
 
+  // all states cleared when the form is changed begin login/register
   useEffect(() => {
     setErrorMessages([]);
-  }, [isFormLogin]);
+    fetchHook.clearStates();
+  }, [path]);
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
@@ -56,21 +85,11 @@ function PortalForm() {
           />
         );
       })}
-      {/* {formInputs.keys().map((input) => {
-        return (
-          <PortalInput
-            key={input.id}
-            id={input.id}
-            label={input.label}
-            type={input.type}
-            value={input.value}
-            onChange={input.valueChangeHandler}
-            onBlur={input.inputBlurHandler}
-            hasError={input.hasError}
-          />
-        );
-      })} */}
-      <PortalActions errorMessages={errorMessages} fetchInfo={fetchHook} />
+      <PortalActions
+        errorMessages={errorMessages}
+        fetchInfo={fetchHook}
+        isFormLogin={isFormLogin}
+      />
     </form>
   );
 }

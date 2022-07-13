@@ -2,6 +2,7 @@ import classes from './styles/PortalForm.module.css';
 
 function PortalActions(props) {
   const { error, isLoading } = props.fetchInfo;
+  const buttonText = props.isFormLogin ? 'Sign In' : 'Sign Up';
 
   return (
     <>
@@ -16,7 +17,7 @@ function PortalActions(props) {
         </p>
       )}
       {isLoading && <p>Sending...</p>}
-      {!isLoading && <button>Sign In</button>}
+      {!isLoading && <button>{buttonText}</button>}
     </>
   );
 }

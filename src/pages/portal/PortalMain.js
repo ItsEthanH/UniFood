@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 import useFetch from '../../hooks/useFetch';
+import AuthContext from '../../context/AuthContext';
 
 import LandingTitle from '../landing/LandingTitle';
 
@@ -10,17 +11,18 @@ import classes from './styles/PortalMain.module.css';
 let isFormSubmitted = false;
 
 function PortalMain() {
-  const passwordRef = useRef();
-  const confirmPasswordRef = useRef();
-
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname;
 
+  const [isFormLogin, setIsFormLogin] = useState(path === '/portal/signin');
+  const [errorMessages, setErrorMessages] = useState([]);
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
+
   const fetchHook = useFetch();
   const response = fetchHook.response;
-
-  const [isFormLogin, setIsFormLogin] = useState(path === '/portal/signin');
 
   const emailRegex =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -126,22 +128,56 @@ function PortalMain() {
     return formIsValid;
   }
 
-  function submitHandler(event, options) {
+  function submitHandler(event) {
     event.preventDefault();
     isFormSubmitted = true;
     let isFormValid;
+    let options;
+    let endpoint;
 
     if (isFormLogin) {
       isFormValid = checkFormValidity(loginInputs);
+
+      if (!isFormValid) {
+        return;
+      }
+
+      endpoint = '/login';
+      options = {
+        method: 'POST',
+        body: JSON.stringify({
+          email: emailInput.value,
+          password: passwordLoginInput.value,
+        }),
+        header: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      };
     } else {
       isFormValid = checkFormValidity(registerInputs);
+
+      if (!isFormValid) {
+        return;
+      }
+
+      endpoint = '/register';
+      options = {
+        method: 'POST',
+        body: JSON.stringify({
+          firstName: fnameInput.value,
+          lastName: lnameInput.value,
+          email: emailInput.value,
+          password: passwordRegisterInput.value,
+          confirmPassword: confirmPasswordInput.value,
+        }),
+        header: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      };
     }
 
-    if (!isFormValid) {
-      return;
-    }
-
-    fetchHook.sendRequest('/login', options);
+    console.log('send');
+    fetchHook.sendRequest(endpoint, options);
   }
 
   useEffect(() => {
@@ -175,6 +211,9 @@ function PortalMain() {
       </p>
       <Outlet
         context={{
+          path,
+          errorMessages,
+          setErrorMessages,
           isFormLogin,
           isFormSubmitted,
           submitHandler,
