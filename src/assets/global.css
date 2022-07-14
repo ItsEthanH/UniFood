@@ -249,8 +249,8 @@ template {
   --clr-primary: #0fa50f;
   --clr-primary-dark: #0b860b;
   --clr-dark: #181818;
-  --clr-grey: #d3d1d1;
-  --clr-light: #ffffff;
+  --clr-grey: #909492;
+  --clr-error: #ca3e51;
 
   --swiper-theme-color: #0b860b;
 
@@ -277,6 +277,10 @@ body {
 hr {
   color: rgba(0, 0, 0, 0.2);
   margin: 0 1rem;
+}
+
+button {
+  font-family: var(--ff-body);
 }
 
 .primary-button {

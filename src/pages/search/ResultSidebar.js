@@ -5,9 +5,9 @@ import classes from './styles/ResultSidebar.module.css';
 import SectionTitle from '../../components/ui/SectionTitle';
 import ResultSidebarCard from './ResultSidebarCard';
 import ResultsPlaceholder from './ResultsPlaceholder';
-import ResultSidebarButton from './ResultSidebarButton';
+import ResultSidebarButton from './ResultButton';
 
-function ResultSidebar() {
+function ResultSidebar(props) {
   const [mealPlanItems, setMealPlanItems] = useState([]);
   const [shoppingListItems, setShoppingListItems] = useState([]);
 
@@ -88,12 +88,13 @@ function ResultSidebar() {
               name={item.name}
               src={item.src}
               onRemove={() => handleRemove(item.id, mealPlanItems)}
+              toggleModal={props.toggleModal}
             />
           );
         })}
 
         <ResultsPlaceholder />
-        <ResultSidebarButton text="Send to Meal Plan" />
+        {mealPlanItems.length > 0 && <ResultSidebarButton text="Send to Meal Plan" />}
       </ul>
       <SectionTitle white={true}>Shopping List</SectionTitle>
       <ul
@@ -115,7 +116,7 @@ function ResultSidebar() {
           );
         })}
         <ResultsPlaceholder shoppingList={true} />
-        <ResultSidebarButton text="Send to Shopping List" />
+        {shoppingListItems.length > 0 && <ResultSidebarButton text="Send to Shopping List" />}
       </ul>
     </aside>
   );

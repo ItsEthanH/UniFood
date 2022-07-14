@@ -16,6 +16,6 @@
 }
 
 .invalid {
-  color: #ca3e51;
-  border-color: #aa0b20;
+  color: var(--clr-error);
+  border-color: var(--clr-error);
 }

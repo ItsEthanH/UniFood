@@ -20,5 +20,5 @@ form .swap {
 }
 
 .error {
-  color: #ca3e51;
+  color: var(--clr-error);
 }
