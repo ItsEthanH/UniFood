@@ -35,7 +35,7 @@ function RecipePage() {
             ingredients={response.extendedIngredients}
           />
           <RecipeInstructions instructions={response.analyzedInstructions[0].steps} />
-          <RecipeNutrition />
+          <RecipeNutrition diets={response.diets} />
         </>
       )}
     </main>
