@@ -1,0 +1,29 @@
+.recommendation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1rem 2rem;
+  border-radius: 2rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+.recommendation:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  transition: 0.25s;
+}
+
+.recommendation img {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+
+.recommendation h4 {
+  font-size: var(--fs-800);
+  font-weight: 300;
+  margin: 0 0.5rem;
+  font-style: italic;
+}

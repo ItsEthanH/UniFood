@@ -10,10 +10,10 @@
 
 .modal {
   position: absolute;
-  margin: auto;
+  margin: 10rem auto;
   left: 0;
   right: 0;
-  bottom: 50%;
+  top: 0;
   width: fit-content;
   background-color: white;
   padding: 2rem;

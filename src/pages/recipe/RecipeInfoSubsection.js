@@ -5,24 +5,18 @@ import classes from './styles/RecipeInfoSubsection.module.css';
 import SectionTitle from '../../components/ui/SectionTitle';
 
 function RecipeInfoSubsection(props) {
+  function clickHandler() {
+    props.onClick(props.title);
+  }
+
   return (
     <div className={classes.subsection}>
-      <button
-        onClick={() => {
-          props.onClick(props.title);
-        }}
-      >
+      <button onClick={clickHandler}>
         <SectionTitle center={true}>{props.title}</SectionTitle>
         <p>{props.show ? '-' : '+'}</p>
       </button>
       <hr />
-      <div
-        className={`${classes.children} ${
-          props.show ? classes.show : classes.hide
-        }`}
-      >
-        {props.children}
-      </div>
+      <div className={`${props.show ? classes.show : classes.hide}`}>{props.children}</div>
     </div>
   );
 }
