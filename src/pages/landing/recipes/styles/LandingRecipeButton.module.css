@@ -1,6 +1,6 @@
 .button {
   font-size: var(--fs-800);
-  font-weight: 500;
+  font-weight: 400;
   margin: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 25px;
@@ -11,7 +11,7 @@
 
 .active {
   background-color: var(--clr-primary);
-  color: var(--clr-light);
+  color: white;
   transition: 0.25s ease background-color;
 }
 
