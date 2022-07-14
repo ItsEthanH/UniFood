@@ -42,10 +42,10 @@ function MealPlanWeekView() {
     700: {
       slidesPerView: 2,
     },
-    1300: {
+    1200: {
       slidesPerView: 3,
     },
-    1900: {
+    1800: {
       slidesPerView: 4,
     },
   };
