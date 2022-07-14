@@ -10,4 +10,6 @@
 .info {
   display: grid;
   grid-template-rows: repeat(3, min-content);
+  grid-template-columns: 100%;
+  min-width: 0;
 }

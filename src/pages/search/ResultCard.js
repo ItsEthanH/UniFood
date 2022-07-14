@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import RecipeIcon from '../recipe/RecipeIcon';
+import PlanOverlay from './PlanOverlay';
 
 import classes from './styles/ResultCard.module.css';
 import viewIcon from '../../assets/icons/view.png';
@@ -11,6 +12,7 @@ import cartIcon from '../../assets/icons/cart.png';
 
 function ResultCard(props) {
   const [tooltip, setTooltip] = useState('');
+  const [planOverlayShown, setPlanOverlayShown] = useState(false);
   const navigate = useNavigate();
 
   function drag(event) {
@@ -24,6 +26,14 @@ function ResultCard(props) {
     console.log(props.id);
   }
 
+  function toggleMealPlanModal() {
+    setPlanOverlayShown((prevState) => !prevState);
+  }
+
+  function submitMealPlan() {
+    return;
+  }
+
   return (
     <li
       key={props.id}
@@ -32,6 +42,7 @@ function ResultCard(props) {
       onDragStart={drag}
       className={`${classes.card} ${props.title ? classes.animation : ''}`}
     >
+      {planOverlayShown && <PlanOverlay onClose={toggleMealPlanModal} onSubmit={submitMealPlan} />}
       <div className={classes.image}>
         <img src={props.src} alt="ALT" />
       </div>
@@ -39,18 +50,14 @@ function ResultCard(props) {
         <h5>{props.title}</h5>
         <hr />
         <div className={classes.buttons}>
+          <RecipeIcon onClick={viewRecipe} setTooltip={setTooltip} tooltip="View" icon={viewIcon} />
+          <RecipeIcon setTooltip={setTooltip} tooltip="Favourite" icon={favouriteIcon} />
           <RecipeIcon
-            onClick={viewRecipe}
+            onClick={toggleMealPlanModal}
             setTooltip={setTooltip}
-            tooltip="View"
-            icon={viewIcon}
+            tooltip="Meal Plan"
+            icon={planIcon}
           />
-          <RecipeIcon
-            setTooltip={setTooltip}
-            tooltip="Favourite"
-            icon={favouriteIcon}
-          />
-          <RecipeIcon setTooltip={setTooltip} tooltip="Plan" icon={planIcon} />
           <RecipeIcon setTooltip={setTooltip} tooltip="Cart" icon={cartIcon} />
         </div>
         <hr />

@@ -22,6 +22,12 @@
   display: block;
 }
 
+.diet {
+  display: flex;
+  flex-flow: wrap row;
+  margin: 0 2rem;
+}
+
 .hide {
   display: none;
 }
