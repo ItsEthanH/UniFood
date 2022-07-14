@@ -5,8 +5,9 @@ import classes from './styles/ResultSidebar.module.css';
 import SectionTitle from '../../components/ui/SectionTitle';
 import ResultSidebarCard from './ResultSidebarCard';
 import ResultsPlaceholder from './ResultsPlaceholder';
+import ResultSidebarButton from './ResultSidebarButton';
 
-function ResultSidebar(props) {
+function ResultSidebar() {
   const [mealPlanItems, setMealPlanItems] = useState([]);
   const [shoppingListItems, setShoppingListItems] = useState([]);
 
@@ -55,7 +56,6 @@ function ResultSidebar(props) {
     }
 
     dragExit(location);
-    console.log(id);
   }
 
   function handleRemove(id, list) {
@@ -93,6 +93,7 @@ function ResultSidebar(props) {
         })}
 
         <ResultsPlaceholder />
+        <ResultSidebarButton text="Send to Meal Plan" />
       </ul>
       <SectionTitle white={true}>Shopping List</SectionTitle>
       <ul
@@ -113,8 +114,8 @@ function ResultSidebar(props) {
             />
           );
         })}
-
         <ResultsPlaceholder shoppingList={true} />
+        <ResultSidebarButton text="Send to Shopping List" />
       </ul>
     </aside>
   );

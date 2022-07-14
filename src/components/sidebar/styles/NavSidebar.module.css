@@ -1,11 +1,9 @@
 .navigation {
   display: flex;
   height: 100%;
-  top: 0;
   flex-direction: column;
   justify-content: space-between;
   background-color: black;
-  width: fit-content;
   padding: 1rem;
   grid-area: navigation;
 }
