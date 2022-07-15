@@ -33,7 +33,7 @@ function LandingRecipes() {
     }
     animationTimeout = setTimeout(() => {
       setAnimation(false);
-    }, 1000);
+    }, 750);
     // timout duration >= keyframes animation in css file
   }
 
