@@ -69,9 +69,6 @@ function RecipeNutrition(props) {
     }
   }, []);
 
-  console.log(diets);
-  console.log(dietArray);
-
   return (
     <RecipeSection info={true}>
       <RecipeInfoSubsection
