@@ -57,8 +57,8 @@ function RecipeInformation(props) {
       <hr />
       <div className={classes.ingredients}>
         <ul>
-          {props.ingredients.map((item) => (
-            <li>{item.name}</li>
+          {props.ingredients.map((item, index) => (
+            <li key={index}>{item.name}</li>
           ))}
         </ul>
       </div>

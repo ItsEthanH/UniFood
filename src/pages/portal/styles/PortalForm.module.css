@@ -4,7 +4,7 @@
 }
 
 .form button {
-  color: var(--clr-light);
+  color: white;
   background-color: var(--clr-primary);
   border: none;
   cursor: pointer;
