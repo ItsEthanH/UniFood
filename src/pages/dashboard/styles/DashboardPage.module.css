@@ -7,4 +7,17 @@
     'welcome welcome'
     'next-meal nutrition'
     'coming-up coming-up';
+  animation: FadeIn 0.8s ease-out forwards;
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

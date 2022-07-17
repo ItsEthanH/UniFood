@@ -25,6 +25,7 @@
 .diet {
   display: flex;
   flex-flow: wrap row;
+  justify-content: center;
   margin: 0 2rem;
 }
 

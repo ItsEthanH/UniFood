@@ -23,7 +23,6 @@ function ResultCard(props) {
 
   function viewRecipe() {
     navigate('/app/recipe/' + props.id);
-    console.log(props.id);
   }
 
   function toggleMealPlanModal() {

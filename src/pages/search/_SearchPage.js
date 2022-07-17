@@ -24,7 +24,9 @@ function _SearchPage() {
         {isLoading && <LoadingSpinner />}
         {error && <p>{error.message}</p>}
         {response &&
-          response.map((item) => <ResultCard title={item.title} src={item.image} id={item.id} />)}
+          response.map((item) => (
+            <ResultCard key={item.id} title={item.title} src={item.image} id={item.id} />
+          ))}
       </ul>
     </main>
   );

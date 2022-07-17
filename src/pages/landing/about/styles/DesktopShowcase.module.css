@@ -36,6 +36,36 @@
   color: white;
 }
 
+.fade .text {
+  animation: fadeFromLeft 0.75s;
+}
+
+.fade .image {
+  animation: fadeFromRight 0.75s;
+}
+
+@keyframes fadeFromLeft {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeFromRight {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
 .content {
   display: grid;
   grid-template-columns: 0.8fr 1fr;

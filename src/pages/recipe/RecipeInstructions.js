@@ -9,8 +9,8 @@ function RecipeInstructions(props) {
       <SectionTitle center={true}>Instructions</SectionTitle>
       <hr />
       <ol className={classes.instructions}>
-        {props.instructions.map((instruction) => (
-          <li>{instruction.step}</li>
+        {props.instructions.map((instruction, index) => (
+          <li key={index}>{instruction.step}</li>
         ))}
       </ol>
     </RecipeSection>
