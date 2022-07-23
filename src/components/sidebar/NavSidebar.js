@@ -31,56 +31,17 @@ function NavSiderbar() {
   }
 
   return (
-    <aside
-      className={classes.navigation}
-      onMouseEnter={showSidebar}
-      onMouseLeave={hideSidebar}
-    >
+    <aside className={classes.navigation} onMouseEnter={showSidebar} onMouseLeave={hideSidebar}>
       <nav>
-        <NavSidebarLink
-          shown={sidebarShown}
-          icon={dashboardIcon}
-          text="Dashboard"
-          to="/app"
-        />
-        <NavSidebarLink
-          shown={sidebarShown}
-          icon={planIcon}
-          text="Meal Plan"
-          to="/app/meal-plan"
-        />
-        <NavSidebarLink
-          shown={sidebarShown}
-          icon={favouriteIcon}
-          text="Favourites"
-          to=""
-        />
-        <NavSidebarLink
-          shown={sidebarShown}
-          icon={nutritionIcon}
-          text="Nutrition"
-          to=""
-        />
-        <NavSidebarLink
-          shown={sidebarShown}
-          icon={pantryIcon}
-          text="Pantry"
-          to=""
-        />
+        <NavSidebarLink shown={sidebarShown} icon={dashboardIcon} text="Dashboard" to="/app" />
+        <NavSidebarLink shown={sidebarShown} icon={planIcon} text="Meal Plan" to="/app/meal-plan" />
+        <NavSidebarLink shown={sidebarShown} icon={favouriteIcon} text="Favourites" to="" />
+        <NavSidebarLink shown={sidebarShown} icon={nutritionIcon} text="Nutrition" to="" />
+        <NavSidebarLink shown={sidebarShown} icon={pantryIcon} text="Pantry" to="" />
       </nav>
       <nav>
-        <NavSidebarLink
-          shown={sidebarShown}
-          icon={profileIcon}
-          text="Profile"
-          to=""
-        />
-        <NavSidebarLink
-          shown={sidebarShown}
-          icon={helpIcon}
-          text="Help"
-          to=""
-        />
+        <NavSidebarLink shown={sidebarShown} icon={profileIcon} text="Profile" to="" />
+        <NavSidebarLink shown={sidebarShown} icon={helpIcon} text="Help" to="" />
         <NavSidebarLink
           shown={sidebarShown}
           icon={logoutIcon}
