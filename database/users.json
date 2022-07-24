@@ -1,26 +1,2 @@
 [
-    {
-        "firstName": "Ethan",
-        "lastName": "Hawes",
-        "email": "ethanhawes@outlook.com",
-        "password": "cbb2790382f2b92a4cd7bcc520a2f7df5b7268383211ac78b42f50c6a2364335",
-        "salt": "8db52e34ecd54e2b8bef2482a07dce2b",
-        "apiUsername": "aea53f54-7a1c-4d2d-8fa4-51e5b38e5712",
-        "apiHash": "77ed23af6cd7393acb49abc3d88a4f38523055e5",
-        "tier": 0,
-        "timezone": "Europe/London",
-        "theme": 0
-    },
-    {
-        "firstName": "Etienne",
-        "lastName": "Brand",
-        "email": "e@b.com",
-        "password": "7f69d3d1bc1378c07be90786cbff8e30623f2c51f4b417526416742e2e0f567b",
-        "salt": "f2e8b3b9ee6243e98dda11733c5ac850",
-        "apiUsername": "fdc7efac-a3de-41a6-a1fc-3574358805ad",
-        "apiHash": "0adc17dfef5602bd7108cbecb230bb7d460f0e34",
-        "tier": 0,
-        "timezone": "Europe/London",
-        "theme": 0
-    }
 ]
