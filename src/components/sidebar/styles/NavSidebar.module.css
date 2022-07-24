@@ -1,0 +1,10 @@
+.navigation {
+  display: flex;
+  height: 100%;
+  width: min-content;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: black;
+  padding: 1rem;
+  grid-area: navigation;
+}

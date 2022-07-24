@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import classes from './HeaderSearch.module.css';
+import classes from './styles/HeaderSearch.module.css';
 
 function HeaderSearch() {
   const inputRef = useRef();

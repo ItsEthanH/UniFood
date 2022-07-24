@@ -1,0 +1,34 @@
+.subsection {
+  margin: 0.5rem 0;
+}
+
+.subsection button {
+  display: grid;
+  grid-template-columns: auto min-content;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.subsection p {
+  font-size: var(--fs-800);
+  font-weight: 300;
+}
+
+.show {
+  display: block;
+}
+
+.diet {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: center;
+  margin: 0 2rem;
+}
+
+.hide {
+  display: none;
+}

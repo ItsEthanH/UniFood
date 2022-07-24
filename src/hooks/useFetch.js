@@ -20,7 +20,6 @@ function useFetch() {
 
       const returnedData = await res.json();
       setResponse(returnedData.results);
-      console.log(returnedData);
     } catch (err) {
       setError(err);
     } finally {
@@ -28,7 +27,13 @@ function useFetch() {
     }
   }
 
-  return { sendRequest, response, isLoading, error };
+  function clearStates() {
+    setResponse(null);
+    setError(null);
+    setError(null);
+  }
+
+  return { sendRequest, clearStates, response, isLoading, error };
 }
 
 export default useFetch;

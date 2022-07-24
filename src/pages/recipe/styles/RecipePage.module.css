@@ -1,0 +1,35 @@
+.loading {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.recipe section {
+  opacity: 0;
+  animation: FadeIn 0.8s ease-out forwards;
+}
+
+.recipe section:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.recipe section:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

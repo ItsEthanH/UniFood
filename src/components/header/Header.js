@@ -3,7 +3,7 @@ import React from 'react';
 import HeaderLogo from './HeaderLogo';
 import HeaderSearch from './HeaderSearch';
 
-import classes from './Header.module.css';
+import classes from './styles/Header.module.css';
 
 function Header(props) {
   return (

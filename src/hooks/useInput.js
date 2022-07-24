@@ -15,6 +15,11 @@ function useInput(validateFn) {
     setIsTouched(true);
   }
 
+  function reset() {
+    setIsTouched(false);
+    setValue('');
+  }
+
   return {
     value,
     isValid,
@@ -22,6 +27,7 @@ function useInput(validateFn) {
     setIsTouched,
     valueChangeHandler,
     inputBlurHandler,
+    reset,
   };
 }
 

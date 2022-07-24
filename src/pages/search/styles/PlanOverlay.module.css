@@ -1,0 +1,49 @@
+.title {
+  font-size: var(--fs-800);
+  font-weight: 300;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+}
+
+.form fieldset {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  color: var(--clr-grey);
+  border: 1px solid var(--clr-grey);
+  border-radius: 8px;
+}
+
+.form input,
+.form select {
+  font-family: var(--ff-body);
+  font-size: var(--fs-600);
+  border: none;
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.form select {
+  background: transparent;
+}
+
+.form img {
+  margin-left: 1rem;
+  filter: invert(33%) sepia(99%) saturate(1494%) hue-rotate(96deg) brightness(102%) contrast(88%);
+}
+
+.form button {
+  margin: 1rem 0;
+  align-self: center;
+  cursor: pointer;
+}
+
+.error {
+  color: var(--clr-error);
+  text-align: center;
+}

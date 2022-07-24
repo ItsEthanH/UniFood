@@ -13,7 +13,7 @@ def getRecipeInfo(recipeID):
 
     # Try and get the recipe information for a given ID (catching API quota exceptions, mainly)
     try:
-        recipeInfo = getRecipeInformation(recipeID, False)
+        recipeInfo = getRecipeInformation(recipeID, True)
 
     except: return {}
 

@@ -1,0 +1,87 @@
+.card {
+  display: grid;
+  grid-template-areas:
+    'image text'
+    'date date';
+  width: 100%;
+  background-color: white;
+  font-size: var(--fs-600);
+  font-weight: 300;
+  margin: 1rem 0;
+  list-style: none;
+  grid-template-columns: 1.5fr 2fr;
+}
+
+.card img {
+  display: inline;
+  max-width: 100%;
+  min-height: 100%;
+}
+
+.text {
+  position: relative;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  grid-area: text;
+}
+
+.text > p {
+  margin: 0.5rem;
+  padding-bottom: 0.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.controls {
+  text-align: center;
+}
+
+.controls button {
+  border: none;
+  outline: none;
+  background: none;
+  font-weight: 300;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+.controls button,
+.qty {
+  display: inline;
+}
+
+.remove {
+  position: absolute;
+  top: 0;
+  right: 0.2rem;
+  background: none;
+  border: none;
+  font-weight: 300;
+}
+
+.remove:hover {
+  color: var(--clr-primary);
+  cursor: pointer;
+}
+
+.date {
+  grid-area: date;
+  text-align: center;
+  color: white;
+  background: black;
+  padding: 0.5rem;
+  border: none;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.servings {
+  font-size: var(--fs-400);
+}
+
+.removed {
+  transform: translateX(-40rem);
+  transition: 0.5s;
+}

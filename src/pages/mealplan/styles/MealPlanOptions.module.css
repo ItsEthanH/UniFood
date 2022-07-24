@@ -1,0 +1,15 @@
+.options {
+  padding: 1.5rem;
+  border-bottom: 2px solid var(--clr-grey);
+}
+
+.options a {
+  margin-right: 5rem;
+  text-decoration: none;
+  color: var(--clr-grey);
+  font-size: var(--fs-800);
+}
+
+.options .active {
+  color: black;
+}

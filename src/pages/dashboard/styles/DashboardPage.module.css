@@ -1,0 +1,23 @@
+.dashboard {
+  margin: 1rem 2rem;
+  display: grid;
+  grid-template-rows: min-content auto auto;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    'welcome welcome'
+    'next-meal nutrition'
+    'coming-up coming-up';
+  animation: FadeIn 0.8s ease-out forwards;
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
