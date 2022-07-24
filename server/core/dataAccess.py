@@ -62,8 +62,8 @@ def authenticateUser(credentials):
             password, __salt = hash(credentials["password"], user["salt"])
 
             if password == user["password"]: 
-                jwtGenerate(user)
-                return True
+                jwt = jwtGenerate(user)
+                return True, jwt
             else: return False
 
         else: continue
