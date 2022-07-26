@@ -56,7 +56,7 @@ function PortalPage() {
       return;
     }
 
-    login();
+    login(fetchInfo.response[1]);
     navigate('/app', { replace: true });
   }, [fetchInfo.response]);
 

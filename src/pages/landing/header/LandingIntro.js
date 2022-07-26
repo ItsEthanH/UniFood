@@ -13,7 +13,7 @@ function LandingIntro() {
   const { login } = useContext(AuthContext);
 
   function guestLogin() {
-    login();
+    login('123');
   }
 
   return (
