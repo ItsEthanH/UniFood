@@ -15,11 +15,15 @@ function useFetch() {
     setIsLoading(true);
 
     try {
+      // start comment
+
       if (!options.headers) {
         options.headers = {};
       }
       options.headers.Authentication = 'Bearer Token';
       options.headers.Authorization = authCtx.token;
+
+      //end comment
 
       const res = await fetch(url + endpoint, options);
 
