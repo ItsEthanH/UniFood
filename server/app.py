@@ -1,4 +1,3 @@
-from audioop import add
 import time, json
 from flask import Flask, make_response, request, session
 from recipes.recipes import getRecipes, getRecipeInfo, getRelatedRecipes
@@ -18,7 +17,7 @@ def index():
 @app.route('/search', methods = ['GET'])
 def search():
 
-    print(request.cookies.get('JWT'))
+    print(request.headers.get('Authorization'))
 
     global results 
 
@@ -32,6 +31,8 @@ def search():
 
 @app.route('/recipe', methods = ['GET'])
 def recipe():
+
+    print(request.headers.get('Authorization'))
 
     results = getRecipeInfo(request.args.get('recipeID'))
     # TO BE ADDED LATER WHEN HOOKED UP
@@ -52,6 +53,8 @@ def recipe():
 
 @app.route('/mealplanner', methods = ['GET', 'POST'])
 def mealplan():
+
+    print(request.headers.get('Authorization'))
 
     if request.method == 'GET':
 
@@ -128,9 +131,6 @@ def register():
     resp = make_response({"results": registerUser(request.data)})
     resp.headers['Access-Control-Allow-Origin'] = '*'
 
-    results = json.loads(resp.data)
-    session["jwt"] = results['results'][1]
-
     return resp
 
 
@@ -139,9 +139,6 @@ def login():
 
     resp = make_response({"results": authenticateUser(request.data)})
     resp.headers['Access-Control-Allow-Origin'] = '*'
-
-    results = json.loads(resp.data)
-    resp.set_cookie("JWT", results['results'][1])
 
     return resp
 

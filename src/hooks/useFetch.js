@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import AuthContext from '../context/AuthContext';
 
 function useFetch() {
-  const url = 'http://127.0.0.1:5000';
+  const url = 'http://127.0.0.1:3000';
   const [response, setResponse] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const [error, setError] = useState(null);
@@ -20,8 +20,8 @@ function useFetch() {
       if (!options.headers) {
         options.headers = {};
       }
-      options.headers.Authentication = 'Bearer Token';
-      options.headers.Authorization = authCtx.token;
+      // options.headers.Authentication = 'Bearer Token';
+      options.headers.Authorization = "Bearer " + localStorage.getItem('token');
 
       //end comment
 
