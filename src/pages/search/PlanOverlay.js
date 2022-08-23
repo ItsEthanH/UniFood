@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 import Modal from '../../components/ui/Modal';
-import ResultButton from './ResultButton';
+import ResultButton from './ResultSidebarButton';
 
 import classes from './styles/PlanOverlay.module.css';
 import meal from '../../assets/svgs/meal.svg';
