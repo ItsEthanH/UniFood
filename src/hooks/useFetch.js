@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useState, useContext } from 'react';
 import AuthContext from '../context/AuthContext';
 
@@ -32,6 +33,10 @@ function useFetch() {
       setIsLoading(false);
     }
   }
+
+  useEffect(() => {
+    console.log(response);
+  }, [response]);
 
   return { sendRequest, response, isLoading, error };
 }

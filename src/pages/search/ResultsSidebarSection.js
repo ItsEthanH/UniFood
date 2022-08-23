@@ -6,9 +6,9 @@ import ResultSidebarButton from './ResultSidebarButton';
 import ResultsPlaceholder from './ResultsPlaceholder';
 
 function ResultsSidebarSection(props) {
-  const { title, id, items, setItems } = props;
+  const { title, sectionId, items, setItems } = props;
 
-  const sectionRef = useRef(id);
+  const sectionRef = useRef(sectionId);
 
   function checkDraggable(event) {
     if (!event.dataTransfer.getData('text/title')) {
@@ -36,12 +36,17 @@ function ResultsSidebarSection(props) {
 
     let name = event.dataTransfer.getData('text/title');
     let src = event.dataTransfer.getData('text/src');
-    let id = name.replace(/\s+/g, '') + Math.floor(Math.random() * 10000);
+    let recipeId = event.dataTransfer.getData('text/id');
+    let uniqueId = name.replace(/\s+/g, '') + Math.floor(Math.random() * 1000000);
 
     const item = {
-      id: id,
+      recipeId: recipeId,
+      uniqueId: uniqueId,
       name: name,
       src: src,
+      quantity: 1,
+      date: null,
+      type: null,
     };
 
     if (location === sectionRef) {
@@ -51,22 +56,28 @@ function ResultsSidebarSection(props) {
     dragExit(location);
   }
 
-  function handleRemove(id, list) {
-    const newItems = list.filter((item) => item.id !== id);
+  function handleRemove(id) {
+    const newItems = items.filter((item) => item.id !== id);
     setItems(newItems);
   }
 
-  function onButtonClick() {
-    props.onButtonClick(id);
+  function mealCatagoriseHandler(recipeId, type, dateObj, quantity) {
+    props.onMealCatagorise(sectionId, recipeId, type, dateObj, quantity);
+  }
+
+  function sidebarSubmitHandler() {
+    props.onSidebarSubmit(sectionId);
   }
 
   const renderedCards = items.map((item) => (
     <ResultSidebarCard
-      id={item.id}
-      key={item.id}
+      uniqueId={item.uniqueId}
+      recipeId={item.recipeId}
+      key={item.uniqueId}
       name={item.name}
       src={item.src}
-      onRemove={() => handleRemove(item.id, shoppingListItems)}
+      onRemove={() => handleRemove(item.uniqueId)}
+      onCatagorise={mealCatagoriseHandler}
     />
   ));
 
@@ -83,7 +94,11 @@ function ResultsSidebarSection(props) {
         {renderedCards}
         <ResultsPlaceholder />
         {items.length > 0 && (
-          <ResultSidebarButton type={id} text={`Add to ${title}`} onClick={onButtonClick} />
+          <ResultSidebarButton
+            type={sectionId}
+            text={`Add to ${title}`}
+            onClick={sidebarSubmitHandler}
+          />
         )}
       </ul>
     </>

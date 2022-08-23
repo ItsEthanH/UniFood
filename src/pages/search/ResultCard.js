@@ -16,6 +16,7 @@ function ResultCard(props) {
   const navigate = useNavigate();
 
   function drag(event) {
+    event.dataTransfer.setData('text/id', props.id);
     event.dataTransfer.setData('text/title', props.title);
     event.dataTransfer.setData('text/src', props.src);
     event.dataTransfer.effectAllowed = 'move';

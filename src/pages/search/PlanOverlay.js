@@ -59,7 +59,7 @@ function PlanOverlay(props) {
           <input type="date" ref={dateRef} />
           <img src={date} alt="Date" />
         </fieldset>
-        <ResultButton text="Set plan" />
+        <ResultButton text="Set plan" onClick={() => null} />
       </form>
       {errorMessages && errorMessages.map((msg) => <p className={classes.error}>{msg}</p>)}
     </Modal>
