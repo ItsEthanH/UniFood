@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 import Modal from '../../components/ui/Modal';
-import ResultButton from './ResultButton';
+import ResultButton from './ResultSidebarButton';
 
 import classes from './styles/PlanOverlay.module.css';
 import meal from '../../assets/svgs/meal.svg';
@@ -59,7 +59,7 @@ function PlanOverlay(props) {
           <input type="date" ref={dateRef} />
           <img src={date} alt="Date" />
         </fieldset>
-        <ResultButton text="Set plan" />
+        <ResultButton text="Set plan" onClick={() => null} />
       </form>
       {errorMessages && errorMessages.map((msg) => <p className={classes.error}>{msg}</p>)}
     </Modal>

@@ -12,7 +12,10 @@ function ResultSidebarCard(props) {
   const [removed, setRemoved] = useState(false);
 
   function increaseQuantity() {
-    setQuantity((qty) => qty + 1);
+    setQuantity((qty) => {
+      updateItemQuantity(qty + 1);
+      return qty + 1;
+    });
   }
 
   function decreaseQuantity() {
@@ -21,7 +24,14 @@ function ResultSidebarCard(props) {
       remove();
       return;
     }
-    setQuantity((qty) => qty - 1);
+    setQuantity((qty) => {
+      updateItemQuantity(qty - 1);
+      return qty - 1;
+    });
+  }
+
+  function updateItemQuantity(qty) {
+    props.onCatagorise(props.id, null, null, qty);
   }
 
   function remove() {
@@ -43,10 +53,15 @@ function ResultSidebarCard(props) {
     const ordinal = getOrdinal(date);
 
     setDate(`${type} - ${days[day]} ${date}${ordinal}`);
+    props.onCatagorise(props.id, type, dateObj, quantity);
   }
 
   return (
-    <li id={props.id} className={`${classes.card} ${removed ? classes.removed : ''}`}>
+    <li
+      uniqueId={props.uniqueId}
+      recipeId={props.recipeId}
+      className={`${classes.card} ${removed ? classes.removed : ''}`}
+    >
       {planOverlayShown && <PlanOverlay onClose={toggleModal} onSubmit={modalSubmitHandler} />}
       <img src={props.src} alt="placeholder" />
       <div className={classes.text}>
