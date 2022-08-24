@@ -26,7 +26,7 @@ def addToMealPlan(t, i):
         }
     }
 
-    decoded = jwt.decode(t.split()[1], enc_key, algorithms=["HS256"])
+    decoded = jwt.decode(t, enc_key, algorithms=["HS256"])
 
     mealPlanAddTo(decoded["api"], decoded["hsh"], payload)
 
