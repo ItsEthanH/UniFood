@@ -7,9 +7,28 @@ from core.spoonacular import mealPlanAddTo, mealPlanGetDay, mealPlanGetWeek
 
 def addToMealPlan(t, i):
 
-    decoded = jwt.decode(t, enc_key, algorithms=["HS256"])
+    if i["type"] == "Breakfast":
+        i["type"] = 1
+    elif i["type"] == "Lunch":
+        i["type"] = 2
+    else: i["type"] = 3
 
-    mealPlanAddTo(decoded["api"], decoded["hsh"], i)
+    payload = {
+        "date": i["date"]/1000,
+        "slot": i["type"],
+        "position": 0,
+        "type": "RECIPE",
+        "value": {
+            "id": i["recipeId"],
+            "servings": i["quantity"],
+            "title": i["name"],
+            "imageType": "jpg"
+        }
+    }
+
+    decoded = jwt.decode(t.split()[1], enc_key, algorithms=["HS256"])
+
+    mealPlanAddTo(decoded["api"], decoded["hsh"], payload)
 
 
 def getMealPlanDay(t, date):

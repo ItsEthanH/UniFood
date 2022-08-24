@@ -5,6 +5,7 @@ from core.dataAccess import registerUser, authenticateUser
 from mealplanning.mealplan import addToMealPlan, getMealPlanWeek
 from config import enc_key
 from mealplanning.mealplan import getMealPlanDay
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = enc_key
@@ -54,55 +55,14 @@ def recipe():
 @app.route('/mealplanner', methods = ['GET', 'POST'])
 def mealplan():
 
-    print(request.headers.get('Authorization'))
-
     if request.method == 'GET':
 
-        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJFdGllbm5lIEJyYW5kIiwibHZsIjowLCJ0bXoiOiJFdXJvcGUvTG9uZG9uIiwidGhtIjowLCJhcGkiOiJmZGM3ZWZhYy1hM2RlLTQxYTYtYTFmYy0zNTc0MzU4ODA1YWQiLCJoc2giOiIwYWRjMTdkZmVmNTYwMmJkNzEwOGNiZWNiMjMwYmI3ZDQ2MGYwZTM0IiwiZXhwIjoxNjU4NzExODU5fQ.9Timps8AVY6rx9zXqWcz2zhKJWk6JZcOVpk2rcEI9Mc"
+        time = request.args.get('date')
+        time = datetime.utcfromtimestamp(int(time)).strftime('%Y-%m-%d')/1000
 
-        # items = [
-        #     {
-        #         "date": 1657824217,
-        #         "slot": 1,
-        #         "position": 0,
-        #         "type": "RECIPE",
-        #         "value": {
-        #             "id": 639120,
-        #             "servings": 4,
-        #             "title": "Chocolate Oatmeal",
-        #             "imageType": "jpg",
-        #         }
-        #     },
-        #     {
-        #         "date": 1657824217,
-        #         "slot": 2,
-        #         "position": 0,
-        #         "type": "RECIPE",
-        #         "value": {
-        #             "id": 296213,
-        #             "servings": 2,
-        #             "title": "Spinach Salad with Roasted Vegetables and Spiced Chickpea",
-        #             "imageType": "jpg",
-        #         }
-        #     },
-        #     {
-        #         "date": 1657824217,
-        #         "slot": 3,
-        #         "position": 0,
-        #         "type": "RECIPE",
-        #         "value": {
-        #             "id": 654212,
-        #             "servings": 6,
-        #             "title": "Oven Roast",
-        #             "imageType": "jpg",
-        #         }
-        #     }
-        # ]
-
-        # addToMealPlan(token, items)
         if request.args.get('period') == 'day':
 
-            results = getMealPlanDay(token, "2022-07-13")
+            results = getMealPlanDay(request.headers.get('Authorization'), time)
             resp = make_response({"results": results})
             resp.headers['Access-Control-Allow-Origin'] = '*'
 
@@ -110,19 +70,19 @@ def mealplan():
         
         elif request.args.get('period') == 'week':
 
-            results = getMealPlanWeek(token, "2022-07-13")
+            results = getMealPlanWeek(request.headers.get('Authorization'), time)
             resp = make_response({"results": results})
             resp.headers['Access-Control-Allow-Origin'] = '*'
 
             return resp
 
-        #return {"results": getMealPlanDay(token, "2022-07-13")}
-
     elif request.method == 'POST':
 
-        results = addToMealPlan()
+        results = addToMealPlan(request.headers.get('Authorization'), json.loads(request.data)[0])
         resp = make_response({"results": results})
         resp.headers['Access-Control-Allow-Origin'] = '*'
+
+        return resp
 
 
 @app.route('/register', methods = ['POST'])
