@@ -1,3 +1,4 @@
+import base64
 import json, uuid
 from core.tokens import jwtGenerate
 from core.spoonacular import mealPlanConnectUser
@@ -15,8 +16,22 @@ def registerUser(user):
     f.close()
 
     for u in users:
-        if user["email"] == u["email"]: return False
+        decrypted = decrypt(str.encode(u))
+        decrypted = json.loads(decrypted.replace("'", "\""))
+
+        i = users.index(u)
+        users[i] = decrypted
+        
+
+        if user["email"] == decrypted["email"]: return False
         else: continue
+        
+
+    # for u in users:
+    #     # u = decrypt(u)
+
+    #     if user["email"] == u["email"]: return False
+    #     else: continue
 
 
     # Check if password and confirm-password fields match; return if not
@@ -36,7 +51,19 @@ def registerUser(user):
         user.pop("confirmPassword")
 
         # Insert user into database
-        insertInto("../database/users.json", user)
+        users.append(user)
+
+        for user in users:
+            encrypted = encrypt(str(user))
+            decoded = encrypted.decode()
+            i = users.index(user)
+            users[i] = decoded
+
+        users = json.dumps(users, indent=4)
+
+        f = open("../database/users.json", "w")
+        f.write(users)
+        f.close()
 
         # Generate JWT for user's initial session
         return True, jwtGenerate(user)
@@ -55,6 +82,13 @@ def authenticateUser(credentials):
     f.close()
 
     for user in users:
+        decrypted = decrypt(str.encode(user))
+        decrypted = json.loads(decrypted.replace("'", "\""))
+
+        i = users.index(user)
+        users[i] = decrypted
+
+    for user in users:
 
         if credentials["email"] == user["email"]:
 
@@ -69,20 +103,3 @@ def authenticateUser(credentials):
         else: continue
 
     return False
-
-
-# ----------------------------------------------------------------------------------- #
-
-# Helper function to write to files
-def insertInto(filepath, data):
-
-    f = open(filepath, "r")
-    x = json.loads(f.read())
-    f.close()
-
-    x.append(data)
-    x = json.dumps(x, indent=4)
-
-    f = open(filepath, "w")
-    f.write(x)
-    f.close()

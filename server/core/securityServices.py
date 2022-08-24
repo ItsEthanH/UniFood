@@ -17,9 +17,9 @@ def hash(input, salt):
 
 def encrypt(plaintext):
 
-    return f.encrypt(json.dumps(plaintext).encode())
+    return f.encrypt(str.encode(plaintext))
 
 
 def decrypt(ciphertext):
-
-    return json.loads(f.decrypt(ciphertext))
+    
+    return f.decrypt(ciphertext).decode()
