@@ -58,8 +58,9 @@ function ResultSidebarCard(props) {
 
   return (
     <li
-      uniqueId={props.uniqueId}
-      recipeId={props.recipeId}
+      key={props.uniqueid}
+      uniqueid={props.uniqueid}
+      recipeid={props.recipeid}
       className={`${classes.card} ${removed ? classes.removed : ''}`}
     >
       {planOverlayShown && <PlanOverlay onClose={toggleModal} onSubmit={modalSubmitHandler} />}

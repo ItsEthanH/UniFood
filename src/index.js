@@ -32,7 +32,7 @@ function Index() {
             <Route path="/app/results" element={<SearchPage />}>
               <Route path=":searchQuery" />
             </Route>
-            <Route path="/app/recipe/:recipeId" element={<RecipePage />} />
+            <Route path="/app/recipe/:recipeid" element={<RecipePage />} />
             <Route path="/app/meal-plan" element={<MealPlanPage />} />
             <Route path="/app/*" element={<Navigate to="/app" />} />
           </Route>
