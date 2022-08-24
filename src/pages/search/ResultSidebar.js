@@ -16,7 +16,7 @@ function ResultSidebar() {
 
     const requestOptions = {
       method: 'POST',
-      body: JSON.stringify,
+      body: JSON.stringify(mealPlanItems),
     };
 
     console.log(mealPlanItems);
