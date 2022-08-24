@@ -4,6 +4,7 @@ import jwt, time, re, json
 
 # Generate a fresh JWT
 def jwtGenerate(userDetails):
+    print(userDetails)
 
     # Assemble JWT payload
     payload = {
