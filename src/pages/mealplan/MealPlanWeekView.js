@@ -1,3 +1,4 @@
+import useFetch from '../../hooks/useFetch';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 
@@ -6,8 +7,14 @@ import MealPlanWeekDay from './MealPlanWeekDay';
 import classes from './styles/MealPlanWeekView.module.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { useEffect } from 'react';
 
 function MealPlanWeekView() {
+  const dateObj = new Date();
+  const isoDate = dateObj.toISOString().slice(0, 10);
+
+  const { sendRequest, response, isLoading, error } = useFetch();
+
   const DUMMY_MEAL_DAY = [
     {
       id: '645175',
@@ -37,6 +44,14 @@ function MealPlanWeekView() {
       protein: 46,
     },
   ];
+
+  useEffect(() => {
+    sendRequest(`/mealplanner?period=week&date=${isoDate}`, {});
+  }, []);
+
+  useEffect(() => {
+    console.log(response);
+  }, []);
 
   const carouselBreakpoints = {
     700: {
