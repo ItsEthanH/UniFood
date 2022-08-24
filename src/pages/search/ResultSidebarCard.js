@@ -61,7 +61,7 @@ function ResultSidebarCard(props) {
       key={props.uniqueid}
       uniqueid={props.uniqueid}
       recipeid={props.recipeid}
-      className={`${classes.card} ${removed ? classes.removed : ''}`}
+      className={`${classes.card} ${removed || props.removed ? classes.removed : ''}`}
     >
       {planOverlayShown && <PlanOverlay onClose={toggleModal} onSubmit={modalSubmitHandler} />}
       <img src={props.src} alt="placeholder" />
