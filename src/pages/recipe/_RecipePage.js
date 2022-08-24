@@ -11,7 +11,7 @@ import LoadingSpinner from '../../components/ui/LoadingSpinner';
 
 function RecipePage() {
   const params = useParams();
-  const endpoint = '/recipe?recipeid=' + params.recipeid;
+  const endpoint = '/recipe?recipeID=' + params.recipeid;
   const { sendRequest, response, isLoading, error } = useFetch();
 
   useEffect(() => {

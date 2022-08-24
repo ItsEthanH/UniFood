@@ -19,9 +19,6 @@ function ResultSidebar() {
       body: JSON.stringify(mealPlanItems),
     };
 
-    console.log(mealPlanItems);
-    console.log(shoppingListItems);
-
     sendRequest('/mealplanner', requestOptions);
   }
 
