@@ -35,13 +35,13 @@ def getMealPlanDay(t, date):
 
     decoded = jwt.decode(t, enc_key, algorithms=["HS256"])
 
-    return mealPlanGetDay(decoded["api"], decoded["hsh"], date)
+    return mealPlanGetDay(decoded["api"], decoded["hsh"], str(date))
 
 
 def getMealPlanWeek(t, date):
 
     decoded = jwt.decode(t, enc_key, algorithms=["HS256"])
 
-    return mealPlanGetWeek(decoded["api"], decoded["hsh"], date)
+    return mealPlanGetWeek(decoded["api"], decoded["hsh"], str(date))
 
 # addToMealPlan(token, items)
