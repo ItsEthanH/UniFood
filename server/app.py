@@ -1,13 +1,21 @@
-import time, json
+import time, json, mysql.connector
 from flask import Flask, make_response, request, session
 from recipes.recipes import getRecipes, getRecipeInfo, getRelatedRecipes
 from core.dataAccess import registerUser, authenticateUser
 from mealplanning.mealplan import addToMealPlan, getMealPlanWeek
-from config import enc_key
+from config import enc_key, MYSQL_ADDON_HOST, MYSQL_ADDON_USER, MYSQL_ADDON_PASSWORD
 from mealplanning.mealplan import getMealPlanDay
 
 app = Flask(__name__)
 app.secret_key = enc_key
+
+db = mysql.connector.connect(
+    host=MYSQL_ADDON_HOST,
+    user=MYSQL_ADDON_USER,
+    password=MYSQL_ADDON_PASSWORD
+)
+
+sql = db.cursor()
 
 @app.route('/time')
 def index():

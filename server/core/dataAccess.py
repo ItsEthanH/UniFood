@@ -1,38 +1,23 @@
-import base64
-import json, uuid
+import json, uuid, mysql.connector
 from core.tokens import jwtGenerate
 from core.spoonacular import mealPlanConnectUser
 from core.securityServices import hash, encrypt, decrypt
+# from config import MYSQL_ADDON_HOST, MYSQL_ADDON_USER, MYSQL_ADDON_PASSWORD, MYSQL_ADDON_DB
+from config import db, sql
+
+# db = mysql.connector.connect(
+#     host=MYSQL_ADDON_HOST,
+#     user=MYSQL_ADDON_USER,
+#     password=MYSQL_ADDON_PASSWORD,
+#     database=MYSQL_ADDON_DB
+# )
+
+# sql = db.cursor()
 
 # Registering a new user (Signing up)
 def registerUser(user):
 
-    # user = user.to_dict()
     user = json.loads(user)
-
-    # Open file and check email is not already registered
-    f = open("../database/users.json", "r")
-    users = json.loads(f.read())
-    f.close()
-
-    for u in users:
-        decrypted = decrypt(str.encode(u))
-        decrypted = json.loads(decrypted.replace("'", "\""))
-
-        i = users.index(u)
-        users[i] = decrypted
-        
-
-        if user["email"] == decrypted["email"]: return False
-        else: continue
-        
-
-    # for u in users:
-    #     # u = decrypt(u)
-
-    #     if user["email"] == u["email"]: return False
-    #     else: continue
-
 
     # Check if password and confirm-password fields match; return if not
     if user["password"] == user["confirmPassword"]:
@@ -50,22 +35,9 @@ def registerUser(user):
         user["theme"] = 0
         user.pop("confirmPassword")
 
-        # Insert user into database
-        users.append(user)
+        sql.callproc('RegisterUser', [user["firstName"], user["lastName"], user["email"], user["password"], user["salt"], user["apiUsername"], user["apiHash"], user["tier"], user["timezone"], user["theme"],])
+        db.commit()
 
-        for user in users:
-            encrypted = encrypt(str(user))
-            decoded = encrypted.decode()
-            i = users.index(user)
-            users[i] = decoded
-
-        users = json.dumps(users, indent=4)
-
-        f = open("../database/users.json", "w")
-        f.write(users)
-        f.close()
-
-        # Generate JWT for user's initial session
         return True, jwtGenerate(user)
         
     else: return False
@@ -76,30 +48,36 @@ def authenticateUser(credentials):
 
     credentials = json.loads(credentials)
 
-    # Open file and check email is not already registered
-    f = open("../database/users.json", "r")
-    users = json.loads(f.read())
-    f.close()
+    sql.callproc('AuthenticateUser', [credentials["email"],])
 
-    for user in users:
-        decrypted = decrypt(str.encode(user))
-        decrypted = json.loads(decrypted.replace("'", "\""))
+    for result in sql.stored_results():
+        details = result.fetchall()
 
-        i = users.index(user)
-        users[i] = decrypted
+    detup = details[0]
+    p_password = detup[0]
+    p_salt = detup[1]
 
-    for user in users:
+    password, __salt = hash(credentials["password"], p_salt)
 
-        if credentials["email"] == user["email"]:
+    if password == p_password:
 
-            # Hash password credential with salt of found user
-            password, __salt = hash(credentials["password"], user["salt"])
+        sql.callproc('GetUser', [credentials["email"],])
 
-            if password == user["password"]: 
-                jwt = jwtGenerate(user)
-                return True, jwt
-            else: return False
+        for result in sql.stored_results():
+            user = result.fetchall()
+        
+        (first_name, last_name, tier, theme, timezone, api_username, api_hash) = user[0]
 
-        else: continue
+        user = {
+            "firstName": first_name,
+            "lastName": last_name,
+            "tier": tier,
+            "timezone": timezone,
+            "apiUsername": api_username,
+            "apiHash": api_hash,
+            "theme": theme
+        }
 
-    return False
+        jwt = jwtGenerate(user)
+        return True, jwt
+    else: return False

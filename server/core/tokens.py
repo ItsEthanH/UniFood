@@ -1,10 +1,9 @@
-from config import enc_key
+from config import enc_key, db, sql
 import jwt, time, re, json
 # from core.dataAccess import insertInto
 
 # Generate a fresh JWT
 def jwtGenerate(userDetails):
-    print(userDetails)
 
     # Assemble JWT payload
     payload = {
@@ -21,18 +20,15 @@ def jwtGenerate(userDetails):
     encodedJWT = jwt.encode(payload, enc_key, algorithm="HS256")
     splitJWT = re.split("\.", encodedJWT)
     signature = splitJWT[2]
+    
+    sql.callproc('GetUserIDByAPIHash', [userDetails["apiUsername"],])
+    for result in sql.stored_results():
+        userID = result.fetchall()[0]
 
-    # Store JWT details
-    f = open("../database/tokens.json", "r")
-    x = json.loads(f.read())
-    f.close()
+    userID = userID[0]
 
-    x.append({"sig": signature, "exp": payload["exp"]})
-    x = json.dumps(x, indent=4)
-
-    f = open("../database/tokens.json", "w")
-    f.write(x)
-    f.close()
+    sql.callproc('GenerateJWT', [signature, payload["exp"], userID,])
+    db.commit()
 
     # Return encoded JWT
     return encodedJWT
