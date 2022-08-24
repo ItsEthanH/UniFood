@@ -1,7 +1,7 @@
 .navigation {
   display: flex;
   height: 100%;
-  width: min-content;
+  width: max-content;
   flex-direction: column;
   justify-content: space-between;
   background-color: black;

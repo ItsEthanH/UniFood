@@ -5,7 +5,7 @@ import NavSidebarLink from './NavSidebarLink';
 
 import dashboardIcon from '../../assets/svgs/dashboard.svg';
 import planIcon from '../../assets/svgs/plan.svg';
-import favouriteIcon from '../../assets/svgs/favourite.svg';
+import bookIcon from '../../assets/svgs/book.svg';
 import nutritionIcon from '../../assets/svgs/nutrition.svg';
 import pantryIcon from '../../assets/svgs/pantry.svg';
 import profileIcon from '../../assets/svgs/profile.svg';
@@ -35,7 +35,7 @@ function NavSiderbar() {
       <nav>
         <NavSidebarLink shown={sidebarShown} icon={dashboardIcon} text="Dashboard" to="/app" />
         <NavSidebarLink shown={sidebarShown} icon={planIcon} text="Meal Plan" to="/app/meal-plan" />
-        <NavSidebarLink shown={sidebarShown} icon={favouriteIcon} text="Favourites" to="" />
+        <NavSidebarLink shown={sidebarShown} icon={bookIcon} text="Recipe Book" to="" />
         <NavSidebarLink shown={sidebarShown} icon={nutritionIcon} text="Nutrition" to="" />
         <NavSidebarLink shown={sidebarShown} icon={pantryIcon} text="Pantry" to="" />
       </nav>
