@@ -20,7 +20,7 @@ def jwtGenerate(userDetails):
     encodedJWT = jwt.encode(payload, enc_key, algorithm="HS256")
     splitJWT = re.split("\.", encodedJWT)
     signature = splitJWT[2]
-    
+
     sql.callproc('GetUserIDByAPIHash', [userDetails["apiUsername"],])
     for result in sql.stored_results():
         userID = result.fetchall()[0]
@@ -37,25 +37,19 @@ def jwtGenerate(userDetails):
 # Validate an existing JWT
 def jwtValidate(token):
 
-    f = open("../database/tokens.json", "r")
-    jwts = json.loads(f.read())
-    f.close()
-
     # Split the JWT to retrieve the signature
     splitJWT = re.split("\.", token)
     sig = splitJWT[2]
 
-    # Loop through JWTs
-    for j in jwts:
+    sql.callproc('ValidateJWT', [sig,])
+    for result in sql.stored_results():
+        expiry = result.fetchall()[0]
 
-        # Return True if the signature matches and the expiry time has not passed
-        if sig == j["sig"] and int(time.time()) < j["exp"]:
-            return True
-        else:
-            continue
-        
-    # If all JWTs have been checked and there is no valid one, return False
-    return False
+    expiry = expiry[0]
+
+    if int(time.time()) < expiry:
+        return True
+    else: return False
 
 
 # Read data from an existing JWT
@@ -72,28 +66,28 @@ def jwtRead(token, keys: list):
 
 
 # Remove an existing JWT (optional in case user is a guest)
-def jwtRemove(*jwt):
+# def jwtRemove(*jwt):
 
-    if jwt != None:
-        splitJWT = re.split("\.", jwt)
-        signature = splitJWT[2]
+#     if jwt != None:
+#         splitJWT = re.split("\.", jwt)
+#         signature = splitJWT[2]
 
-        f = open("../database/tokens.json", "r")
-        tokens = json.loads(f.read())
-        f.close()
+#         f = open("../database/tokens.json", "r")
+#         tokens = json.loads(f.read())
+#         f.close()
 
-        for token in tokens:
+#         for token in tokens:
 
-            if signature == token["sig"]: 
-                tokens.pop(tokens.index(token))
-                break
+#             if signature == token["sig"]: 
+#                 tokens.pop(tokens.index(token))
+#                 break
 
-            else: continue
+#             else: continue
 
-        tokens = json.dumps(tokens, indent=4)
+#         tokens = json.dumps(tokens, indent=4)
 
-        f = open("../database/tokens.json", "w")
-        f.write(tokens)
-        f.close()
+#         f = open("../database/tokens.json", "w")
+#         f.write(tokens)
+#         f.close()
 
-        return
+#         return
