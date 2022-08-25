@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import SectionTitle from '../../components/ui/SectionTitle';
 import ResultSidebarCard from './ResultSidebarCard';
@@ -8,6 +8,8 @@ import ResultsPlaceholder from './ResultsPlaceholder';
 function ResultsSidebarSection(props) {
   const { title, sectionId, items, setItems } = props;
 
+  const [removed, setRemoved] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const sectionRef = useRef(sectionId);
 
   function checkDraggable(event) {
@@ -34,14 +36,16 @@ function ResultsSidebarSection(props) {
     event.preventDefault();
     checkDraggable(event);
 
+    setSubmitted(false);
+
     let name = event.dataTransfer.getData('text/title');
     let src = event.dataTransfer.getData('text/src');
-    let recipeId = event.dataTransfer.getData('text/id');
-    let uniqueId = name.replace(/\s+/g, '') + Math.floor(Math.random() * 1000000);
+    let recipeid = event.dataTransfer.getData('text/id');
+    let uniqueid = name.replace(/\s+/g, '') + Math.floor(Math.random() * 1000000);
 
     const item = {
-      recipeId: recipeId,
-      uniqueId: uniqueId,
+      recipeid: recipeid,
+      uniqueid: uniqueid,
       name: name,
       src: src,
       quantity: 1,
@@ -57,26 +61,34 @@ function ResultsSidebarSection(props) {
   }
 
   function handleRemove(id) {
-    const newItems = items.filter((item) => item.id !== id);
+    const newItems = items.filter((item) => item.uniqueid !== id);
     setItems(newItems);
   }
 
-  function mealCatagoriseHandler(recipeId, type, dateObj, quantity) {
-    props.onMealCatagorise(sectionId, recipeId, type, dateObj, quantity);
+  function mealCatagoriseHandler(recipeid, type, dateObj, quantity) {
+    props.onMealCatagorise(sectionId, recipeid, type, dateObj, quantity);
   }
 
   function sidebarSubmitHandler() {
     props.onSidebarSubmit(sectionId);
+
+    setRemoved(true);
+    setTimeout(() => {
+      setSubmitted(true);
+      setItems([]);
+      setRemoved(false);
+    }, 250);
   }
 
   const renderedCards = items.map((item) => (
     <ResultSidebarCard
-      uniqueId={item.uniqueId}
-      recipeId={item.recipeId}
-      key={item.uniqueId}
+      uniqueid={item.uniqueid}
+      recipeid={item.recipeid}
+      key={item.uniqueid}
       name={item.name}
       src={item.src}
-      onRemove={() => handleRemove(item.uniqueId)}
+      removed={removed}
+      onRemove={() => handleRemove(item.uniqueid)}
       onCatagorise={mealCatagoriseHandler}
     />
   ));
@@ -92,7 +104,7 @@ function ResultsSidebarSection(props) {
         onDrop={drop.bind(null, sectionRef)}
       >
         {renderedCards}
-        <ResultsPlaceholder />
+        <ResultsPlaceholder submitted={submitted} />
         {items.length > 0 && (
           <ResultSidebarButton
             type={sectionId}

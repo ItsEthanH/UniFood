@@ -63,14 +63,13 @@ def recipe():
 @app.route('/mealplanner', methods = ['GET', 'POST'])
 def mealplan():
 
-    if request.method == 'GET':
+    jwt = request.headers.get('Authorization').split()[1]
 
-        time = request.args.get('date')
-        time = datetime.utcfromtimestamp(int(time)).strftime('%Y-%m-%d')/1000
+    if request.method == 'GET':
 
         if request.args.get('period') == 'day':
 
-            results = getMealPlanDay(request.headers.get('Authorization'), time)
+            results = getMealPlanDay(jwt, request.args.get('date'))
             resp = make_response({"results": results})
             resp.headers['Access-Control-Allow-Origin'] = '*'
 
@@ -78,7 +77,7 @@ def mealplan():
         
         elif request.args.get('period') == 'week':
 
-            results = getMealPlanWeek(request.headers.get('Authorization'), time)
+            results = getMealPlanWeek(jwt, request.args.get('date'))
             resp = make_response({"results": results})
             resp.headers['Access-Control-Allow-Origin'] = '*'
 
@@ -86,7 +85,7 @@ def mealplan():
 
     elif request.method == 'POST':
 
-        results = addToMealPlan(request.headers.get('Authorization'), json.loads(request.data)[0])
+        results = addToMealPlan(jwt, json.loads(request.data)[0])
         resp = make_response({"results": results})
         resp.headers['Access-Control-Allow-Origin'] = '*'
 

@@ -34,10 +34,6 @@ function useFetch() {
     }
   }
 
-  useEffect(() => {
-    console.log(response);
-  }, [response]);
-
   return { sendRequest, response, isLoading, error };
 }
 

@@ -19,15 +19,12 @@ function ResultSidebar() {
       body: JSON.stringify(mealPlanItems),
     };
 
-    console.log(mealPlanItems);
-    console.log(shoppingListItems);
-
     sendRequest('/mealplanner', requestOptions);
   }
 
-  function updateMealItems(sectionId, recipeId, type, dateObj, quantity) {
+  function updateMealItems(sectionId, recipeid, type, dateObj, quantity) {
     if (sectionId === 'MEAL_PLAN') {
-      const foundMealPlanItem = mealPlanItems.find((item) => item.id === recipeId);
+      const foundMealPlanItem = mealPlanItems.find((item) => item.id === recipeid);
       if (type) foundMealPlanItem.type = type;
       if (dateObj) foundMealPlanItem.date = dateObj.getTime();
       if (quantity) foundMealPlanItem.quantity = quantity;
@@ -38,7 +35,7 @@ function ResultSidebar() {
 
       //for when shopping list backend is completed
 
-      // const foundShoppingItem = shoppingListItems.find((item) => item.id === recipeId);
+      // const foundShoppingItem = shoppingListItems.find((item) => item.id === recipeid);
       // if (type) foundShoppingItem.type = type;
       // if (dateObj) foundShoppingItem.date = dateObj.getTime();
       // if (quantity) foundShoppingItem.quantity = quantity;

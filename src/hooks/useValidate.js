@@ -5,11 +5,8 @@ function adfs(submissionStatus, ...fieldsToValidate) {
   let dependancies = [submissionStatus];
 
   for (const field of fieldsToValidate) {
-    console.log(field);
     dependancies.push(field.value);
   }
-
-  console.log(dependancies);
 
   useEffect(() => {
     setErrorMessages([]);
