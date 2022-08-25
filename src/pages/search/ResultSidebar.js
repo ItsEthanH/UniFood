@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import useFetch from '../../hooks/useFetch';
 
-import classes from './styles/ResultSidebar.module.css';
-
+import SecondarySidebar from '../../components/sidebar/SecondarySidebar';
 import ResultsSidebarSection from './ResultsSidebarSection';
 
 function ResultSidebar() {
@@ -43,7 +42,7 @@ function ResultSidebar() {
   }
 
   return (
-    <aside className={classes.sidebar}>
+    <SecondarySidebar>
       <ResultsSidebarSection
         title="Meal Plan"
         sectionId="MEAL_PLAN"
@@ -60,7 +59,7 @@ function ResultSidebar() {
         onSidebarSubmit={sidebarSubmitHandler}
         onMealCatagorise={updateMealItems}
       />
-    </aside>
+    </SecondarySidebar>
   );
 }
 

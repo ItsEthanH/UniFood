@@ -5,6 +5,8 @@ import ResultSidebarCard from './ResultSidebarCard';
 import ResultSidebarButton from './ResultSidebarButton';
 import ResultsPlaceholder from './ResultsPlaceholder';
 
+import classes from './styles/ResultsSidebarSection.module.css';
+
 function ResultsSidebarSection(props) {
   const { title, sectionId, items, setItems } = props;
 
@@ -102,6 +104,7 @@ function ResultsSidebarSection(props) {
         onDragOver={dragOver}
         onDragExit={dragExit.bind(null, sectionRef)}
         onDrop={drop.bind(null, sectionRef)}
+        className={classes.list}
       >
         {renderedCards}
         <ResultsPlaceholder submitted={submitted} />

@@ -6,12 +6,3 @@
   background-color: #212121;
   padding: 1rem 1rem 2rem 1rem;
 }
-
-.sidebar ul {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding: 0 0.5rem;
-  border-radius: 0.5rem;
-}
