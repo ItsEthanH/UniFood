@@ -1,8 +1,8 @@
 import classes from './styles/MealPlanOptions.module.css';
 
-function MealPlanOptions() {
+function MealPlanOptions(props) {
   return (
-    <section className={classes.options}>
+    <section className={`${classes.options} ${props.styles}`}>
       <a className={classes.active} href="/app/meal-plan">
         View Current Plan: <span className="color-primary">Week</span>
       </a>
