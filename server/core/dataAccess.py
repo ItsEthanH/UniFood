@@ -2,17 +2,7 @@ import json, uuid, mysql.connector
 from core.tokens import jwtGenerate
 from core.spoonacular import mealPlanConnectUser
 from core.securityServices import hash, encrypt, decrypt
-# from config import MYSQL_ADDON_HOST, MYSQL_ADDON_USER, MYSQL_ADDON_PASSWORD, MYSQL_ADDON_DB
 from config import db, sql
-
-# db = mysql.connector.connect(
-#     host=MYSQL_ADDON_HOST,
-#     user=MYSQL_ADDON_USER,
-#     password=MYSQL_ADDON_PASSWORD,
-#     database=MYSQL_ADDON_DB
-# )
-
-# sql = db.cursor()
 
 # Registering a new user (Signing up)
 def registerUser(user):
