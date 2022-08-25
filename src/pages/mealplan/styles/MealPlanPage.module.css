@@ -10,8 +10,8 @@
 
 .week {
   grid-template-areas: 'sidebar options' 'sidebar mealplan';
-  grid-template-columns: 1fr 5fr;
-  grid-template-rows: min-content 100vh;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: min-content auto;
 }
 
 .options {

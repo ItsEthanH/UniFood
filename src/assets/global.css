@@ -282,6 +282,7 @@ hr {
 
 button {
   font-family: var(--ff-body);
+  cursor: pointer;
 }
 
 .primary-button {
@@ -290,7 +291,6 @@ button {
   font-size: var(--fs-800);
   border-radius: 50px;
   letter-spacing: 1px;
-  cursor: pointer;
 }
 
 .primary-button > * {
@@ -307,7 +307,6 @@ button {
   color: var(--clr-primary);
   border-radius: 50px;
   letter-spacing: 1px;
-  cursor: pointer;
 }
 
 .outline-button > * {

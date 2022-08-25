@@ -25,7 +25,6 @@
   border: none;
   outline: none;
   width: 100%;
-  cursor: pointer;
 }
 
 .form select {
@@ -40,7 +39,6 @@
 .form button {
   margin: 1rem 0;
   align-self: center;
-  cursor: pointer;
 }
 
 .error {
