@@ -16,8 +16,8 @@ function MealPlanDayView(props) {
         time="45 minutes"
       />
       <MealPlanDayCard
-        meal="Breakfast"
-        title="Raisin and Walnut Granola"
+        meal="Lunch"
+        title="Meal short name"
         calories={100}
         carbs={50}
         fat={20}
@@ -26,8 +26,8 @@ function MealPlanDayView(props) {
         time="45 minutes"
       />
       <MealPlanDayCard
-        meal="Breakfast"
-        title="Raisin and Walnut Granola"
+        meal="Dinner"
+        title="Meal with a really long name that needs two lines"
         calories={100}
         carbs={50}
         fat={20}
