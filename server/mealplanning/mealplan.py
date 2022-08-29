@@ -19,7 +19,7 @@ def addToMealPlan(t, i):
         "position": 0,
         "type": "RECIPE",
         "value": {
-            "id": i["recipeId"],
+            "id": i["recipeid"],
             "servings": i["quantity"],
             "title": i["name"],
             "imageType": "jpg"
