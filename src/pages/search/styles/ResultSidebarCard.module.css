@@ -43,7 +43,7 @@
   outline: none;
   background: none;
   font-weight: 300;
-  cursor: pointer;
+
   margin: 0 0.5rem;
 }
 
@@ -63,7 +63,6 @@
 
 .remove:hover {
   color: var(--clr-primary);
-  cursor: pointer;
 }
 
 .date {
@@ -74,7 +73,6 @@
   padding: 0.5rem;
   border: none;
   font-weight: 300;
-  cursor: pointer;
 }
 
 .servings {

@@ -250,6 +250,7 @@ template {
   --clr-primary-dark: #0b860b;
   --clr-dark: #181818;
   --clr-grey: #909492;
+  --clr-warning: #e4cd01;
   --clr-error: #ca3e51;
 
   --swiper-theme-color: #0b860b;
@@ -281,6 +282,7 @@ hr {
 
 button {
   font-family: var(--ff-body);
+  cursor: pointer;
 }
 
 .primary-button {
@@ -289,7 +291,6 @@ button {
   font-size: var(--fs-800);
   border-radius: 50px;
   letter-spacing: 1px;
-  cursor: pointer;
 }
 
 .primary-button > * {
@@ -306,7 +307,6 @@ button {
   color: var(--clr-primary);
   border-radius: 50px;
   letter-spacing: 1px;
-  cursor: pointer;
 }
 
 .outline-button > * {

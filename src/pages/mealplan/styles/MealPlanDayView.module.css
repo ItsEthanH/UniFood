@@ -1,0 +1,26 @@
+.view {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-around;
+  align-items: center;
+  margin: 5rem;
+}
+
+@media screen and (min-width: 1100px) {
+  .view {
+    gap: 2rem;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .view {
+    gap: 5rem;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .view {
+    gap: 10rem;
+  }
+}

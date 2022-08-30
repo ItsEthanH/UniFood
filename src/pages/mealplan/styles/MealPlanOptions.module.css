@@ -1,15 +1,26 @@
 .options {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
   padding: 1.5rem;
   border-bottom: 2px solid var(--clr-grey);
 }
 
-.options a {
-  margin-right: 5rem;
+.options a,
+.options button {
   text-decoration: none;
   color: var(--clr-grey);
   font-size: var(--fs-800);
+  border: none;
+  background: none;
 }
 
 .options .active {
   color: black;
+}
+
+@media screen and (max-width: 1500px) {
+  .options a {
+    font-size: var(--fs-600);
+  }
 }

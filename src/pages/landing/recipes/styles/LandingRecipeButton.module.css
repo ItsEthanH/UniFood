@@ -6,7 +6,6 @@
   border-radius: 25px;
   border: 2px solid var(--clr-primary);
   background: transparent;
-  cursor: pointer;
 }
 
 .active {

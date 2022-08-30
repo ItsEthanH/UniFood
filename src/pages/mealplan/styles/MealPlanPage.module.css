@@ -1,6 +1,27 @@
 .main {
   display: grid;
+  overflow: hidden;
   grid-template-rows: min-content auto;
-  grid-template-columns: 96vw;
-  overflow-x: hidden;
+}
+
+.day {
+  grid-template-areas: 'sidebar options' 'sidebar mealplan';
+  grid-template-columns: 1fr 4fr;
+}
+
+.week {
+  grid-template-areas: 'options' 'mealplan';
+  grid-template-columns: 100vw;
+}
+
+.options {
+  grid-area: options;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.mealplan {
+  grid-area: mealplan;
 }

@@ -1,0 +1,115 @@
+.card {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.title,
+.nutrition,
+.actions {
+  text-align: center;
+  font-weight: 300;
+  font-size: var(--fs-600);
+}
+
+.title,
+.actions {
+  margin: 1rem 1.5rem;
+}
+
+.nutrition {
+  margin: 1.5rem 1rem;
+}
+
+.title h3 {
+  font-size: var(--fs-900);
+  font-weight: normal;
+}
+
+.title h4 {
+  font-size: var(--fs-800);
+  font-weight: 300;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.nutrition > p {
+  font-size: var(--fs-800);
+  margin: 0.5rem 0;
+}
+
+.macros {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.3rem 0;
+}
+
+.macros > p:nth-child(2) {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  padding: 0 0.75rem;
+}
+
+.actions > button {
+  font-weight: 300;
+  padding: 0.5rem 1.5rem;
+  margin: 1rem 0;
+  color: white;
+  background-color: var(--clr-primary);
+  border: none;
+  border-radius: 999px;
+  align-self: center;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem;
+}
+
+.info > p:last-child {
+  color: var(--clr-primary);
+  margin-left: 2rem;
+}
+
+.divider {
+  border-bottom: 1px solid var(--clr-grey);
+}
+
+.instructions p {
+  /* height is fixed at 3x the font size, taking into account the line height */
+  /* this prevents the next/prev buttons moving about with differing text lengths */
+  height: calc(var(--fs-600) * 3.6);
+  text-align: center;
+  font-size: var(--fs-600);
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0.5rem;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem;
+}
+
+.buttons button {
+  background: none;
+  border: none;
+}

@@ -7,7 +7,7 @@
   color: white;
   background-color: var(--clr-primary);
   border: none;
-  cursor: pointer;
+
   border-radius: 50px;
   width: fit-content;
   padding: 1rem 2rem;
