@@ -16,8 +16,9 @@ function MealPlanWeekView() {
   const { sendRequest, response, isLoading, error } = useFetch();
 
   useEffect(() => {
-    sendRequest(`/mealplanner?period=week&date=${isoDate}`, {});
+    sendRequest(`/mealplanner?period=day&date=${isoDate}`, {});
   }, []);
+  console.log(response);
 
   const noRecipes = (
     <div className={classes.none}>

@@ -84,32 +84,20 @@
   border-bottom: 1px solid var(--clr-grey);
 }
 
-.instructions p {
-  /* height is fixed at 3x the font size, taking into account the line height */
-  /* this prevents the next/prev buttons moving about with differing text lengths */
-  height: calc(var(--fs-600) * 3.6);
-  text-align: center;
+.ingredients {
+  max-height: 8rem;
+  overflow-y: scroll;
+}
+
+.ingredients ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  list-style: none;
+  align-items: center;
+}
+
+.ingredients li {
   font-size: var(--fs-600);
-  font-weight: 300;
-  line-height: 1.2;
-  margin: 0.5rem;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* number of lines to show */
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 1rem;
-}
-
-.buttons button {
-  background: none;
-  border: none;
+  text-align: center;
+  margin: 0.25rem 0;
 }

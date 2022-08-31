@@ -25,14 +25,6 @@
   margin: 0.5rem 0;
 }
 
-.ingredients {
-  display: flex;
-  flex-flow: wrap row;
-  justify-content: center;
-  overflow-y: auto;
-  width: 100%;
-}
-
 .ingredients ul {
   display: grid;
   grid-template-columns: 1fr 1fr;
