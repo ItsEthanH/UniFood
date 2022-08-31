@@ -1,4 +1,4 @@
-import json, uuid, mysql.connector
+import json, uuid
 from core.tokens import jwtGenerate
 from core.spoonacular import mealPlanConnectUser
 from core.securityServices import hash, encrypt, decrypt
