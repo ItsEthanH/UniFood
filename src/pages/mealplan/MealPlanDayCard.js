@@ -1,15 +1,11 @@
 import { useState } from 'react';
-
-import placeholder from '../../assets/placeholders/placeholder-recommendation.jpg';
+import { useNavigate } from 'react-router-dom';
 
 import classes from './styles/MealPlanDayCard.module.css';
 
 function MealPlanDayCard(props) {
+  const navigate = useNavigate();
   const [hover, setHover] = useState(false);
-
-  function buttonClickHandler() {
-    return null;
-  }
 
   function cardHoverHandler() {
     setHover(true);
@@ -17,7 +13,10 @@ function MealPlanDayCard(props) {
 
   function cardUnhoverHandler() {
     setHover(false);
-    setStepNumber(0);
+  }
+
+  function viewClickHandler() {
+    navigate(`/app/recipe/${props.id}`);
   }
 
   const DUMMY_INGREDIENTS = [
@@ -38,7 +37,10 @@ function MealPlanDayCard(props) {
   return (
     <div className={classes.card} onMouseEnter={cardHoverHandler} onMouseLeave={cardUnhoverHandler}>
       <div className={classes.image}>
-        <img src={placeholder} alt="PLACEHOLDER" />
+        <img
+          src={`https://spoonacular.com/recipeImages/${props.id}-556x370.jpg`}
+          alt="PLACEHOLDER"
+        />
       </div>
 
       <div className={classes.title}>
@@ -69,7 +71,7 @@ function MealPlanDayCard(props) {
           <p>{props.time}</p>
         </div>
         <div className={classes.view}></div>
-        <button>View Full Recipe</button>
+        <button onClick={viewClickHandler}>View Full Recipe</button>
         {!hover && <p>Hover over the card to view ingredients</p>}
       </div>
 

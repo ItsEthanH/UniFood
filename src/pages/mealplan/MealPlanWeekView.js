@@ -1,4 +1,3 @@
-import useFetch from '../../hooks/useFetch';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 
@@ -7,19 +6,8 @@ import MealPlanWeekDay from './MealPlanWeekDay';
 import classes from './styles/MealPlanWeekView.module.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { useEffect } from 'react';
 
 function MealPlanWeekView() {
-  const dateObj = new Date();
-  const isoDate = dateObj.toISOString().slice(0, 10);
-
-  const { sendRequest, response, isLoading, error } = useFetch();
-
-  useEffect(() => {
-    sendRequest(`/mealplanner?period=day&date=${isoDate}`, {});
-  }, []);
-  console.log(response);
-
   const noRecipes = (
     <div className={classes.none}>
       <p className={classes['none-heading']}>No meal plan found!</p>
@@ -74,8 +62,9 @@ function MealPlanWeekView() {
 
   return (
     <section className={classes.view}>
+      {noRecipes}
       {/* {response && response.days.length === 0 && noRecipes} */}
-      <Swiper
+      {/* <Swiper
         modules={[Navigation]}
         spaceBetween={0}
         slidesPerView={3.5}
@@ -97,7 +86,7 @@ function MealPlanWeekView() {
         <SwiperSlide>
           <MealPlanWeekDay day="Friday" meals={DUMMY_MEAL_DAY} />
         </SwiperSlide>
-      </Swiper>
+      </Swiper> */}
     </section>
   );
 }
