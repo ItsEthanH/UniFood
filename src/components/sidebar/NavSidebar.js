@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
+import useFetch from '../../hooks/useFetch';
 
 import NavSidebarLink from './NavSidebarLink';
 
@@ -17,6 +18,7 @@ import classes from './styles/NavSidebar.module.css';
 function NavSiderbar() {
   const [sidebarShown, setSidebarShown] = useState(false);
   const authCtx = useContext(AuthContext);
+  const { sendRequest, response } = useFetch();
 
   function showSidebar() {
     setSidebarShown(true);
@@ -27,8 +29,12 @@ function NavSiderbar() {
   }
 
   function logoutHandler() {
-    authCtx.logout();
+    sendRequest('/logout').then(() => {
+      authCtx.logout();
+    });
   }
+
+  console.log(response);
 
   return (
     <aside className={classes.navigation} onMouseEnter={showSidebar} onMouseLeave={hideSidebar}>

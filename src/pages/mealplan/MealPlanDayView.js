@@ -6,33 +6,36 @@ function MealPlanDayView(props) {
   return (
     <div className={`${classes.view} ${props.styles}`}>
       <MealPlanDayCard
+        id={props.breakfast.value.id}
         meal="Breakfast"
-        title="Raisin and Walnut Granola"
+        title={props.breakfast.value.title}
         calories={100}
         carbs={50}
         fat={20}
         protein={35}
-        servings={2}
+        servings={props.breakfast.value.servings}
         time="45 minutes"
       />
       <MealPlanDayCard
+        id={props.lunch.value.id}
         meal="Lunch"
-        title="Meal short name"
+        title={props.lunch.value.title}
         calories={100}
         carbs={50}
         fat={20}
         protein={35}
-        servings={2}
+        servings={props.lunch.value.servings}
         time="45 minutes"
       />
       <MealPlanDayCard
+        id={props.dinner.value.id}
         meal="Dinner"
-        title="Meal with a really long name that needs two lines"
+        title={props.dinner.value.title}
         calories={100}
         carbs={50}
         fat={20}
         protein={35}
-        servings={2}
+        servings={props.dinner.value.servings}
         time="45 minutes"
       />
     </div>

@@ -1,16 +1,11 @@
 import { useState } from 'react';
-
-import placeholder from '../../assets/placeholders/placeholder-recommendation.jpg';
+import { useNavigate } from 'react-router-dom';
 
 import classes from './styles/MealPlanDayCard.module.css';
 
 function MealPlanDayCard(props) {
+  const navigate = useNavigate();
   const [hover, setHover] = useState(false);
-  const [stepNumber, setStepNumber] = useState(0);
-
-  function buttonClickHandler() {
-    return null;
-  }
 
   function cardHoverHandler() {
     setHover(true);
@@ -18,30 +13,34 @@ function MealPlanDayCard(props) {
 
   function cardUnhoverHandler() {
     setHover(false);
-    setStepNumber(0);
   }
 
-  function changeInstruction(direction) {
-    if (direction === 'NEXT' && stepNumber !== DUMMY_INSTRUCTIONS.length - 1) {
-      setStepNumber((prevStep) => prevStep + 1);
-    }
-    if (direction === 'PREV' && stepNumber !== 0) {
-      setStepNumber((prevStep) => prevStep - 1);
-    }
+  function viewClickHandler() {
+    navigate(`/app/recipe/${props.id}`);
   }
 
-  const DUMMY_INSTRUCTIONS = [
-    'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, adipisci! Ipsa amet qui labore accusantium.',
-    'Nam earum incidunt id laboriosam deserunt, iste, eaque fugit minima corrupti, consequatur consectetur laborum excepturi?',
-    'Earum, quis quisquam beatae cumque est cum explicabo vitae quos quo omnis eaque possimus repudiandae?',
-    'Velit commodi dolorum enim magni porro maxime vitae sequi, ex cum debitis quas voluptatem repudiandae.',
-    'Ad quae vitae cupiditate, totam ipsa dolorum, ex id tenetur dolor amet doloribus quam obcaecati?',
+  const DUMMY_INGREDIENTS = [
+    'Lorem, ipsum.',
+    'Ut, suscipit?',
+    'In, quo?',
+    'Repellendus, magni.',
+    'Laudantium, officia.',
+    'Qui, deleniti.',
+    'Amet, delectus!',
+    'Dignissimos, aut.',
+    'Ad, consequuntur?',
+    'Magni, quasi.',
   ];
+
+  const renderedIngredients = DUMMY_INGREDIENTS.map((item) => <li>{item}</li>);
 
   return (
     <div className={classes.card} onMouseEnter={cardHoverHandler} onMouseLeave={cardUnhoverHandler}>
       <div className={classes.image}>
-        <img src={placeholder} alt="PLACEHOLDER" />
+        <img
+          src={`https://spoonacular.com/recipeImages/${props.id}-556x370.jpg`}
+          alt="PLACEHOLDER"
+        />
       </div>
 
       <div className={classes.title}>
@@ -72,16 +71,13 @@ function MealPlanDayCard(props) {
           <p>{props.time}</p>
         </div>
         <div className={classes.view}></div>
-        <button onClick={buttonClickHandler}>View Full Recipe</button>
-        {!hover && <p>Hover over the card to view instructions</p>}
+        <button onClick={viewClickHandler}>View Full Recipe</button>
+        {!hover && <p>Hover over the card to view ingredients</p>}
       </div>
+
       {hover && (
-        <div className={classes.instructions}>
-          <p>{DUMMY_INSTRUCTIONS[stepNumber]}</p>
-          <div className={classes.buttons}>
-            <button onClick={changeInstruction.bind(null, 'PREV')}>Prev</button>
-            <button onClick={changeInstruction.bind(null, 'NEXT')}>Next</button>
-          </div>
+        <div className={classes.ingredients}>
+          <ul>{renderedIngredients}</ul>
         </div>
       )}
     </div>
