@@ -14,27 +14,22 @@ function useFetch() {
     setError(null);
     setIsLoading(true);
 
-    if (!options.headers) options.headers = {};
-    options.headers.Authorization = 'Bearer ' + authCtx.token;
+    try {
+      if (!options.headers) options.headers = {};
+      options.headers.Authorization = 'Bearer ' + authCtx.token;
 
-    const res = await fetch(url + endpoint, options);
-
-    if (!res.ok) {
+      const res = await fetch(url + endpoint, options);
+      const data = await res.json();
+      setResponse(data.results);
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+      // console.group('Fetch Error');
+      // console.log(err);
+      // console.groupEnd();
+    } finally {
       setIsLoading(false);
-      setResponse(null);
-      setError(response);
-
-      console.group('Fetch Error');
-      console.log(response);
-      console.groupEnd();
-      return;
     }
-
-    const data = await res.json();
-
-    setResponse(data.results);
-    setIsLoading(false);
-    setError(null);
   }
 
   return { sendRequest, response, isLoading, error };

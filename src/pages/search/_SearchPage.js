@@ -24,7 +24,7 @@ function _SearchPage() {
       <ResultSidebar />
       <ul className={classes.list}>
         {isLoading && <LoadingSpinner />}
-        {error && <p>{error.message}</p>}
+        {error && <p>{error}</p>}
         {response &&
           response.map((item) => (
             <ResultCard key={item.id} title={item.title} src={item.image} id={item.id} />

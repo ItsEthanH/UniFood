@@ -62,6 +62,7 @@ function MealPlanPage() {
         </>
       )}
       {isLoading && <LoadingSpinner />}
+      {error && <p>{error}</p>}
     </main>
   );
 }

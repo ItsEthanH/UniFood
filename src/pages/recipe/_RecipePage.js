@@ -38,6 +38,7 @@ function RecipePage() {
           <RecipeNutrition diets={response.diets} />
         </>
       )}
+      {error && <p>{error}</p>}
     </main>
   );
 }

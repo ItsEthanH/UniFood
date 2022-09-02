@@ -46,8 +46,10 @@ function PortalPage() {
       setErrorMessages(['Your email or password is incorrect. Please try again!']);
       return;
     }
-    if (fetchInfo.response === false && !isFormLogin) {
-      setErrorMessages(['There was an error with registration. Please try again!']);
+
+    if (fetchInfo.error && !isFormLogin) {
+      console.log(fetchInfo.error);
+      setErrorMessages([fetchInfo.error]);
       return;
     }
 
@@ -77,7 +79,7 @@ function PortalPage() {
           <span className="color-primary">{title}</span>
         </LandingTitle>
 
-        <p className={classes.tagline}>{tagline}</p>
+        <p className={classes.tagline}>{[tagline]}</p>
 
         <Outlet context={outletContext} />
       </main>
