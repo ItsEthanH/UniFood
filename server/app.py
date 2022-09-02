@@ -6,6 +6,7 @@ from mealplanning.mealplan import addToMealPlan, getMealPlanWeek
 from config import enc_key
 from mealplanning.mealplan import getMealPlanDay
 from datetime import datetime
+from core.tokens import jwtRemove
 
 app = Flask(__name__)
 app.secret_key = enc_key
@@ -104,6 +105,8 @@ def login():
 
 @app.route('/logout', methods = ['GET'])
 def logout():
+
+    jwtRemove(request.headers.get('Authorization').split()[1])
 
     resp = make_response()
     resp.headers['Access-Control-Allow-Origin'] = '*'
