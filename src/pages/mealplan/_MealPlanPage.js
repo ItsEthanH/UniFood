@@ -23,7 +23,7 @@ function MealPlanPage() {
   const requestPeriod = isDayView ? 'day' : 'week';
 
   useEffect(() => {
-    sendRequest(`/mealplanner?period=${requestPeriod}&date=${isoDate}`, {});
+    sendRequest(`/mealplanner?period=${requestPeriod}&date=${isoDate}`);
   }, []);
 
   function changePageHandler() {

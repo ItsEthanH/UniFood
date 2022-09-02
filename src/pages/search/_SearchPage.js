@@ -13,8 +13,10 @@ function _SearchPage() {
   const endpoint = '/search?query=' + params.searchQuery;
   const { sendRequest, response, isLoading, error } = useFetch();
 
+  console.log(error);
+
   useEffect(() => {
-    sendRequest(endpoint, {});
+    sendRequest(endpoint);
   }, [endpoint]);
 
   return (

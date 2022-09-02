@@ -9,6 +9,7 @@ const AuthContext = React.createContext({
 
 export function AuthContextProvider(props) {
   let initialToken;
+
   const storedToken = localStorage.getItem('token');
 
   if (storedToken) {

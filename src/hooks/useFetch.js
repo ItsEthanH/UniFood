@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useState, useContext } from 'react';
 import AuthContext from '../context/AuthContext';
 
@@ -10,29 +9,32 @@ function useFetch() {
 
   const authCtx = useContext(AuthContext);
 
-  async function sendRequest(endpoint, options) {
+  async function sendRequest(endpoint, options = {}) {
     setResponse(null);
     setError(null);
     setIsLoading(true);
 
-    try {
-      if (!options.headers) options.headers = {};
-      options.headers.Authorization = 'Bearer ' + authCtx.token;
+    if (!options.headers) options.headers = {};
+    options.headers.Authorization = 'Bearer ' + authCtx.token;
 
-      const res = await fetch(url + endpoint, options);
+    const res = await fetch(url + endpoint, options);
 
-      if (!res.ok) {
-        throw Error('Something went wrong!');
-      }
-
-      const returnedData = await res.json();
-      console.log(returnedData);
-      setResponse(returnedData.results);
-    } catch (err) {
-      setError(err);
-    } finally {
+    if (!res.ok) {
       setIsLoading(false);
+      setResponse(null);
+      setError(response);
+
+      console.group('Fetch Error');
+      console.log(response);
+      console.groupEnd();
+      return;
     }
+
+    const data = await res.json();
+
+    setResponse(data.results);
+    setIsLoading(false);
+    setError(null);
   }
 
   return { sendRequest, response, isLoading, error };

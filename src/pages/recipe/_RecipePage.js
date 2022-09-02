@@ -15,7 +15,7 @@ function RecipePage() {
   const { sendRequest, response, isLoading, error } = useFetch();
 
   useEffect(() => {
-    sendRequest(endpoint, {});
+    sendRequest(endpoint);
   }, []);
 
   return (
