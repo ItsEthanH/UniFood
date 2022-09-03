@@ -4,15 +4,16 @@
   grid-template-rows: min-content auto;
 }
 
-.day {
-  grid-template-areas: 'sidebar options' 'sidebar mealplan';
-  grid-template-columns: 1fr 4fr;
-}
-
+.day,
 .week {
   grid-template-areas: 'options' 'mealplan';
   grid-template-columns: 100vw;
 }
+
+/* .week {
+  grid-template-areas: 'sidebar options' 'sidebar mealplan';
+  grid-template-columns: 1fr 4fr;
+} */
 
 .loading {
   display: flex;

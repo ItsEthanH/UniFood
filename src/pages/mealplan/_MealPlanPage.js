@@ -31,19 +31,21 @@ function MealPlanPage() {
   }
 
   const view =
-    isDayView && response ? (
+    response && isDayView ? (
       <>
         <MealPlanSidebar styles={classes.sidebar} />
         <MealPlanDayView
           styles={classes.mealplan}
-          breakfast={response.items.find((meal) => meal.position === 1)}
-          lunch={response.items.find((meal) => meal.position === 2)}
-          dinner={response.items.find((meal) => meal.position === 3)}
+          // breakfast={response.items.find((meal) => meal.position === 1)}
+          // lunch={response.items.find((meal) => meal.position === 2)}
+          // dinner={response.items.find((meal) => meal.position === 3)}
         />
       </>
     ) : (
       <MealPlanWeekView styles={classes.mealplan} />
     );
+
+  console.log(response);
 
   const styles = `${classes.main}
   ${isDayView ? classes.day : classes.week}

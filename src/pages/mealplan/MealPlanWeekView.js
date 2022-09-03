@@ -7,9 +7,9 @@ import classes from './styles/MealPlanWeekView.module.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-function MealPlanWeekView() {
+function MealPlanWeekView(props) {
   const noRecipes = (
-    <div className={classes.none}>
+    <div className={`${classes.none}`}>
       <p className={classes['none-heading']}>No meal plan found!</p>
       <p className={classes['none-body']}>
         It seems there are no recipes found in your meal plan. Use the searchbar above to find your
@@ -61,7 +61,7 @@ function MealPlanWeekView() {
   ];
 
   return (
-    <section className={classes.view}>
+    <section className={`${classes.view} ${props.styles}`}>
       {noRecipes}
       {/* {response && response.days.length === 0 && noRecipes} */}
       {/* <Swiper

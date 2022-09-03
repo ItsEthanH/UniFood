@@ -3,9 +3,20 @@ import MealPlanDayCard from './MealPlanDayCard';
 import classes from './styles/MealPlanDayView.module.css';
 
 function MealPlanDayView(props) {
+  const noRecipes = (
+    <div className={classes.none}>
+      <p className={classes['none-heading']}>No meal plan found!</p>
+      <p className={classes['none-body']}>
+        It seems there are no recipes found in your meal plan. Use the searchbar above to find your
+        next meal!
+      </p>
+    </div>
+  );
+
   return (
     <div className={`${classes.view} ${props.styles}`}>
-      <MealPlanDayCard
+      {noRecipes}
+      {/* <MealPlanDayCard
         id={props.breakfast.value.id}
         meal="Breakfast"
         title={props.breakfast.value.title}
@@ -37,7 +48,7 @@ function MealPlanDayView(props) {
         protein={35}
         servings={props.dinner.value.servings}
         time="45 minutes"
-      />
+      /> */}
     </div>
   );
 }

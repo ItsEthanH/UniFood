@@ -23,8 +23,6 @@ function NavSiderbar() {
   const [sidebarShown, setSidebarShown] = useState(false);
   const { sendRequest, error } = useFetch();
 
-  console.log(error);
-
   function showSidebar() {
     setSidebarShown(true);
   }
