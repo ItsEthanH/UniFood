@@ -65,29 +65,17 @@ def jwtRead(token, keys: list):
     return values
 
 
-# Remove an existing JWT (optional in case user is a guest)
-# def jwtRemove(*jwt):
+def jwtRemove(token):
 
-#     if jwt != None:
-#         splitJWT = re.split("\.", jwt)
-#         signature = splitJWT[2]
+    info = jwt.decode(token, enc_key, algorithms=["HS256"])
 
-#         f = open("../database/tokens.json", "r")
-#         tokens = json.loads(f.read())
-#         f.close()
+    sql.callproc('GetUserIDByAPIHash', [info['api'],])
 
-#         for token in tokens:
+    for result in sql.stored_results():
+        userID = result.fetchall()[0]
 
-#             if signature == token["sig"]: 
-#                 tokens.pop(tokens.index(token))
-#                 break
+    userID = userID[0]
 
-#             else: continue
-
-#         tokens = json.dumps(tokens, indent=4)
-
-#         f = open("../database/tokens.json", "w")
-#         f.write(tokens)
-#         f.close()
-
-#         return
+    sql.callproc('RemoveJWT', [userID,])
+    db.commit()
+    return
