@@ -129,19 +129,17 @@ def getMealPlanWeek(t, date):
     mealplan = mealPlanGetWeek(decoded["api"], decoded["hsh"], str(date))
 
     index = 0
+
+    allids = []
+
+    for day in mealplan["days"]:
+        for item in day["items"]:
+            allids.append(item["value"]["id"])
+
+    recipeInfo = getRecipeInformationBulk(",".join(allids), False)
     
     # Loop through each day of mealplan
     for day in mealplan["days"]:
-
-        # Add ids to array; format; fetch recipe info
-        ids = []
-        for item in day["items"]:
-            ids.append(item["value"]["id"])
-        
-        idString = ",".join(ids)
-
-        # Fetch recipe information
-        recipeInfo = getRecipeInformationBulk(idString, False)
 
         # Loop through each recipe in a day 
         for item in day["items"]:
@@ -180,15 +178,6 @@ def getMealPlanWeek(t, date):
                         dinner["value"]["instructions"] = recipe["analyzedInstructions"]
                         dinner["value"]["ingredients"] = recipe["extendedIngredients"]
                         dinner["value"]["image"] = recipe["image"]
-
-        # days[index] = {
-        #     # "day": day["day"],
-        #     "meals": {
-        #         "breakfast": breakfast,
-        #         "lunch": lunch,
-        #         "dinner": dinner
-        #     }
-        # }
         
         # Add meals to an object using the day of the week as a key
         days[day["day"]] = {
