@@ -81,16 +81,16 @@ def recipe():
 @app.route('/mealplanner', methods = ['GET', 'POST'])
 def mealplan():
 
-    # try: validToken = jwtValidate(request.headers.get('Authorization'))
-    # except: 
-    #     resp = make_response({'results': 'JWTError'})
-    #     resp.headers['Access-Control-Allow-Origin'] = '*'
-    #     return resp
-    validToken = True
+    try: validToken = jwtValidate(request.headers.get('Authorization'))
+    except: 
+        resp = make_response({'results': 'JWTError'})
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        return resp
+    # validToken = True
 
     if validToken:
-        # jwt = request.headers.get('Authorization').split()[1]
-        jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJFdGllbm5lIEJyYW5kIiwibHZsIjowLCJ0bXoiOiJFdXJvcGUvTG9uZG9uIiwidGhtIjowLCJhcGkiOiIzZDcwMjIxMS03NmU0LTQ2NTYtOTE2ZS03YmE4ZmY5ZjQyNmYiLCJoc2giOiI0NmFlY2JhNjg1ZWRlNDI5YTcyOWY4MDFkZjI4M2ZlYTUzYzQ3ZTY0IiwiZXhwIjoxNjYyMzgxNjY0fQ.ehL7DqThDrACyuqTv084rKt3LjLU5iixlBrvkRDOcQI"
+        jwt = request.headers.get('Authorization').split()[1]
+        # jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJFdGllbm5lIEJyYW5kIiwibHZsIjowLCJ0bXoiOiJFdXJvcGUvTG9uZG9uIiwidGhtIjowLCJhcGkiOiIzZDcwMjIxMS03NmU0LTQ2NTYtOTE2ZS03YmE4ZmY5ZjQyNmYiLCJoc2giOiI0NmFlY2JhNjg1ZWRlNDI5YTcyOWY4MDFkZjI4M2ZlYTUzYzQ3ZTY0IiwiZXhwIjoxNjYyMzgxNjY0fQ.ehL7DqThDrACyuqTv084rKt3LjLU5iixlBrvkRDOcQI"
 
         if request.method == 'GET':
 
