@@ -17,7 +17,7 @@
     'mealplan';
 }
 
-.loading {
+.no-response {
   display: flex;
   justify-content: center;
   align-items: center;
