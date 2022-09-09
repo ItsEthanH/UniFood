@@ -5,9 +5,10 @@ function MealPlanOptions(props) {
     props.onPageChange();
   }
 
-  const buttonText = props.isDayView ? 'Day' : 'Week';
+  const buttonText = 'Day';
+  // = props.isDayView ? 'Day' : 'Week';
   return (
-    <section className={`${classes.options} ${props.styles}`}>
+    <section className={classes.options}>
       <button className={classes.active} href="/app/meal-plan" onClick={buttonClickHandler}>
         Current View: <span className="color-primary">{buttonText}</span>
       </button>

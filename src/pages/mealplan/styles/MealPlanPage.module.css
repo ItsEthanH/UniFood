@@ -1,19 +1,15 @@
 .main {
   display: grid;
   overflow: hidden;
-  grid-template-rows: min-content auto;
 }
 
-.day,
-.week {
-  grid-template-areas: 'options' 'mealplan';
-  grid-template-columns: 100vw;
-}
-
-/* .week {
-  grid-template-areas: 'sidebar options' 'sidebar mealplan';
+.day {
+  grid-template-areas:
+    'sidebar options'
+    'sidebar mealplan';
+  grid-template-rows: min-content 1fr;
   grid-template-columns: 1fr 4fr;
-} */
+}
 
 .loading {
   display: flex;
@@ -21,16 +17,4 @@
   align-items: center;
   width: 100%;
   height: 100%;
-}
-
-.options {
-  grid-area: options;
-}
-
-.sidebar {
-  grid-area: sidebar;
-}
-
-.mealplan {
-  grid-area: mealplan;
 }
