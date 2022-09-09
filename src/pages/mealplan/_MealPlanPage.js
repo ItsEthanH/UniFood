@@ -6,6 +6,8 @@ import MealPlanSidebar from './MealPlanSidebar';
 import MealPlanDayView from './MealPlanDayView';
 import MealPlanWeekView from './MealPlanWeekView';
 
+import orderByFirstDayOfWeek from '../../utils/orderByFirstDayOfWeek';
+
 import classes from './styles/MealPlanPage.module.css';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 
@@ -6437,12 +6439,16 @@ const weekResponse = {
 
 function MealPlanPage() {
   const response = dayResponse;
+  const dateObj = new Date();
+  const orderedDays = orderByFirstDayOfWeek(dateObj.getDay(), false);
+
+  const todaysMeals = response.week[orderedDays[0]].meals;
 
   return (
     <main className={`${classes.main} ${classes.day}`}>
       <MealPlanOptions />
       <MealPlanSidebar />
-      <MealPlanDayView />
+      <MealPlanDayView meals={todaysMeals} />
     </main>
   );
 }

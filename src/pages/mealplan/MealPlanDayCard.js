@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import classes from './styles/MealPlanDayCard.module.css';
 
 function MealPlanDayCard(props) {
-  const navigate = useNavigate();
   const [hover, setHover] = useState(false);
 
   function cardHoverHandler() {
@@ -15,26 +14,10 @@ function MealPlanDayCard(props) {
     setHover(false);
   }
 
-  function viewClickHandler() {
-    navigate(`/app/recipe/${props.id}`);
-  }
-
-  const DUMMY_INGREDIENTS = [
-    'Lorem, ipsum.',
-    'Ut, suscipit?',
-    'In, quo?',
-    'Repellendus, magni.',
-    'Laudantium, officia.',
-    'Qui, deleniti.',
-    'Amet, delectus!',
-    'Dignissimos, aut.',
-    'Ad, consequuntur?',
-    'Magni, quasi.',
-  ];
-
-  const renderedIngredients = DUMMY_INGREDIENTS.map((item) => <li>{item}</li>);
-
-  return (
+  const renderedIngredients = props.ingredients.map((item) => (
+    <li>{item.name[0].toUpperCase() + item.name.substring(1)}</li>
+  ));
+  const renderedCard = (
     <div className={classes.card} onMouseEnter={cardHoverHandler} onMouseLeave={cardUnhoverHandler}>
       <div className={classes.image}>
         <img
@@ -70,8 +53,7 @@ function MealPlanDayCard(props) {
           <p>Time:</p>
           <p>{props.time}</p>
         </div>
-        <div className={classes.view}></div>
-        <button onClick={viewClickHandler}>View Full Recipe</button>
+        <Link to={`/app/recipe/${props.id}`}>View Full Recipe</Link>
         {!hover && <p>Hover over the card to view ingredients</p>}
       </div>
 
@@ -82,6 +64,26 @@ function MealPlanDayCard(props) {
       )}
     </div>
   );
+
+  const noMeal = (
+    <div className={`${classes.card} ${classes.none}`}>
+      <div className={classes.image}>
+        <img
+          src={`https://spoonacular.com/recipeImages/${props.id}-556x370.jpg`}
+          alt="PLACEHOLDER"
+        />
+      </div>
+      <div className={classes['no-meal-text']}>
+        <h3>No {props.meal} Set!</h3>
+        <p>
+          There is no {props.meal.toLowerCase()} set for today. Use the searchbar above to find a
+          meal!
+        </p>
+      </div>
+    </div>
+  );
+
+  return <>{props.id ? renderedCard : noMeal}</>;
 }
 
 export default MealPlanDayCard;
