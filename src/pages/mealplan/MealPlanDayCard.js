@@ -14,10 +14,32 @@ function MealPlanDayCard(props) {
     setHover(false);
   }
 
+  // if there's no id, the meal is set to null. return the 'no meal set' card
+  if (!props.id) {
+    return (
+      <div className={`${classes.card} ${classes.none}`}>
+        <div className={classes.image}>
+          <img
+            src={`https://spoonacular.com/recipeImages/${props.id}-556x370.jpg`}
+            alt="PLACEHOLDER"
+          />
+        </div>
+        <div className={classes['no-meal-text']}>
+          <h3>No {props.meal} Set!</h3>
+          <p>
+            There is no {props.meal.toLowerCase()} set for today. Use the searchbar above to find a
+            meal!
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   const renderedIngredients = props.ingredients.map((item) => (
     <li>{item.name[0].toUpperCase() + item.name.substring(1)}</li>
   ));
-  const renderedCard = (
+
+  return (
     <div className={classes.card} onMouseEnter={cardHoverHandler} onMouseLeave={cardUnhoverHandler}>
       <div className={classes.image}>
         <img
@@ -64,26 +86,6 @@ function MealPlanDayCard(props) {
       )}
     </div>
   );
-
-  const noMeal = (
-    <div className={`${classes.card} ${classes.none}`}>
-      <div className={classes.image}>
-        <img
-          src={`https://spoonacular.com/recipeImages/${props.id}-556x370.jpg`}
-          alt="PLACEHOLDER"
-        />
-      </div>
-      <div className={classes['no-meal-text']}>
-        <h3>No {props.meal} Set!</h3>
-        <p>
-          There is no {props.meal.toLowerCase()} set for today. Use the searchbar above to find a
-          meal!
-        </p>
-      </div>
-    </div>
-  );
-
-  return <>{props.id ? renderedCard : noMeal}</>;
 }
 
 export default MealPlanDayCard;
