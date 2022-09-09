@@ -6,66 +6,65 @@ import MealPlanSidebar from './MealPlanSidebar';
 import MealPlanDayView from './MealPlanDayView';
 import MealPlanWeekView from './MealPlanWeekView';
 
+import orderByFirstDayOfWeek from '../../utils/orderByFirstDayOfWeek';
+
 import classes from './styles/MealPlanPage.module.css';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 
 function MealPlanPage() {
-  const [isDayView, setIsDayView] = useState(true);
-
-  const [breakfast, setBreakfast] = useState(null);
-  const [lunch, setLunch] = useState(null);
-  const [dinner, setDinner] = useState(null);
-
+  const [isDayView, setIsDayView] = useState(false);
   const { sendRequest, response, isLoading, error } = useFetch();
 
   const dateObj = new Date();
   const isoDate = dateObj.toISOString().slice(0, 10);
-  const requestPeriod = isDayView ? 'day' : 'week';
 
   useEffect(() => {
-    sendRequest(`/mealplanner?period=${requestPeriod}&date=${isoDate}`);
+    sendRequest(`/mealplanner?period=week&date=${isoDate}`);
   }, []);
-
-  function changePageHandler() {
-    setIsDayView((prevState) => !prevState);
-  }
-
-  const view =
-    response && isDayView ? (
-      <>
-        <MealPlanSidebar styles={classes.sidebar} />
-        <MealPlanDayView
-          styles={classes.mealplan}
-          // breakfast={response.items.find((meal) => meal.position === 1)}
-          // lunch={response.items.find((meal) => meal.position === 2)}
-          // dinner={response.items.find((meal) => meal.position === 3)}
-        />
-      </>
-    ) : (
-      <MealPlanWeekView styles={classes.mealplan} />
-    );
 
   console.log(response);
 
-  const styles = `${classes.main}
-  ${isDayView ? classes.day : classes.week}
-  ${isLoading ? classes.loading : ''}`;
+  const orderedDays = orderByFirstDayOfWeek(dateObj.getDay(), false);
+  const todaysMeals = response && response.week[orderedDays[0]]?.meals;
 
-  return (
-    <main className={styles}>
-      {response && (
-        <>
-          <MealPlanOptions
-            styles={classes.options}
-            onPageChange={changePageHandler}
-            isDayView={isDayView}
-          />
-          {view}
-        </>
-      )}
-      {isLoading && <LoadingSpinner />}
-      {error && <p>{error}</p>}
+  const dayView = response && isDayView && (
+    <>
+      <MealPlanSidebar />
+      <MealPlanDayView meals={todaysMeals} />
+    </>
+  );
+
+  const weekView = response && !isDayView && (
+    <MealPlanWeekView meals={response.week} orderedDays={orderedDays} />
+  );
+
+  const pageStyles = `${classes.main} ${isDayView ? classes.day : classes.week}`;
+  const planView = response && (
+    <main className={pageStyles}>
+      <MealPlanOptions isDayView={isDayView} setIsDayView={setIsDayView} />
+      {dayView}
+      {weekView}
     </main>
+  );
+
+  const loadingView = isLoading && (
+    <main className={classes['no-response']}>
+      <LoadingSpinner />
+    </main>
+  );
+
+  const errorView = error && (
+    <main className={classes['no-response']}>
+      <h3>Sorry! There was an error fetching your meal plan!</h3>
+      <p>Error message: {error}</p>
+    </main>
+  );
+  return (
+    <>
+      {planView}
+      {loadingView}
+      {errorView}
+    </>
   );
 }
 

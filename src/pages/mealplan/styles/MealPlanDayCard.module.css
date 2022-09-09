@@ -58,7 +58,12 @@
   padding: 0 0.75rem;
 }
 
-.actions > button {
+.actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions > a {
   font-weight: 300;
   padding: 0.5rem 1.5rem;
   margin: 1rem 0;
@@ -67,6 +72,7 @@
   border: none;
   border-radius: 999px;
   align-self: center;
+  text-decoration: none;
 }
 
 .info {
@@ -82,6 +88,7 @@
 
 .divider {
   border-bottom: 1px solid var(--clr-grey);
+  margin: 0 1rem;
 }
 
 .ingredients {
@@ -100,4 +107,27 @@
   font-size: var(--fs-600);
   text-align: center;
   margin: 0.25rem 0;
+}
+
+.none {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.no-meal-text {
+  padding: 1rem;
+}
+
+.no-meal-text h3 {
+  font-size: var(--fs-900);
+  font-weight: normal;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.no-meal-text p {
+  font-size: var(--fs-800);
+  font-weight: 300;
+  text-align: center;
 }

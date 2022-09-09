@@ -1,14 +1,15 @@
 .options {
+  grid-area: options;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 0.5rem;
-  padding: 1.5rem;
+  padding: 1.5rem 3rem;
+  height: min-content;
   border-bottom: 2px solid var(--clr-grey);
 }
 
-.options a,
-.options button {
+.options * {
+  height: min-content;
   text-decoration: none;
   color: var(--clr-grey);
   font-size: var(--fs-800);
@@ -21,7 +22,9 @@
 }
 
 @media screen and (max-width: 1500px) {
-  .options a {
+  .options a,
+  .options button,
+  .options button * {
     font-size: var(--fs-600);
   }
 }

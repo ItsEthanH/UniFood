@@ -14,6 +14,8 @@ function RecipePage() {
   const endpoint = '/recipe?recipeID=' + params.recipeid;
   const { sendRequest, response, isLoading, error } = useFetch();
 
+  console.log(response);
+
   useEffect(() => {
     sendRequest(endpoint);
   }, []);

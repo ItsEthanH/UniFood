@@ -4,33 +4,23 @@
   grid-template-rows: min-content auto;
 }
 
-.day,
-.week {
-  grid-template-areas: 'options' 'mealplan';
-  grid-template-columns: 100vw;
+.day {
+  grid-template-areas:
+    'sidebar options'
+    'sidebar mealplan';
+  grid-template-columns: 1fr 4fr;
 }
 
-/* .week {
-  grid-template-areas: 'sidebar options' 'sidebar mealplan';
-  grid-template-columns: 1fr 4fr;
-} */
+.week {
+  grid-template-areas:
+    'options'
+    'mealplan';
+}
 
-.loading {
+.no-response {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-}
-
-.options {
-  grid-area: options;
-}
-
-.sidebar {
-  grid-area: sidebar;
-}
-
-.mealplan {
-  grid-area: mealplan;
 }
