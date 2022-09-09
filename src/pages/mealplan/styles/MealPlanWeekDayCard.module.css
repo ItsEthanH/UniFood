@@ -12,6 +12,28 @@
   border-radius: 10px;
 }
 
+.none {
+  grid-template-areas: 'title' 'text';
+  grid-template-columns: 20rem;
+  justify-content: center;
+  width: initial;
+}
+
+.none h3 {
+  grid-area: title;
+  font-size: var(--fs-800);
+  font-weight: normal;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.none p {
+  font-size: var(--fs-600);
+  font-weight: 300;
+  text-align: center;
+  margin: 1rem 0;
+}
+
 .image {
   margin: auto 0;
   grid-area: image;

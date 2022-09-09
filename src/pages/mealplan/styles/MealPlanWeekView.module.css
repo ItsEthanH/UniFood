@@ -1,20 +1,4 @@
 .view {
-  display: flex;
-  max-width: 100%;
-}
-
-.none {
-  width: 100%;
-  align-self: center;
-  text-align: center;
-}
-
-.none-heading {
-  font-size: var(--fs-sub-heading);
-}
-
-.none-body {
-  font-size: var(--fs-800);
-  font-weight: 300;
-  margin: 1rem 0;
+  grid-area: mealplan;
+  overflow: hidden;
 }

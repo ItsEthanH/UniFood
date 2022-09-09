@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   gap: 0.5rem;
-  padding: 1.5rem;
+  padding: 1.5rem 3rem;
   height: min-content;
   border-bottom: 2px solid var(--clr-grey);
 }
@@ -22,7 +22,9 @@
 }
 
 @media screen and (max-width: 1500px) {
-  .options a {
+  .options a,
+  .options button,
+  .options button * {
     font-size: var(--fs-600);
   }
 }

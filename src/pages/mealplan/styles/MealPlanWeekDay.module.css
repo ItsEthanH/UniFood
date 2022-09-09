@@ -1,5 +1,9 @@
 .day {
+  display: grid;
+  grid-template-rows: min-content repeat(3, 1fr);
   margin: 0 2rem;
+  height: 100%;
+  width: fit-content;
 }
 
 .day h2 {

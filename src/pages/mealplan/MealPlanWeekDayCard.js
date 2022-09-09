@@ -3,16 +3,25 @@ import { Link } from 'react-router-dom';
 import classes from './styles/MealPlanWeekDayCard.module.css';
 
 function MealPlanWeekDayCard(props) {
+  if (!props.id) {
+    return (
+      <li className={`${classes.card} ${classes.none}`}>
+        <h3>No {props.meal} Set!</h3>
+        <p>
+          There is no {props.meal.toLowerCase()} set for today. Use the searchbar above to find a
+          meal!
+        </p>
+      </li>
+    );
+  }
+
   return (
-    <li key={props.id} className={classes.card}>
+    <li className={classes.card}>
       <div className={classes.image}>
-        <img
-          src={`https://spoonacular.com/recipeImages/${props.id}-90x90.jpg`}
-          alt="placeholder"
-        />
+        <img src={`https://spoonacular.com/recipeImages/${props.id}-90x90.jpg`} alt="placeholder" />
       </div>
       <div className={classes.text}>
-        <h3>{props.type}</h3>
+        <h3>{props.meal}</h3>
         <h4>{props.name}</h4>
         <p>{props.calories} calories</p>
         <div className={classes.macros}>
