@@ -11,8 +11,20 @@
   font-size: var(--fs-800);
   text-decoration: underline;
   margin-top: 1rem;
+  text-align: center;
 }
 
 .day li {
   margin: 1.5rem 0;
+}
+
+.none {
+  grid-template-rows: min-content 1fr;
+}
+
+.none p {
+  margin: auto 0;
+  font-size: var(--fs-sub-heading);
+  font-weight: 300;
+  text-align: center;
 }

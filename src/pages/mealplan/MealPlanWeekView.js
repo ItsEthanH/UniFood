@@ -20,20 +20,11 @@ function MealPlanWeekView({ meals, orderedDays }) {
     },
   };
 
-  console.log(meals);
-  console.log(orderedDays);
-
-  const renderedDays = orderedDays.map((day) => {
-    console.log(meals[day]);
-
-    if (!meals[day]) return;
-
-    return (
-      <SwiperSlide>
-        <MealPlanWeekDay day={day} meals={meals[day].meals} />
-      </SwiperSlide>
-    );
-  });
+  const renderedDays = orderedDays.map((day) => (
+    <SwiperSlide>
+      <MealPlanWeekDay day={day} meals={meals?.[day]?.meals} />
+    </SwiperSlide>
+  ));
 
   return (
     <section className={classes.view}>
