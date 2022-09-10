@@ -197,39 +197,9 @@ template {
 }
 
 @font-face {
-  font-family: Rubik;
-  src: url(./fonts/Rubik-Medium.ttf);
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: Rubik;
-  src: url(./fonts/Rubik-Regular.ttf);
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: Rubik;
-  src: url(./fonts/Rubik-Light.ttf);
-  font-weight: 100 300;
-}
-
-@font-face {
   font-family: Prompt;
   src: url(./fonts/Prompt-Bold.ttf);
   font-weight: 700 900;
-}
-
-@font-face {
-  font-family: Prompt;
-  src: url(./fonts/Prompt-SemiBold.ttf);
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: Prompt;
-  src: url(./fonts/Prompt-Medium.ttf);
-  font-weight: 500;
 }
 
 @font-face {
@@ -245,27 +215,6 @@ template {
 }
 
 /* general page styles */
-:root {
-  --clr-primary: #0fa50f;
-  --clr-primary-dark: #0b860b;
-  --clr-dark: #181818;
-  --clr-grey: #909492;
-  --clr-warning: #e4cd01;
-  --clr-error: #ca3e51;
-
-  --swiper-theme-color: #0b860b;
-
-  --ff-title: 'Prompt', sans-serif;
-  --ff-body: 'Rubik', sans-serif;
-
-  --fs-header: 4.5rem;
-  --fs-sub-heading: 3rem;
-
-  --fs-900: 2.25rem;
-  --fs-800: 1.75rem;
-  --fs-600: 1.375rem;
-  --fs-400: 1.125rem;
-}
 
 html,
 body {
