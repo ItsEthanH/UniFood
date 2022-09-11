@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import LandingSection from '../LandingSection';
-import LandingTitle from '../../../pages/landing/LandingTitle';
 import LandingRecipeButton from './LandingRecipeButton';
 import LandingRecipeCard from './LandingRecipeCard';
 

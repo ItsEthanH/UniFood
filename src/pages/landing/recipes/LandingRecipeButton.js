@@ -1,5 +1,3 @@
-import classes from './styles/LandingRecipeButton.module.css';
-
 function LandingRecipeButton({ meal, active, onClick }) {
   const label = meal.charAt(0).toUpperCase() + meal.substring(1);
 

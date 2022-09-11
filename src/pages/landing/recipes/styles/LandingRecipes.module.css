@@ -3,11 +3,12 @@
 }
 
 .buttons {
-  display: flex;
-  flex-flow: wrap row;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   justify-content: center;
-  gap: 1.5rem;
-  margin: 2rem 0;
+  gap: 2rem;
+  margin: 3rem 1rem;
 }
 
 .cards {
@@ -17,7 +18,7 @@
   justify-content: space-evenly;
   flex-flow: wrap row;
   height: max-content;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 @media only screen and (min-width: 1280px) {

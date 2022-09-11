@@ -24,7 +24,6 @@
 
 .header {
   padding: 1rem;
-  width: 100%;
   min-height: 10rem;
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
   border-top-right-radius: inherit;
@@ -32,32 +31,17 @@
 }
 
 .header h2 {
-  font-weight: 200;
-  font-size: var(--fs-sub-heading);
-}
-
-.header p {
-  font-family: var(--ff-title);
-  font-weight: 500;
-  font-size: var(--fs-900);
+  font-size: var(--fs-heading);
 }
 
 .card ul {
+  padding: 2rem 0.5rem;
+  padding-top: 0;
   list-style: none;
-  font-size: var(--fs-900);
-  font-weight: 200;
-  padding: 0 0.5rem 2rem 0.5rem;
-  line-height: 1.6;
 }
 
 .card li {
-  margin: 1rem 0;
-}
-
-.card sup,
-.card sub {
-  font-weight: 300;
-  font-size: var(--fs-600);
+  margin: 2.5rem 0;
 }
 
 @media only screen and (min-width: 1280px) {
