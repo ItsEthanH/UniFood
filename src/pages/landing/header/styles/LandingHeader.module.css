@@ -1,17 +1,12 @@
 .header {
   display: flex;
   flex-direction: column;
-}
-
-.header h1 {
-  font-family: var(--ff-title);
-  font-size: var(--fs-header);
-  font-weight: 600;
   text-align: center;
 }
 
 .hr {
   border: 1.5px solid var(--clr-primary);
+  width: 100%;
 }
 
 @media only screen and (min-width: 1280px) {

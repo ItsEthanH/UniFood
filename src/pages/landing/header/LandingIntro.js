@@ -2,8 +2,6 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../../context/AuthContext';
 
-import LandingSection from '../LandingSection';
-
 import classes from './styles/LandingIntro.module.css';
 import appStore from '../../../assets/landing/app-store.png';
 import googlePlay from '../../../assets/landing/google-play.png';
@@ -17,12 +15,12 @@ function LandingIntro() {
   }
 
   return (
-    <LandingSection styles={classes.intro}>
-      <img src={headerImage} alt="Header image of a pizza" />
-      <h2>
+    <section style={{ marginTop: '5rem' }} className={`${classes.intro} landing-section`}>
+      <img classes={classes.image} src={headerImage} alt="Header image of a pizza" />
+      <h2 className="heading">
         Struggling with <span class="color-primary">meal</span> ideas?
       </h2>
-      <p className={classes.tagline}>
+      <p className={`${classes.tagline} body-large`}>
         UniFood makes meals simpler by providing you delicious, easy to prepare recipes.
       </p>
       <div className={classes.downloads}>
@@ -37,13 +35,7 @@ function LandingIntro() {
           <Link to="/portal/register">Register</Link>
         </button>
       </div>
-      <p className={classes.guest}>
-        Visiting from one of our portfoilos, and just want to test what we've done?{' '}
-        <Link onClick={guestLogin} to="/app">
-          Click here!
-        </Link>
-      </p>
-    </LandingSection>
+    </section>
   );
 }
 

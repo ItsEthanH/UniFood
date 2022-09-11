@@ -5,6 +5,18 @@
   max-width: 15rem;
 }
 
+.card img {
+  width: 100%;
+}
+
+.text {
+  padding: 1rem;
+}
+
+.description {
+  margin: 1rem 0;
+}
+
 .slideup {
   animation: slideUp 0.75s;
 }
@@ -18,36 +30,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-}
-
-.text {
-  height: fit-content;
-  font-size: var(--fs-400);
-  padding: 1rem;
-}
-
-.text h3 {
-  font-family: var(--ff-title);
-  font-weight: 600;
-}
-
-.text hr {
-  margin-bottom: 1rem;
-  color: var(--clr-primary);
-}
-
-.description {
-  font-weight: 100;
-  padding: 1rem 0;
-}
-
-.time {
-  font-weight: 700;
 }
 
 @media only screen and (min-width: 1280px) {
