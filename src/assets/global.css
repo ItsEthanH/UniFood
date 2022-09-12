@@ -97,6 +97,13 @@ p {
   line-height: 1.5;
 }
 
+button {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
 /* resuable styles */
 .centered {
   text-align: center;
@@ -164,5 +171,11 @@ p {
 @media only screen and (max-height: 800px) {
   html {
     font-size: 11px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .landing-section {
+    margin: 20rem 0;
   }
 }

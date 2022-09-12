@@ -27,7 +27,6 @@
 
 .buttons {
   display: none;
-  gap: 20rem;
 }
 
 .guest {
@@ -44,6 +43,7 @@
     align-content: center;
     height: calc(100vh - 10rem);
     width: 55%;
+    text-align: left;
     margin: 0;
   }
 
@@ -58,6 +58,7 @@
 
   .buttons {
     display: flex;
+    align-items: center;
     gap: 5rem;
   }
 

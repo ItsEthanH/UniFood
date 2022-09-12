@@ -1,17 +1,20 @@
+.section {
+  margin-bottom: 5rem;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+}
+
 .img {
+  margin: 3rem auto;
   width: 100%;
-  height: auto;
-  margin-top: 3rem;
 }
 
 @media only screen and (min-width: 1280px) {
-  .apps {
-    display: grid;
-  }
-
   .img {
     max-height: 30rem;
-    width: auto;
-    justify-self: center;
+    width: initial;
   }
 }

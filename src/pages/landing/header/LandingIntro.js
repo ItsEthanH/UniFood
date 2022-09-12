@@ -20,12 +20,13 @@ function LandingIntro() {
         <img src={googlePlay} alt="Android app on Google Play" />
       </div>
       <div className={classes.buttons}>
-        <button class="primary-button">
-          <Link to="/portal/signin">Sign in</Link>
-        </button>
-        <button class="outline-button">
-          <Link to="/portal/register">Register</Link>
-        </button>
+        <Link className="primary-button" to="/portal/signin">
+          Sign in
+        </Link>
+
+        <Link className="outline-button" to="/portal/register">
+          Register
+        </Link>
       </div>
     </section>
   );
