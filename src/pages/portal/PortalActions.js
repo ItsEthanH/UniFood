@@ -16,7 +16,7 @@ function PortalActions(props) {
           {msg}
         </p>
       ))}
-      {fetchInfo.error && <p className={classes.error}>{fetchInfo.error}</p>}
+      {fetchInfo.error && <p className={`${classes.error} margin-2r0`}>{fetchInfo.error}</p>}
       {fetchInfo.isLoading && <p>Sending...</p>}
       {!fetchInfo.isLoading && <button>{buttonText}</button>}
       <a className={classes.swap} onClick={changeForm}>

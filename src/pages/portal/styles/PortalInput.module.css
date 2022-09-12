@@ -1,7 +1,6 @@
 .label {
   display: block;
   color: var(--clr-primary);
-  font-weight: 600;
   text-align: left;
 }
 
@@ -9,10 +8,10 @@
   margin: 1rem 0 2rem 0;
   border: 0;
   border-bottom: 1px solid var(--clr-primary);
-  font-size: var(--fs-400);
   outline: none;
   width: 100%;
   padding: 0.2rem 0;
+  font-size: var(--fs-body);
 }
 
 .invalid {

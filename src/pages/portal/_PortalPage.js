@@ -74,10 +74,10 @@ function PortalPage() {
       <img src={image} alt="A colourful selection of vegetables on a dark oak table" />
       <main className={classes.page}>
         <h3>
-          <span className="color-primary">{title}</span>
+          <span className="heading color-primary">{title}</span>
         </h3>
 
-        <p className={classes.tagline}>{[tagline]}</p>
+        <p className="body-large">{[tagline]}</p>
 
         <Outlet context={outletContext} />
       </main>
