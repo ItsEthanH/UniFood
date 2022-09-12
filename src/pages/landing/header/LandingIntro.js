@@ -13,7 +13,8 @@ function LandingIntro() {
         Struggling with <span class="color-primary">meal</span> ideas?
       </h2>
       <p className={'body-large margin-2r0'}>
-        UniFood makes meals simpler by providing you delicious, easy to prepare recipes.
+        UniFood makes meals simpler by providing you delicious, easy to prepare recipes, with the
+        tools needed to unify your meal times.
       </p>
       <div className={classes.downloads}>
         <img src={appStore} alt="Download on the app store" />

@@ -27,7 +27,7 @@ function DesktopShowcase({ content }) {
   ));
 
   return (
-    <>
+    <div className={classes.showcase}>
       <div className={classes.tabbar}>
         <ul>{renderedShowcaseButtons}</ul>
       </div>
@@ -38,7 +38,7 @@ function DesktopShowcase({ content }) {
         </div>
         <img src={tab.image} alt={tab.title} />
       </div>
-    </>
+    </div>
   );
 }
 
