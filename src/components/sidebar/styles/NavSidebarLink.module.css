@@ -3,14 +3,13 @@
   align-items: center;
   text-decoration: none;
   color: white;
-  font-size: var(--fs-800);
-  margin: 0.8rem 0;
+  margin: 1.2rem 0;
 }
 
 .link:hover,
 .active {
-  filter: brightness(0) saturate(100%) invert(51%) sepia(87%) saturate(5977%)
-    hue-rotate(104deg) brightness(107%) contrast(88%);
+  filter: brightness(0) saturate(100%) invert(51%) sepia(87%) saturate(5977%) hue-rotate(104deg)
+    brightness(107%) contrast(88%);
 }
 
 .link p {

@@ -8,3 +8,7 @@
   padding: 1rem;
   grid-area: navigation;
 }
+
+.navigation nav {
+  margin-bottom: 1rem;
+}

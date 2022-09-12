@@ -4,11 +4,11 @@ import classes from './styles/DashboardCard.module.css';
 
 function DashboardCard(props) {
   return (
-    <div className={`${classes.card} ${props.next ? '' : classes.next}`}>
+    <div className={classes.card}>
       <img src={props.src} alt="Alt" />
       <div className={classes.text}>
-        <h3>{props.type}</h3>
-        <h4>{props.name}</h4>
+        <h3 className="body-large color-white">{props.type}</h3>
+        <h4 className="body-large color-white">{props.name}</h4>
       </div>
     </div>
   );

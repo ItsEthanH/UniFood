@@ -10,7 +10,7 @@ function Welcome() {
     greeting = 'Good Morning, SAMPLE_NAME!';
   } else if (hour < 18) {
     greeting = 'Good Afternoon, SAMPLE_NAME!';
-  } else if (hour > 18) {
+  } else if (hour >= 18) {
     greeting = 'Good Evening, SAMPLE_NAME!';
   }
 
