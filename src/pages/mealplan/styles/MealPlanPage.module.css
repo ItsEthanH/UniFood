@@ -1,14 +1,12 @@
 .main {
   display: grid;
   overflow: hidden;
-  grid-template-rows: min-content auto;
 }
 
 .day {
   grid-template-areas:
     'sidebar options'
     'sidebar mealplan';
-  grid-template-columns: 1fr 4fr;
 }
 
 .week {
@@ -17,8 +15,9 @@
     'mealplan';
 }
 
-.no-response {
+.error {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;

@@ -1,21 +1,22 @@
 .day {
   display: grid;
   grid-template-rows: min-content repeat(3, 1fr);
+  align-items: center;
   margin: 0 2rem;
   height: 100%;
   width: fit-content;
 }
 
-.day h2 {
-  font-weight: 400;
-  font-size: var(--fs-800);
-  text-decoration: underline;
-  margin-top: 1rem;
-  text-align: center;
-}
-
 .day li {
   margin: 1.5rem 0;
+}
+
+.day h2 {
+  font-size: var(--fs-subheading);
+  font-weight: var(--fw-regular);
+  text-decoration: underline;
+  text-align: center;
+  margin: 2rem 0;
 }
 
 .none {
@@ -23,8 +24,6 @@
 }
 
 .none p {
-  margin: auto 0;
-  font-size: var(--fs-sub-heading);
-  font-weight: 300;
+  margin: auto 1rem;
   text-align: center;
 }

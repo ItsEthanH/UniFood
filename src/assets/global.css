@@ -30,10 +30,11 @@
 :root {
   --clr-primary: #0fa50f;
 
-  --clr-grey-300: rgba(255, 255, 255, 0.8);
+  --clr-grey: rgb(131, 131, 131);
 
   --clr-warning: #e4cd01;
   --clr-error: #ca3e51;
+  --clr-hr: rgba(255, 255, 255, 0.8);
 
   --ff-heading: 'Prompt', sans-serif;
   --ff-body: 'Rubik', sans-serif;

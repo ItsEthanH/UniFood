@@ -19,21 +19,6 @@
   width: initial;
 }
 
-.none h3 {
-  grid-area: title;
-  font-size: var(--fs-800);
-  font-weight: normal;
-  text-align: center;
-  margin: 1rem 0;
-}
-
-.none p {
-  font-size: var(--fs-600);
-  font-weight: 300;
-  text-align: center;
-  margin: 1rem 0;
-}
-
 .image {
   margin: auto 0;
   grid-area: image;
@@ -49,14 +34,11 @@
 }
 
 .text h3 {
-  font-weight: 400;
-  font-size: var(--fs-600);
+  line-height: 1.2;
 }
 
 .text h4 {
   margin-bottom: 0.6rem;
-  font-weight: 300;
-  font-size: var(--fs-400);
   max-width: 20rem;
   white-space: nowrap;
   overflow: hidden;
@@ -67,6 +49,7 @@
   margin: 0.5rem 0;
   display: flex;
   gap: 1rem;
+  text-align: center;
 }
 
 .divider {
@@ -83,6 +66,5 @@
 
 .view a {
   color: var(--clr-primary);
-  font-size: var(--fs-400);
   text-decoration: none;
 }

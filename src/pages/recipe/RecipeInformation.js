@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import SectionTitle from '../../components/ui/SectionTitle';
 import RecipeSection from './RecipeSection';
 import RecipeIcon from './RecipeIcon';
 import PlanOverlay from '../search/PlanOverlay';

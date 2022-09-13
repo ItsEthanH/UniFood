@@ -12,7 +12,7 @@ import classes from './styles/MealPlanPage.module.css';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 
 function MealPlanPage() {
-  const [isDayView, setIsDayView] = useState(false);
+  const [isDayView, setIsDayView] = useState(true);
   const { sendRequest, response, isLoading, error } = useFetch();
 
   const dateObj = new Date();
@@ -21,8 +21,6 @@ function MealPlanPage() {
   useEffect(() => {
     sendRequest(`/mealplanner?period=week&date=${isoDate}`);
   }, []);
-
-  console.log(response);
 
   const orderedDays = orderByFirstDayOfWeek(dateObj.getDay(), false);
   const todaysMeals = response && response.week[orderedDays[0]]?.meals;
@@ -50,7 +48,7 @@ function MealPlanPage() {
   const loadingView = isLoading && <LoadingSpinner />;
 
   const errorView = error && (
-    <main className={classes['no-response']}>
+    <main className={`${classes.error} body-large`}>
       <h3>Sorry! There was an error fetching your meal plan!</h3>
       <p>Error message: {error}</p>
     </main>

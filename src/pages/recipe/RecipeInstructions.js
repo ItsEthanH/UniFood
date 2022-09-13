@@ -1,4 +1,3 @@
-import SectionTitle from '../../components/ui/SectionTitle';
 import RecipeSection from './RecipeSection';
 
 import classes from './styles/RecipeInstructions.module.css';

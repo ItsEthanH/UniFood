@@ -8,7 +8,7 @@ import DashboardCard from './DashboardCard';
 function NextMeal() {
   return (
     <div className={classes['next-meal']}>
-      <h3 className="body-large">Next Meal</h3>
+      <h3 className="body-large margin-1r0">Next Meal</h3>
       <DashboardCard type="Breakfast" name="Velvet Victoria Sponge" src={placeholder} next={true} />
     </div>
   );

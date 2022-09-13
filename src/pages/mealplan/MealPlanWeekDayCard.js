@@ -6,8 +6,8 @@ function MealPlanWeekDayCard(props) {
   if (!props.id) {
     return (
       <li className={`${classes.card} ${classes.none}`}>
-        <h3>No {props.meal} Set!</h3>
-        <p>
+        <h3 className="subheading centered">No {props.meal} Set!</h3>
+        <p className="body-small centered margin-1r0">
           There is no {props.meal.toLowerCase()} set for today. Use the searchbar above to find a
           meal!
         </p>
@@ -21,9 +21,9 @@ function MealPlanWeekDayCard(props) {
         <img src={`https://spoonacular.com/recipeImages/${props.id}-90x90.jpg`} alt="placeholder" />
       </div>
       <div className={classes.text}>
-        <h3>{props.meal}</h3>
-        <h4>{props.name}</h4>
-        <p>{props.calories} calories</p>
+        <h3 className="body-bold">{props.meal}</h3>
+        <h4 className="body-small">{props.name}</h4>
+        <p className="body-small">{props.calories} calories</p>
         <div className={classes.macros}>
           <p>{props.carbs}g carbs</p>
           <div className={classes.divider}></div>
@@ -33,7 +33,9 @@ function MealPlanWeekDayCard(props) {
         </div>
       </div>
       <div className={classes.view}>
-        <Link to={`/app/recipe/${props.id}`}>View Recipe</Link>
+        <Link className="body-small" to={`/app/recipe/${props.id}`}>
+          View Recipe
+        </Link>
       </div>
     </li>
   );
