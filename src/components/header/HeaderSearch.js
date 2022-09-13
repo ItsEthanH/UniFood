@@ -17,16 +17,12 @@ function HeaderSearch() {
       return;
     }
 
-    navigate('/app/results/' + query, { replace: true });
+    navigate('/app/results/' + query);
   }
 
   return (
-    <form
-      className={classes.searchbar}
-      onSubmit={searchSubmitHandler}
-      action="POST"
-    >
-      <input ref={inputRef} type="text" placeholder="Search for Recipes" />
+    <form className={classes.searchbar} onSubmit={searchSubmitHandler} action="POST">
+      <input ref={inputRef} className="body-large" type="text" placeholder="Search for Recipes" />
     </form>
   );
 }

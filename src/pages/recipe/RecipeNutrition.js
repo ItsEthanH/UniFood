@@ -72,13 +72,15 @@ function RecipeNutrition(props) {
   return (
     <RecipeSection info={true}>
       <RecipeInfoSubsection
-        title={'Dietary Information'}
+        title="Dietary Information"
         show={dietShow}
         onClick={handleSubsectionClick}
-        diet
+        isDiet
       >
         {dietArray.length === 0 && (
-          <p className={classes.nodiet}>This recipe is not suitable for any special diets</p>
+          <p className="color-primary margin-1r0 body centered">
+            This recipe is not suitable for any special diets
+          </p>
         )}
         {dietArray.length > 0 &&
           dietArray.map((diet) => (
@@ -89,27 +91,25 @@ function RecipeNutrition(props) {
           ))}
       </RecipeInfoSubsection>
       <RecipeInfoSubsection
-        title={'Nutritional Information'}
+        title="Nutritional Information"
         show={nutritionShow}
         onClick={handleSubsectionClick}
-        classes={''}
       >
-        test
+        <p className="body centered">Test</p>
       </RecipeInfoSubsection>
 
       <RecipeInfoSubsection
-        title={'Recommended Recipes'}
+        title="Recommended Recipes"
         show={recommendedShow}
         onClick={handleSubsectionClick}
-        classes={''}
       >
         <div className={classes.recommendation}>
           <img src={placeholderRecommendation} alt="" />
-          <h4>Sample Recommendation</h4>
+          <h4 className="body-large margin-1r">Sample Recommendation</h4>
         </div>
         <div className={classes.recommendation}>
           <img src={placeholderRecommendation} alt="" />
-          <h4>Sample Recommendation</h4>
+          <h4 className="body-large  margin-1r">Sample Recommendation</h4>
         </div>
       </RecipeInfoSubsection>
     </RecipeSection>

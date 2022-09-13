@@ -20,13 +20,6 @@
   border-bottom-left-radius: 2rem;
 }
 
-.recommendation h4 {
-  font-size: var(--fs-800);
-  font-weight: 300;
-  margin: 0 0.5rem;
-  font-style: italic;
-}
-
 .diet {
   display: flex;
   align-items: center;
@@ -35,10 +28,4 @@
 
 .diet p {
   margin: 0 0.5rem;
-}
-
-.nodiet {
-  text-align: center;
-  margin: 1rem 0;
-  color: var(--clr-primary);
 }

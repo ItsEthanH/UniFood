@@ -24,9 +24,9 @@ function MealPlanDayCard(props) {
             alt="PLACEHOLDER"
           />
         </div>
-        <div className={classes['no-meal-text']}>
-          <h3>No {props.meal} Set!</h3>
-          <p>
+        <div className="margin-1r centered">
+          <h3 className="subheading">No {props.meal} Set!</h3>
+          <p className="body margin-1r0">
             There is no {props.meal.toLowerCase()} set for today. Use the searchbar above to find a
             meal!
           </p>
@@ -48,23 +48,23 @@ function MealPlanDayCard(props) {
         />
       </div>
 
-      <div className={classes.title}>
-        <h3>{props.meal}</h3>
-        <h4>{props.title}</h4>
+      <div className={`${classes.title} margin-1r centered`}>
+        <h3 className="body-large">{props.meal}</h3>
+        <h4 className="body">{props.title}</h4>
       </div>
 
-      <div className={classes.divider} />
+      <hr className={classes.divider} />
 
-      <div className={classes.nutrition}>
-        <p>{props.calories} calories</p>
-        <div className={classes.macros}>
+      <div className="centered margin-1r0">
+        <p className="body">{props.calories} calories</p>
+        <div className={`${classes.macros} body-small`}>
           <p>{props.carbs}g carbs</p>
           <p>{props.fat}g fat</p>
           <p>{props.protein}g protein</p>
         </div>
       </div>
 
-      <div className={classes.divider} />
+      <hr className={classes.divider} />
 
       <div className={classes.actions}>
         <div className={classes.info}>
@@ -75,13 +75,15 @@ function MealPlanDayCard(props) {
           <p>Time:</p>
           <p>{props.time}</p>
         </div>
-        <Link to={`/app/recipe/${props.id}`}>View Full Recipe</Link>
+        <Link className="primary-button" to={`/app/recipe/${props.id}`}>
+          View Full Recipe
+        </Link>
         {!hover && <p>Hover over the card to view ingredients</p>}
       </div>
 
       {hover && (
         <div className={classes.ingredients}>
-          <ul>{renderedIngredients}</ul>
+          <ul className="body-small centered">{renderedIngredients}</ul>
         </div>
       )}
     </div>

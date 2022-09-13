@@ -1,16 +1,9 @@
-.paragraph {
-  font-size: var(--fs-900);
-  line-height: 1.4;
-  font-weight: 100;
-  text-align: center;
-}
-
 .cards {
   display: flex;
   flex-flow: wrap row;
   align-content: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 5rem;
   margin-top: 3rem;
 }
 

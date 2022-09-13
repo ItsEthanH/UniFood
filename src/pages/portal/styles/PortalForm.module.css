@@ -4,19 +4,13 @@
 }
 
 .form button {
-  color: white;
-  background-color: var(--clr-primary);
-  border: none;
-
-  border-radius: 50px;
   width: fit-content;
-  padding: 1rem 2rem;
   margin: 1rem auto;
-  font-size: var(--fs-800);
 }
 
 form .swap {
   text-align: center;
+  cursor: pointer;
 }
 
 .error {

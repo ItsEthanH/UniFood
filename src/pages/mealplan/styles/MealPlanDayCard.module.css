@@ -10,39 +10,19 @@
   object-fit: cover;
 }
 
-.title,
-.nutrition,
-.actions {
-  text-align: center;
-  font-weight: 300;
-  font-size: var(--fs-600);
-}
-
-.title,
-.actions {
-  margin: 1rem 1.5rem;
-}
-
-.nutrition {
-  margin: 1.5rem 1rem;
-}
-
 .title h3 {
-  font-size: var(--fs-900);
-  font-weight: normal;
+  font-weight: var(--fw-regular);
 }
 
 .title h4 {
-  font-size: var(--fs-800);
-  font-weight: 300;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.nutrition > p {
-  font-size: var(--fs-800);
-  margin: 0.5rem 0;
+.divider {
+  color: var(--clr-hr);
+  margin: 0 1rem;
 }
 
 .macros {
@@ -61,34 +41,26 @@
 .actions {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  margin: 1rem 1.5rem;
 }
 
 .actions > a {
-  font-weight: 300;
+  font-size: var(--fs-subbody);
   padding: 0.5rem 1.5rem;
   margin: 1rem 0;
-  color: white;
-  background-color: var(--clr-primary);
-  border: none;
-  border-radius: 999px;
   align-self: center;
-  text-decoration: none;
 }
 
 .info {
   display: flex;
   justify-content: space-between;
   padding: 0.3rem;
+  font-size: var(--fs-subbody);
 }
 
 .info > p:last-child {
   color: var(--clr-primary);
-  margin-left: 2rem;
-}
-
-.divider {
-  border-bottom: 1px solid var(--clr-grey);
-  margin: 0 1rem;
 }
 
 .ingredients {
@@ -98,14 +70,12 @@
 
 .ingredients ul {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   list-style: none;
   align-items: center;
 }
 
 .ingredients li {
-  font-size: var(--fs-600);
-  text-align: center;
   margin: 0.25rem 0;
 }
 
@@ -113,21 +83,4 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.no-meal-text {
-  padding: 1rem;
-}
-
-.no-meal-text h3 {
-  font-size: var(--fs-900);
-  font-weight: normal;
-  text-align: center;
-  margin: 1rem 0;
-}
-
-.no-meal-text p {
-  font-size: var(--fs-800);
-  font-weight: 300;
-  text-align: center;
 }

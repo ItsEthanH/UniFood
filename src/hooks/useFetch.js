@@ -20,13 +20,16 @@ function useFetch() {
 
       const res = await fetch(url + endpoint, options);
       const data = await res.json();
+
+      if (data.results === 'JWTError') throw new Error('JWT Error');
+
       setResponse(data.results);
       setError(null);
     } catch (err) {
       setError(err.message);
-      // console.group('Fetch Error');
-      // console.log(err);
-      // console.groupEnd();
+      console.group('Fetch Error');
+      console.log(err);
+      console.groupEnd();
     } finally {
       setIsLoading(false);
     }

@@ -17,7 +17,7 @@ const recipes = {
       title: 'Berry Banana Breakfast Smoothie',
       img: breakfastOne,
       description:
-        'If you have around 5 minutes to spend in the kitchen, Berry Banana Breakfast Smoothie might be a tremendous lacto ovo vegetarian recipe to try.',
+        'If you have 5 minutes to spend in the kitchen, a Berry Banana Breakfast Smoothie might be a tremendous breakfast to try.',
       cost: 2.04,
       time: '5 mins',
     },
@@ -43,8 +43,7 @@ const recipes = {
     {
       title: 'Turkey Ranch BLT',
       img: lunchOne,
-      description:
-        'Turkey, bacon, lettice and tomato in pita breads, dressed in ranch sauce.',
+      description: 'Turkey, bacon, lettice and tomato in pita breads, dressed in ranch sauce.',
       cost: 1.54,
       time: '10 mins',
     },
@@ -86,8 +85,7 @@ const recipes = {
     {
       title: 'Ozoni',
       img: dinnerThree,
-      description:
-        "A good option if you're following a gluten free and dairy free diet.",
+      description: "A good option if you're following a gluten free and dairy free diet.",
       cost: 3.05,
       time: '45 mins',
     },

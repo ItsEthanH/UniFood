@@ -7,16 +7,19 @@ function LandingNav() {
     <nav className={classes.navigation}>
       <ul>
         <li>
-          <a href="#about">About</a>
+          <a className="body-large" href="#about">
+            About
+          </a>
         </li>
         <li>
-          <a href="#recipes">Recipes</a>
+          <a className="body-large" href="#recipes">
+            Recipes
+          </a>
         </li>
         <li>
-          <a href="#pricing">Pricing</a>
-        </li>
-        <li className={classes.signin}>
-          <Link to="/portal/signin">Sign In</Link>
+          <a className="body-large" href="#pricing">
+            Pricing
+          </a>
         </li>
       </ul>
     </nav>

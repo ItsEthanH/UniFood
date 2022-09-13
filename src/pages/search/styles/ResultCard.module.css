@@ -2,9 +2,15 @@
   height: min-content;
   width: min-content;
   padding-bottom: 0.6rem;
-  list-style: none;
   box-shadow: -2px 2px 25px rgba(0, 0, 0, 0.05);
   animation: slideup 1s;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-weight: 300;
 }
 
 @keyframes slideup {
@@ -16,46 +22,4 @@
     transform: translateY(0);
     opacity: 1;
   }
-}
-
-.animation {
-  transform: translateY(0);
-  opacity: 1;
-  transition: 0.5s;
-}
-
-.text {
-  margin: 0 1rem;
-  text-align: center;
-  font-size: var(--fs-800);
-}
-
-.text h5 {
-  font-weight: 500;
-  margin: 1rem 0;
-}
-
-.text hr {
-  margin: 1rem 0;
-}
-
-.tooltip {
-  height: var(--fs-600);
-  margin: 0.5rem;
-}
-
-.tooltip p {
-  font-size: var(--fs-600);
-  transition: opacity 0.3s;
-  font-family: var(--ff-body);
-  font-weight: 300;
-  text-align: center;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  font-size: var(--fs-600);
-  font-weight: 300;
 }

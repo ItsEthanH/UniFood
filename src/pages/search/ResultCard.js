@@ -35,20 +35,13 @@ function ResultCard(props) {
   }
 
   return (
-    <li
-      key={props.id}
-      id={props.id}
-      draggable="true"
-      onDragStart={drag}
-      className={`${classes.card} ${props.title ? classes.animation : ''}`}
-    >
+    <li key={props.id} id={props.id} draggable="true" onDragStart={drag} className={classes.card}>
       {planOverlayShown && <PlanOverlay onClose={toggleMealPlanModal} onSubmit={submitMealPlan} />}
       <div className={classes.image}>
         <img src={props.src} alt="ALT" />
       </div>
-      <div className={classes.text}>
-        <h5>{props.title}</h5>
-        <hr />
+      <div className="centered margin-1r">
+        <h5 className="body-bold margin-1r0">{props.title}</h5>
         <div className={classes.buttons}>
           <RecipeIcon onClick={viewRecipe} setTooltip={setTooltip} tooltip="View" icon={viewIcon} />
           <RecipeIcon setTooltip={setTooltip} tooltip="Favourite" icon={favouriteIcon} />
@@ -60,9 +53,8 @@ function ResultCard(props) {
           />
           <RecipeIcon setTooltip={setTooltip} tooltip="Cart" icon={cartIcon} />
         </div>
-        <hr />
-        <div className={classes.tooltip}>
-          <p>{tooltip}</p>
+        <div className="margin-1r0">
+          <p className="body">{tooltip}</p>
         </div>
       </div>
     </li>

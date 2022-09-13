@@ -1,5 +1,4 @@
 .logo {
-  font-size: var(--fs-header);
   color: white;
-  margin: 0 3rem;
+  margin: 1rem;
 }

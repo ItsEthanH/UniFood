@@ -1,25 +1,23 @@
-import LandingTitle from '../../../pages/landing/LandingTitle';
-import LandingSection from '../LandingSection';
-
 import classes from './styles/LandingApps.module.css';
 import appImg from '../../../assets/landing/devices.png';
 
 function LandingApps() {
   return (
-    <LandingSection styles={classes.apps}>
-      <LandingTitle>
+    <section className={`${classes.section} landing-section`}>
+      <h3 className="heading centered">
         Takeaway the Uni<span className="color-primary">Food</span> apps!
-      </LandingTitle>
-      <p className={classes.paragraph}>
-        Order up! With the UniFood apps for both Apple and Android, you can have
-        your meals to go!
+      </h3>
+      <p className="body-large margin-1r0 centered">
+        Order up! With the UniFood apps for both Apple and Android, you can have your meals to go!
       </p>
-      <img
-        className={classes.img}
-        src={appImg}
-        alt="The UniFood Apps for desktop, tablet and mobile!"
-      />
-    </LandingSection>
+      <div className={classes.image}>
+        <img
+          className={classes.img}
+          src={appImg}
+          alt="The UniFood Apps for desktop, tablet and mobile!"
+        />
+      </div>
+    </section>
   );
 }
 

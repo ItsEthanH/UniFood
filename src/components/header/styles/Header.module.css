@@ -1,6 +1,6 @@
 .header {
-  display: flex;
-  flex-flow: nowrap row;
+  display: grid;
+  grid-template-columns: min-content auto;
   grid-area: header;
   z-index: 1;
   background-color: black;

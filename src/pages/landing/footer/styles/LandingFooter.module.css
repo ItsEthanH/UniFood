@@ -1,22 +1,16 @@
 .footer {
+  background: black;
   display: flex;
-  flex-flow: wrap row;
-  justify-content: space-around;
-  background-color: var(--clr-dark);
-  padding: 2rem;
-  line-height: 1.8;
-  font-weight: 100;
-  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.footer h3 {
-  font-size: var(--fs-800);
-  color: white;
-  list-style: none;
+.footer li {
+  margin: 3rem 0;
 }
 
-.footer a {
+.footer * {
   color: white;
   text-decoration: none;
-  font-size: var(--fs-400);
 }

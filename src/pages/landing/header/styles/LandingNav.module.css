@@ -4,25 +4,17 @@
   justify-content: space-around;
 }
 
-.navigation a {
-  font-size: var(--fs-600);
-  padding: 0.5rem;
-  text-decoration: none;
-  color: black;
-}
-
 .signin {
   display: none;
-  background: var(--clr-primary);
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
+  background-color: var(--clr-primary);
+  padding: 0.2rem 0.75rem;
 }
 
 @media only screen and (min-width: 1280px) {
   .navigation ul {
     height: 100%;
     align-items: center;
-    gap: 1.5rem;
+    gap: 4rem;
   }
 
   .navigation li {

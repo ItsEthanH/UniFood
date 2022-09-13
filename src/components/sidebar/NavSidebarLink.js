@@ -15,7 +15,7 @@ function NavSiderbarLink(props) {
       className={`${classes.link} ${props.shown ? classes.show : ''}`}
     >
       <img src={props.icon} alt="icon" />
-      <p>{props.text}</p>
+      <p className="body-large color-white">{props.text}</p>
     </NavLink>
   );
 }

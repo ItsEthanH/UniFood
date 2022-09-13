@@ -3,8 +3,6 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import AuthContext from '../../context/AuthContext';
 
-import LandingTitle from '../landing/LandingTitle';
-
 import classes from './styles/_PortalPage.module.css';
 import image from '../../assets/landing/portal.jpg';
 
@@ -75,11 +73,11 @@ function PortalPage() {
     <div className={classes.wrapper}>
       <img src={image} alt="A colourful selection of vegetables on a dark oak table" />
       <main className={classes.page}>
-        <LandingTitle>
-          <span className="color-primary">{title}</span>
-        </LandingTitle>
+        <h3>
+          <span className="heading color-primary">{title}</span>
+        </h3>
 
-        <p className={classes.tagline}>{[tagline]}</p>
+        <p className="body-large">{[tagline]}</p>
 
         <Outlet context={outletContext} />
       </main>

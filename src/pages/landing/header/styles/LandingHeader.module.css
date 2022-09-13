@@ -1,17 +1,12 @@
 .header {
   display: flex;
   flex-direction: column;
-}
-
-.header h1 {
-  font-family: var(--ff-title);
-  font-size: var(--fs-header);
-  font-weight: 600;
   text-align: center;
 }
 
 .hr {
   border: 1.5px solid var(--clr-primary);
+  width: 85vw;
 }
 
 @media only screen and (min-width: 1280px) {
@@ -20,5 +15,9 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 0 2rem;
+  }
+
+  .hr {
+    display: none;
   }
 }

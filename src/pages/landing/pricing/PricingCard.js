@@ -8,16 +8,16 @@ function PricingCard(props) {
   switch (props.type) {
     case 0:
       tier = 'Unifood';
-      price = <p>Free</p>;
+      price = <>Free</>;
       colour = classes.bronze;
       break;
 
     case 1:
       tier = 'Unifood Pro';
       price = (
-        <p>
-          <sup>£</sup>3.99<sub>/pcm</sub>
-        </p>
+        <>
+          £<span className="body-bold">3.99</span>/pcm
+        </>
       );
       colour = classes.silver;
       break;
@@ -25,9 +25,9 @@ function PricingCard(props) {
     case 2:
       tier = 'Unifood';
       price = (
-        <p>
-          <sup>£</sup>9.99<sub>/pcm</sub>
-        </p>
+        <>
+          £<span className="body-bold">9.99</span>/pcm
+        </>
       );
       colour = classes.gold;
       break;
@@ -36,10 +36,10 @@ function PricingCard(props) {
   return (
     <div className={`${classes.card} ${props.styles}`}>
       <div className={`${classes.header} ${colour}`}>
-        <h2>{tier}</h2>
-        {price}
+        <h2 className="body-large">{tier}</h2>
+        <p className="body-large">{price}</p>
       </div>
-      <ul>
+      <ul className="body">
         <li>Lorem ipsum</li>
         <li>Fugiat sunt</li>
         <li>Maiores culpa</li>

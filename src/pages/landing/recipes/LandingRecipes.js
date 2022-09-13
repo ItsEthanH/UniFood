@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import LandingSection from '../LandingSection';
-import LandingTitle from '../../../pages/landing/LandingTitle';
 import LandingRecipeButton from './LandingRecipeButton';
 import LandingRecipeCard from './LandingRecipeCard';
 
@@ -38,10 +36,10 @@ function LandingRecipes() {
   }
 
   return (
-    <LandingSection id="recipes" styles={classes.desktop}>
-      <LandingTitle styles={classes.title}>
+    <section className={`${classes.recipes} landing-section`} id="recipes">
+      <h3 className="heading centered">
         Some of our <span className="color-primary">delicious</span> recipes...
-      </LandingTitle>
+      </h3>
       <div className={classes.buttons}>
         <LandingRecipeButton
           meal="breakfast"
@@ -69,7 +67,7 @@ function LandingRecipes() {
         <LandingRecipeCard animation={animation} index={1} meal={mealActive} />
         <LandingRecipeCard animation={animation} index={2} meal={mealActive} />
       </div>
-    </LandingSection>
+    </section>
   );
 }
 

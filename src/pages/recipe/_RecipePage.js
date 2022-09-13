@@ -14,33 +14,33 @@ function RecipePage() {
   const endpoint = '/recipe?recipeID=' + params.recipeid;
   const { sendRequest, response, isLoading, error } = useFetch();
 
-  console.log(response);
-
   useEffect(() => {
     sendRequest(endpoint);
   }, []);
 
+  const loadingComponent = isLoading && <LoadingSpinner />;
+
+  const recipeComponent = response && (
+    <>
+      <RecipeInformation
+        title={response.title}
+        image={response.image}
+        timeToCook={response.readyInMinutes}
+        servings={response.servings}
+        ingredients={response.extendedIngredients}
+      />
+      <RecipeInstructions instructions={response.analyzedInstructions[0].steps} />
+      <RecipeNutrition diets={response.diets} />
+    </>
+  );
+
+  const errorComponent = error && <p>{error}</p>;
+
   return (
     <main className={isLoading ? classes.loading : classes.recipe}>
-      {isLoading && (
-        <div className={classes.loading}>
-          <LoadingSpinner />
-        </div>
-      )}
-      {response && (
-        <>
-          <RecipeInformation
-            title={response.title}
-            image={response.image}
-            timeToCook={response.readyInMinutes}
-            servings={response.servings}
-            ingredients={response.extendedIngredients}
-          />
-          <RecipeInstructions instructions={response.analyzedInstructions[0].steps} />
-          <RecipeNutrition diets={response.diets} />
-        </>
-      )}
-      {error && <p>{error}</p>}
+      {loadingComponent}
+      {recipeComponent}
+      {errorComponent}
     </main>
   );
 }

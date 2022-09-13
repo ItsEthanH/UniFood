@@ -3,8 +3,8 @@ import classes from './styles/LandingFooter.module.css';
 function LandingFooter() {
   return (
     <footer className={classes.footer}>
-      <ul>
-        <h3>Sitemap</h3>
+      <ul className="body">
+        <h3 className="subheading margin-2r0">Sitemap</h3>
         <li>
           <a href="#top">Back to Top</a>
         </li>
@@ -19,24 +19,6 @@ function LandingFooter() {
         </li>
         <li>
           <a href="#apps">Apps</a>
-        </li>
-      </ul>
-      <ul>
-        <h3>Links</h3>
-        <li>
-          <a href="">Copyright Notice</a>
-        </li>
-        <li>
-          <a href="">Privacy Policy</a>
-        </li>
-        <li>
-          <a href="">Email</a>
-        </li>
-        <li>
-          <a href="">Facebook</a>
-        </li>
-        <li>
-          <a href="">Twitter</a>
         </li>
       </ul>
     </footer>

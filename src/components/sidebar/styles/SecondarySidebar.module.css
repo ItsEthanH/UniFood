@@ -5,5 +5,8 @@
   overflow-y: scroll;
   flex-direction: column;
   background-color: #212121;
-  padding: 1rem 1rem 2rem 1rem;
+}
+
+.sidebar * {
+  min-height: initial;
 }

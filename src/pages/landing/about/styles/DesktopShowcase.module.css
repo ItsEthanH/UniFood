@@ -1,15 +1,17 @@
+.showcase {
+  max-width: 1500px;
+  margin: 6rem auto;
+}
+
 .tabbar ul {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   border-bottom: 2px solid var(--clr-primary);
-  list-style-type: none;
 }
 
 .tabbar li {
   display: flex;
   justify-content: center;
-  font-size: var(--fs-800);
-  text-decoration: none;
   margin: 0 3rem;
   text-align: center;
   border-top-right-radius: 25px;
@@ -17,18 +19,12 @@
 }
 
 .tabbar button {
-  background: none;
-  outline: none;
-  border: none;
   padding: 1rem 0;
-  width: 100%;
-  height: 100%;
+  font-size: var(--fs-body);
 }
 
 .active {
   background-color: var(--clr-primary);
-
-  filter: drop-shadow(0px -1px 1px rgba(0, 0, 0, 0.5));
 }
 
 .active button {
@@ -39,8 +35,25 @@
   animation: fadeFromLeft 0.75s;
 }
 
-.fade .image {
+.fade img {
   animation: fadeFromRight 0.75s;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.text {
+  padding: 2rem;
+  height: fit-content;
+  max-width: 50rem;
+}
+
+.content img {
+  margin-top: 2rem;
+  border-radius: 15px;
+  height: auto;
 }
 
 @keyframes fadeFromLeft {
@@ -63,36 +76,4 @@
     transform: translateX(0px);
     opacity: 1;
   }
-}
-
-.content {
-  display: grid;
-  grid-template-columns: 0.8fr 1fr;
-}
-
-.text {
-  padding: 2rem;
-  height: fit-content;
-}
-
-.text h3 {
-  font-family: var(--ff-title);
-  font-size: var(--fs-900);
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.text p {
-  font-size: var(--fs-800);
-  font-weight: 100;
-  line-height: 1.6;
-}
-
-.image {
-  margin-top: 2rem;
-}
-
-.image img {
-  width: 100%;
-  border-radius: 15px;
 }

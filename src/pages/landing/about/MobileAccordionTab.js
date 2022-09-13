@@ -12,15 +12,11 @@ function MobileAccordionTab(props) {
   return (
     <div className={classes.tab}>
       <button onClick={buttonClickHandler}>
-        <h3>{props.buttonTitle}</h3>
-        <p>{isTabExpanded ? '-' : '+'}</p>
+        <h3 className="body-large color-white">{props.buttonTitle}</h3>
+        <p className="color-white">{isTabExpanded ? '-' : '+'}</p>
       </button>
-      <div
-        className={`${classes.content} ${
-          isTabExpanded ? classes.show : classes.hide
-        }`}
-      >
-        <h4>{props.contentTitle}</h4>
+      <div className={`${classes.content} ${isTabExpanded ? classes.show : classes.hide}`}>
+        <h4 className="subheading">{props.contentTitle}</h4>
         <p>{props.contentBody}</p>
       </div>
     </div>

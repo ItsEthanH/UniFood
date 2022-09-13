@@ -7,7 +7,7 @@ function MealPlanWeekDay({ day, meals }) {
     return (
       <div className={`${classes.day} ${classes.none}`}>
         <h2>{day}</h2>
-        <p>No meals planned for {day}!</p>
+        <p className="body-large">No meals planned for {day}!</p>
       </div>
     );
   }

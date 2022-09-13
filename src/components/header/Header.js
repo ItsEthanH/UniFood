@@ -5,7 +5,7 @@ import HeaderSearch from './HeaderSearch';
 
 import classes from './styles/Header.module.css';
 
-function Header(props) {
+function Header() {
   return (
     <header className={classes.header}>
       <HeaderLogo />

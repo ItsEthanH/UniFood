@@ -5,7 +5,7 @@ import classes from './styles/LandingHeader.module.css';
 function LandingHeader() {
   return (
     <header className={classes.header}>
-      <h1>
+      <h1 className="title">
         Uni<span className="color-primary">Food</span>
       </h1>
       <hr className={classes.hr} />

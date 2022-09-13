@@ -1,12 +1,11 @@
-.instructions {
-  margin-left: 1rem;
-  overflow-y: auto;
-  list-style-position: inside;
+.hr {
+  width: 95%;
+  color: var(--clr-hr);
 }
 
-.instructions li {
-  font-size: var(--fs-600);
-  font-weight: 300;
-  margin: 1.5rem 0;
-  line-height: 1.5;
+.instructions {
+  margin: 0 1rem;
+  overflow-y: auto;
+  list-style-type: decimal;
+  list-style-position: inside;
 }

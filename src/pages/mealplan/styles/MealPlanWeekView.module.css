@@ -2,3 +2,7 @@
   grid-area: mealplan;
   overflow: hidden;
 }
+
+.view > * {
+  height: 100%;
+}

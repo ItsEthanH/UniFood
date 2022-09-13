@@ -1,7 +1,8 @@
 .coming-up {
-  display: flex;
-  flex-direction: column;
-  position: relative;
   grid-area: coming-up;
-  max-width: 100%;
+  overflow: hidden;
+}
+
+.coming-up * {
+  min-width: 0;
 }

@@ -8,7 +8,7 @@ const PortalInput = forwardRef((props, ref) => {
   return (
     <>
       <label
-        className={`${classes.label} ${errorStyles}`}
+        className={`${classes.label} ${errorStyles} body-bold`}
         typeof={props.type}
         htmlFor={props.id}
       >
