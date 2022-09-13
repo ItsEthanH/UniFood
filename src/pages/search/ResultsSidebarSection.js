@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 
-import SectionTitle from '../../components/ui/SectionTitle';
 import ResultSidebarCard from './ResultSidebarCard';
 import ResultSidebarButton from './ResultSidebarButton';
 import ResultsPlaceholder from './ResultsPlaceholder';
@@ -97,7 +96,7 @@ function ResultsSidebarSection(props) {
 
   return (
     <>
-      <SectionTitle white={true}>{title}</SectionTitle>
+      <h3 className="body-large color-white margin-1r">{title}</h3>
       <ul
         ref={sectionRef}
         onDragEnter={dragEnter.bind(null, sectionRef)}
@@ -107,7 +106,7 @@ function ResultsSidebarSection(props) {
         className={classes.list}
       >
         {renderedCards}
-        <ResultsPlaceholder submitted={submitted} />
+        <ResultsPlaceholder id={sectionId} submitted={submitted} />
         {items.length > 0 && (
           <ResultSidebarButton
             type={sectionId}

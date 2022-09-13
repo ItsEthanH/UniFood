@@ -1,6 +1,7 @@
 .results {
   display: grid;
   grid-template-columns: 1fr 4.5fr;
+  grid-template-rows: 100%;
   margin: 0;
 }
 

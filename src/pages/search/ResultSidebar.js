@@ -45,15 +45,15 @@ function ResultSidebar() {
     <SecondarySidebar>
       <ResultsSidebarSection
         title="Meal Plan"
-        sectionId="MEAL_PLAN"
+        sectionId="MEAL"
         items={mealPlanItems}
         setItems={setMealPlanItems}
         onSidebarSubmit={sidebarSubmitHandler}
         onMealCatagorise={updateMealItems}
       />
       <ResultsSidebarSection
-        title="Shoping List"
-        sectionId="SHOPPING_LIST"
+        title="Shopping List"
+        sectionId="SHOPPING"
         items={shoppingListItems}
         setItems={setShoppingListItems}
         onSidebarSubmit={sidebarSubmitHandler}

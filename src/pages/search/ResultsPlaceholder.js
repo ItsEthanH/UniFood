@@ -2,26 +2,24 @@ import React from 'react';
 
 import classes from './styles/ResultsPlaceholder.module.css';
 
-function ResultsPlaceholder(props) {
-  const { submitted } = props;
-
+function ResultsPlaceholder({ id, submitted }) {
   let text = 'Drag a recipe to add it to the meal plan';
 
-  if (props.shoppingList) {
+  if (id === 'SHOPPING') {
     text = 'Drag a recipe to add it to the shopping list';
   }
 
   const defaultPlaceholder = (
     <>
-      <p className={classes.plus}>+</p>
-      <p className={classes.text}>{text}</p>
+      <p className="body-large color-white">+</p>
+      <p className="body color-white">{text}</p>
     </>
   );
 
   const successPlaceholder = (
     <>
-      <p className={classes.plus}>✓</p>
-      <p className={classes.text}>Your meals were successfully added to meal plan!</p>
+      <p className="body-large color-white">✓</p>
+      <p className="body color-white">Your meals were successfully added to meal plan!</p>
     </>
   );
 
