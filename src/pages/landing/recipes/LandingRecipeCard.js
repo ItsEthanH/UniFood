@@ -8,10 +8,10 @@ function LandingRecipeCard({ animation, index, meal }) {
       <img src={recipes[meal][index].img} alt={recipes[meal][index].title} />
       <div className={classes.text}>
         <h3 className="body-bold">{recipes[meal][index].title}</h3>
-        <p className={classes.description}>{recipes[meal][index].description}</p>
+        <p className="body margin-1r0">{recipes[meal][index].description}</p>
         <hr className="color-primary" />
         <p className="body-bold">{recipes[meal][index].time}</p>
-        <p>£{recipes[meal][index].cost}/serving</p>
+        <p className="body-small">£{recipes[meal][index].cost}/serving</p>
       </div>
     </div>
   );

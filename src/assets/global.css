@@ -51,8 +51,8 @@
 html,
 body {
   font-family: var(--ff-body);
-  font-size: var(--fs-body);
-  font-weight: 300;
+  font-size: 100%;
+  font-weight: var(--fw-light);
   scroll-behavior: smooth;
 }
 
@@ -84,7 +84,13 @@ body {
 }
 
 .body-bold {
+  font-size: var(--fs-body);
   font-weight: var(--fw-medium);
+  line-height: 1.5;
+}
+
+.body {
+  font-size: var(--fs-body);
   line-height: 1.5;
 }
 
@@ -107,6 +113,10 @@ button {
 /* resuable styles */
 .centered {
   text-align: center;
+}
+
+.margin-1r {
+  margin: 1rem;
 }
 
 .margin-1r0 {

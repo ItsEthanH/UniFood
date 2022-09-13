@@ -9,3 +9,7 @@
   width: 100vw;
   overflow: hidden;
 }
+
+.wrapper * {
+  min-height: 0;
+}

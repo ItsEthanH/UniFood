@@ -93,7 +93,9 @@ function LoginForm() {
           />
         );
       })}
-      <a href="">Forgotton your password?</a>
+      <a className="body-small" href="">
+        Forgotton your password?
+      </a>
       <PortalActions
         changeForm={changeForm}
         isFormLogin={isFormLogin}

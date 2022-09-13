@@ -12,14 +12,16 @@ function PortalActions(props) {
   return (
     <>
       {errorMessages.map((msg) => (
-        <p className={classes.error} key={msg}>
+        <p className={`${classes.error} body-small`} key={msg}>
           {msg}
         </p>
       ))}
-      {fetchInfo.error && <p className={`${classes.error} margin-2r0`}>{fetchInfo.error}</p>}
-      {fetchInfo.isLoading && <p>Sending...</p>}
-      {!fetchInfo.isLoading && <button>{buttonText}</button>}
-      <a className={classes.swap} onClick={changeForm}>
+      {fetchInfo.error && (
+        <p className={`${classes.error} body-small margin-2r0`}>{fetchInfo.error}</p>
+      )}
+      {fetchInfo.isLoading && <p className="body-small">Sending...</p>}
+      {!fetchInfo.isLoading && <button className="primary-button">{buttonText}</button>}
+      <a className={`${classes.swap} body`} onClick={changeForm}>
         {changeText}
       </a>
     </>
