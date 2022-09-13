@@ -2,28 +2,20 @@ import React from 'react';
 
 import classes from './styles/RecipeInfoSubsection.module.css';
 
-import SectionTitle from '../../components/ui/SectionTitle';
-
-function RecipeInfoSubsection(props) {
-  let extraClass = '';
+function RecipeInfoSubsection({ title, show, onClick, children, isDiet = false }) {
   function clickHandler() {
-    props.onClick(props.title);
+    onClick(title);
   }
 
-  if (props.diet) {
-    extraClass = classes.diet;
-  }
-
+  const childStyles = `${show ? classes.show : classes.hide} ${isDiet ? classes.diet : ''}`;
   return (
     <div className={classes.subsection}>
       <button onClick={clickHandler}>
-        <SectionTitle center={true}>{props.title}</SectionTitle>
-        <p>{props.show ? '-' : '+'}</p>
+        <h3 className="body-large margin-1r0 centered">{title}</h3>
+        <p className="body-large">{show ? '-' : '+'}</p>
       </button>
-      <hr />
-      <div className={`${props.show ? classes.show : classes.hide} ${extraClass}`}>
-        {props.children}
-      </div>
+      <hr className={classes.hr} />
+      <div className={childStyles}>{children}</div>
     </div>
   );
 }

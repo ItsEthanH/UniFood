@@ -30,6 +30,8 @@
 :root {
   --clr-primary: #0fa50f;
 
+  --clr-grey-300: rgba(255, 255, 255, 0.8);
+
   --clr-warning: #e4cd01;
   --clr-error: #ca3e51;
 

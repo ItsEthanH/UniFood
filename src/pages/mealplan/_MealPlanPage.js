@@ -47,11 +47,7 @@ function MealPlanPage() {
     </main>
   );
 
-  const loadingView = isLoading && (
-    <main className={classes['no-response']}>
-      <LoadingSpinner />
-    </main>
-  );
+  const loadingView = isLoading && <LoadingSpinner />;
 
   const errorView = error && (
     <main className={classes['no-response']}>

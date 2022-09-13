@@ -27,36 +27,36 @@ function RecipeInformation(props) {
       {planOverlayShown && <PlanOverlay onClose={toggleMealPlanModal} onSubmit={submitMealPlan} />}
 
       <img className={classes.image} src={props.image} alt="" />
-      <SectionTitle center={true}>{props.title}</SectionTitle>
-      <div className={classes.stats}>
+      <h3 className="body-large centered margin-1r0">{props.title}</h3>
+      <div className={`${classes.stats} body margin-1r0`}>
         <p>
           {props.timeToCook}
-          <span> mins</span>
+          <span className="body-small color-primary"> mins</span>
         </p>
         <div className={classes.divider}></div>
         <p>
-          ???<span> cal</span>
+          ???<span className="body-small color-primary"> cal</span>
         </p>
         <div className={classes.divider}></div>
         <p>
-          ??<span> /100</span>
+          ??<span className="body-small color-primary"> /100</span>
         </p>
         <div className={classes.divider}></div>
         <p>
           {props.servings}
-          <span> serves</span>
+          <span className="body-small color-primary"> serves</span>
         </p>
       </div>
-      <hr />
-      <div className={classes.actions}>
+      <hr className={classes.hr} />
+      <div className={`${classes.actions} margin-1r0`}>
         <RecipeIcon icon={viewIcon}></RecipeIcon>
         <RecipeIcon icon={favouriteIcon}></RecipeIcon>
         <RecipeIcon onClick={toggleMealPlanModal} icon={planIcon}></RecipeIcon>
         <RecipeIcon icon={cartIcon}></RecipeIcon>
       </div>
-      <hr />
-      <div className={classes.ingredients}>
-        <ul>
+      <hr className={classes.hr} />
+      <div className={`${classes.ingredients} margin-1r0 centered`}>
+        <ul className="body-small">
           {props.ingredients.map((item, index) => (
             <li key={index}>{item.name}</li>
           ))}

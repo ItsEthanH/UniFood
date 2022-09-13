@@ -51,8 +51,7 @@
     text-align: left;
   }
 
-  .downloads,
-  hr {
+  .downloads {
     display: none;
   }
 

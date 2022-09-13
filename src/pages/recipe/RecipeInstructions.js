@@ -6,11 +6,13 @@ import classes from './styles/RecipeInstructions.module.css';
 function RecipeInstructions(props) {
   return (
     <RecipeSection>
-      <SectionTitle center={true}>Instructions</SectionTitle>
-      <hr />
-      <ol className={classes.instructions}>
+      <h3 className="body-large centered margin-1r0">Instructions</h3>
+      <hr className={classes.hr} />
+      <ol className={`${classes.instructions} body`}>
         {props.instructions.map((instruction, index) => (
-          <li key={index}>{instruction.step}</li>
+          <li key={index} className="margin-2r0">
+            {instruction.step}
+          </li>
         ))}
       </ol>
     </RecipeSection>

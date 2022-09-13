@@ -3,7 +3,7 @@ import classes from './styles/LandingFooter.module.css';
 function LandingFooter() {
   return (
     <footer className={classes.footer}>
-      <ul>
+      <ul className="body">
         <h3 className="subheading margin-2r0">Sitemap</h3>
         <li>
           <a href="#top">Back to Top</a>

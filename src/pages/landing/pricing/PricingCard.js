@@ -39,7 +39,7 @@ function PricingCard(props) {
         <h2 className="body-large">{tier}</h2>
         <p className="body-large">{price}</p>
       </div>
-      <ul>
+      <ul className="body">
         <li>Lorem ipsum</li>
         <li>Fugiat sunt</li>
         <li>Maiores culpa</li>
