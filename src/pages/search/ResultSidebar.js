@@ -11,7 +11,7 @@ function ResultSidebar() {
   const { sendRequest, response, isLoading, error } = useFetch();
 
   function sidebarSubmitHandler(id) {
-    if (id === 'SHOPPING_LIST') return;
+    if (id === 'SHOPPING') return;
 
     const requestOptions = {
       method: 'POST',
@@ -22,14 +22,14 @@ function ResultSidebar() {
   }
 
   function updateMealItems(sectionId, recipeid, type, dateObj, quantity) {
-    if (sectionId === 'MEAL_PLAN') {
+    if (sectionId === 'MEAL') {
       const foundMealPlanItem = mealPlanItems.find((item) => item.id === recipeid);
-      if (type) foundMealPlanItem.type = type;
-      if (dateObj) foundMealPlanItem.date = dateObj.getTime();
-      if (quantity) foundMealPlanItem.quantity = quantity;
+      foundMealPlanItem.type = type;
+      foundMealPlanItem.date = dateObj.getTime();
+      foundMealPlanItem.quantity = quantity;
     }
 
-    if (sectionId === 'SHOPPING_LIST') {
+    if (sectionId === 'SHOPPING') {
       return;
 
       //for when shopping list backend is completed

@@ -5,8 +5,6 @@
     'date date';
   width: 100%;
   background-color: white;
-  font-size: var(--fs-600);
-  font-weight: 300;
   margin: 1rem 0;
   list-style: none;
   grid-template-columns: 1.5fr 2fr;
@@ -19,15 +17,20 @@
 }
 
 .text {
+  grid-area: text;
   position: relative;
   display: grid;
-  grid-template-rows: 2fr 1fr;
-  grid-area: text;
+  grid-template-areas:
+    'title cross'
+    'controls controls';
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr min-content;
+  margin: 0.5rem;
+  margin-bottom: 0;
 }
 
 .text > p {
-  margin: 0.5rem;
-  padding-bottom: 0.25rem;
+  grid-area: title;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -35,16 +38,15 @@
 }
 
 .controls {
+  grid-area: controls;
   text-align: center;
+  align-self: flex-end;
 }
 
 .controls button {
   border: none;
   outline: none;
   background: none;
-  font-weight: 300;
-
-  margin: 0 0.5rem;
 }
 
 .controls button,
@@ -53,12 +55,10 @@
 }
 
 .remove {
-  position: absolute;
-  top: 0;
-  right: 0.2rem;
+  grid-area: cross;
+  align-self: start;
   background: none;
   border: none;
-  font-weight: 300;
 }
 
 .remove:hover {
@@ -72,11 +72,6 @@
   background: black;
   padding: 0.5rem;
   border: none;
-  font-weight: 300;
-}
-
-.servings {
-  font-size: var(--fs-400);
 }
 
 .removed {

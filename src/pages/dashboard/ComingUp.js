@@ -11,10 +11,10 @@ import 'swiper/css/navigation';
 
 function ComingUp() {
   const breakpoints = {
-    1200: {
+    1000: {
       slidesPerView: 2,
     },
-    1600: {
+    1400: {
       slidesPerView: 3,
     },
     2000: {
