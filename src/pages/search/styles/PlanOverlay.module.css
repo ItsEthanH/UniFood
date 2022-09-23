@@ -18,6 +18,12 @@
   border-radius: 8px;
 }
 
+.form legend,
+.form input,
+.form select {
+  margin: 0 1rem;
+}
+
 .form input,
 .form select {
   font-family: var(--ff-body);

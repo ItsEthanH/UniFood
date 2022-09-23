@@ -3,9 +3,9 @@ import MealPlanDayCard from './MealPlanDayCard';
 import classes from './styles/MealPlanDayView.module.css';
 
 function MealPlanDayView({ meals }) {
-  const breakfast = meals.breakfast;
-  const lunch = meals.lunch;
-  const dinner = meals.dinner;
+  const breakfast = meals?.breakfast;
+  const lunch = meals?.lunch;
+  const dinner = meals?.dinner;
 
   return (
     <div className={classes.view}>
