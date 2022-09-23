@@ -65,7 +65,7 @@ function ResultSidebarCard(props) {
     >
       {planOverlayShown && <PlanOverlay onClose={toggleModal} onSubmit={modalSubmitHandler} />}
       <img src={props.src} alt="placeholder" />
-      <div className={classes.text}>
+      <div className={`${classes.text} body-small`}>
         <p>{props.name}</p>
         <div className={classes.controls}>
           <button onClick={decreaseQuantity}>-</button>
@@ -76,7 +76,7 @@ function ResultSidebarCard(props) {
           X
         </button>
       </div>
-      <button onClick={toggleModal} className={classes.date}>
+      <button onClick={toggleModal} className={`${classes.date} body-small`}>
         {date}
       </button>
     </li>

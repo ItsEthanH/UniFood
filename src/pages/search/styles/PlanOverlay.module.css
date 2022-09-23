@@ -21,7 +21,7 @@
 .form input,
 .form select {
   font-family: var(--ff-body);
-  font-size: var(--fs-600);
+  font-size: var(--fs-subbody);
   border: none;
   outline: none;
   width: 100%;

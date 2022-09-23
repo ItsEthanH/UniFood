@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 import Modal from '../../components/ui/Modal';
 import ResultButton from './ResultSidebarButton';
@@ -40,8 +40,8 @@ function PlanOverlay(props) {
 
   return (
     <Modal onClose={props.onClose}>
-      <h3 className={classes.title}>Choose your meal type and date</h3>
-      <form className={classes.form} onSubmit={submitHandler}>
+      <h3 className="body-large">Choose your meal type and date</h3>
+      <form className={`${classes.form} body`} onSubmit={submitHandler}>
         <fieldset>
           <legend>Meal Type</legend>
           <select name="type" id="type" ref={typeRef}>
