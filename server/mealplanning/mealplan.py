@@ -56,7 +56,7 @@ def getMealPlanDay(t, date):
 
     for item in mealplan["items"]:
 
-        if item['position'] == 1:
+        if item['slot'] == 1:
             breakfast = item
             breakfast["nutrients"] = mealplan["nutritionSummaryBreakfast"]["nutrients"]
 
@@ -67,13 +67,13 @@ def getMealPlanDay(t, date):
                     breakfast["value"]["ingredients"] = recipe["extendedIngredients"]
                     breakfast["value"]["image"] = recipe["image"]
 
-        elif item['position'] == 2:
+        elif item['slot'] == 2:
             lunch = item
             lunch["nutrients"] = mealplan["nutritionSummaryLunch"]["nutrients"]
 
             for recipe in recipeInfo:
                 if int(recipe["id"]) == int(item["value"]["id"]):
-                    lunch["value"]["instructions"] = recipe["analyzedInstructions"]
+                    lunch["value"]["i3nstructions"] = recipe["analyzedInstructions"]
                     lunch["value"]["ingredients"] = recipe["extendedIngredients"]
                     lunch["value"]["image"] = recipe["image"]
         else:
@@ -145,7 +145,7 @@ def getMealPlanWeek(t, date):
         for item in day["items"]:
     
             # Check if item is breakfast, lunch, or dinner and add nutritional info
-            if item["position"] == 1:
+            if item["slot"] == 1:
                 breakfast = item
                 breakfast["nutrients"] = day["nutritionSummaryBreakfast"]["nutrients"]
 
@@ -157,7 +157,7 @@ def getMealPlanWeek(t, date):
                         breakfast["value"]["ingredients"] = recipe["extendedIngredients"]
                         breakfast["value"]["image"] = recipe["image"]
 
-            elif item["position"] == 2:
+            elif item["slot"] == 2:
                 lunch = item
                 lunch["nutrients"] = day["nutritionSummaryLunch"]["nutrients"]
 
