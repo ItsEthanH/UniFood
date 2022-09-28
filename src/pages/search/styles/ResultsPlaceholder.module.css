@@ -8,6 +8,8 @@
   margin: 1rem 0;
 }
 
-.text {
-  font-weight: 300;
+@media screen and (max-width: 1600px) {
+  .placeholder p:last-child {
+    font-size: var(--fs-subbody);
+  }
 }

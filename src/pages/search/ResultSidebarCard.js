@@ -67,7 +67,7 @@ function ResultSidebarCard(props) {
       <img src={props.src} alt="placeholder" />
       <div className={`${classes.text} body-small`}>
         <p>{props.name}</p>
-        <div className={classes.controls}>
+        <div className={`${classes.controls} body-small`}>
           <button onClick={decreaseQuantity}>-</button>
           <p className={classes.qty}>{quantity}</p>
           <button onClick={increaseQuantity}>+</button>
