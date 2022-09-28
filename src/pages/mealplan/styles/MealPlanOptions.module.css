@@ -36,6 +36,6 @@
   .options a,
   .options button,
   .options button * {
-    font-size: var(--fs-600);
+    font-size: var(--fs-body);
   }
 }

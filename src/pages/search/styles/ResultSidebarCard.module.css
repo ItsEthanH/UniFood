@@ -39,19 +39,18 @@
 
 .controls {
   grid-area: controls;
-  text-align: center;
+  display: flex;
+  align-items: center;
   align-self: flex-end;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
 }
 
 .controls button {
   border: none;
   outline: none;
   background: none;
-}
-
-.controls button,
-.qty {
-  display: inline;
 }
 
 .remove {

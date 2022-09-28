@@ -8,7 +8,7 @@ function MealPlanSidebar(props) {
       <h3 className={`${classes.today} body-large color-white`}>Today</h3>
       <div className="margin-1r0">
         <p className={classes.heading}>Notes</p>
-        <ul className={`${classes.notes} body`}>
+        <ul className={`${classes.notes} body-small`}>
           <li className={classes.green}>All ingredients for today are in the pantry!</li>
           <li className={classes.yellow}>There is one dietary conflict today.</li>
           <li className={classes.green}>You have planned three meals for today!</li>

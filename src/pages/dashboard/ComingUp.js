@@ -14,7 +14,7 @@ function ComingUp() {
     1000: {
       slidesPerView: 2,
     },
-    1400: {
+    1300: {
       slidesPerView: 3,
     },
     2000: {

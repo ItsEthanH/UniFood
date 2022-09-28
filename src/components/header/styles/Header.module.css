@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: min-content auto;
   grid-area: header;
+  align-items: center;
   z-index: 1;
   background-color: black;
 }
