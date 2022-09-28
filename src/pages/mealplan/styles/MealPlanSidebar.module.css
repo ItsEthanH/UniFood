@@ -8,13 +8,12 @@
 }
 
 .today {
-  font-size: var(--fs-title);
   line-height: 1;
 }
 
 .heading {
   color: white;
-  font-size: var(--fs-heading);
+  font-size: var(--fs-subheading);
   text-decoration: underline;
   margin: 1rem 0;
 }

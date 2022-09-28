@@ -5,6 +5,7 @@
 }
 
 .day {
+  grid-template-columns: 1fr 4fr;
   grid-template-areas:
     'sidebar options'
     'sidebar mealplan';

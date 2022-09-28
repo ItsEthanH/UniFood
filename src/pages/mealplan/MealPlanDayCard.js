@@ -67,14 +67,18 @@ function MealPlanDayCard(props) {
       <hr className={classes.divider} />
 
       <div className={classes.actions}>
-        <div className={classes.info}>
-          <p>Servings:</p>
-          <p>{props.servings}</p>
-        </div>
-        <div className={classes.info}>
-          <p>Time:</p>
-          <p>{props.time}</p>
-        </div>
+        {!hover && (
+          <>
+            <div className={classes.info}>
+              <p>Servings:</p>
+              <p>{props.servings}</p>
+            </div>
+            <div className={classes.info}>
+              <p>Time:</p>
+              <p>{props.time}</p>
+            </div>
+          </>
+        )}
         <Link className="primary-button" to={`/app/recipe/${props.id}`}>
           View Full Recipe
         </Link>
