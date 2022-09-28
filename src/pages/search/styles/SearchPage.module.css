@@ -8,8 +8,7 @@
 .list {
   display: flex;
   flex-flow: wrap row;
-  padding: 2rem 0;
   justify-content: center;
-  gap: 3rem;
+  padding: 2rem 0;
   overflow-y: scroll;
 }

@@ -4,6 +4,7 @@
   padding-bottom: 0.6rem;
   box-shadow: -2px 2px 25px rgba(0, 0, 0, 0.05);
   animation: slideup 1s;
+  margin: 1rem 2rem;
 }
 
 .buttons {
