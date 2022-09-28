@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import useFetch from '../../hooks/useFetch';
+
 import ComingUp from './ComingUp';
 import NextMeal from './NextMeal';
 import Nutrition from './Nutrition';
@@ -7,6 +9,12 @@ import Welcome from './Welcome';
 import classes from './styles/DashboardPage.module.css';
 
 function DashboardPage() {
+  const { sendRequest } = useFetch();
+
+  useEffect(() => {
+    sendRequest('/dashboard');
+  }, []);
+
   return (
     <main className={classes.dashboard}>
       <Welcome />
