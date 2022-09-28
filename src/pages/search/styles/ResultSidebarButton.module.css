@@ -1,5 +1,5 @@
 @media screen and (max-width: 1600px) {
   .button {
-    font-size: var(--fs-subbody);
+    font-size: var(--fs-subbody) !important;
   }
 }

@@ -21,7 +21,12 @@ function MealPlanWeekDayCard(props) {
         <img src={`https://spoonacular.com/recipeImages/${props.id}-90x90.jpg`} alt="placeholder" />
       </div>
       <div className={classes.text}>
-        <h3 className="body-bold">{props.meal}</h3>
+        <div className={classes['title-wrapper']}>
+          <h3 className="body-bold">{props.meal}</h3>
+          <Link className="body-small" to={`/app/recipe/${props.id}`}>
+            View Recipe
+          </Link>
+        </div>
         <h4 className="body-small">{props.name}</h4>
         <p className="body-small">{props.calories} calories</p>
         <div className={classes.macros}>
@@ -31,11 +36,6 @@ function MealPlanWeekDayCard(props) {
           <div className={classes.divider}></div>
           <p>{props.protein}g protein</p>
         </div>
-      </div>
-      <div className={classes.view}>
-        <Link className="body-small" to={`/app/recipe/${props.id}`}>
-          View Recipe
-        </Link>
       </div>
     </li>
   );
