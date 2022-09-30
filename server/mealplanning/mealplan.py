@@ -1,8 +1,8 @@
-import re, requests
+import re, requests, time
 import jwt
 from config import enc_key
 from core.spoonacular import mealPlanAddTo, mealPlanGetDay, mealPlanGetWeek, getRecipeInformationBulk
-
+from mealplanning.mealCache import cacheAdd, cacheFetch
 #token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJFdGllbm5lIEJyYW5kIiwibHZsIjowLCJ0bXoiOiJFdXJvcGUvTG9uZG9uIiwidGhtIjowLCJhcGkiOiJmZGM3ZWZhYy1hM2RlLTQxYTYtYTFmYy0zNTc0MzU4ODA1YWQiLCJoc2giOiIwYWRjMTdkZmVmNTYwMmJkNzEwOGNiZWNiMjMwYmI3ZDQ2MGYwZTM0IiwiZXhwIjoxNjU3NzYyMDMwfQ.q6U4pJOQ2KuadsfwhUZHMaBXLbmbZN220BRDLETnFEk"
 
 def addToMealPlan(t, i):
@@ -28,7 +28,11 @@ def addToMealPlan(t, i):
 
     decoded = jwt.decode(t, enc_key, algorithms=["HS256"])
 
-    mealPlanAddTo(decoded["api"], decoded["hsh"], payload)
+    try:
+        mealPlanAddTo(decoded["api"], decoded["hsh"], payload)   
+        return True
+    except:
+        return False
 
 
 def getMealPlanDay(t, date):
@@ -118,109 +122,117 @@ def getMealPlanDay(t, date):
 
 def getMealPlanWeek(t, date):
 
-    decoded = jwt.decode(t, enc_key, algorithms=["HS256"])
+    results = cacheFetch(date)
 
-    days = {}
-    breakfast = None
-    lunch = None
-    dinner = None
+    if results["hit"] == True:
+        return results["plan"]
+    else:
 
-    # Get meal plan
-    mealplan = mealPlanGetWeek(decoded["api"], decoded["hsh"], str(date))
+        decoded = jwt.decode(t, enc_key, algorithms=["HS256"])
 
-    index = 0
-
-    allids = []
-
-    for day in mealplan["days"]:
-        for item in day["items"]:
-            allids.append(item["value"]["id"])
-
-    recipeInfo = getRecipeInformationBulk(",".join(allids), False)
-    
-    # Loop through each day of mealplan
-    for day in mealplan["days"]:
-
-        # Loop through each recipe in a day 
-        for item in day["items"]:
-    
-            # Check if item is breakfast, lunch, or dinner and add nutritional info
-            if item["slot"] == 1:
-                breakfast = item
-                breakfast["nutrients"] = day["nutritionSummaryBreakfast"]["nutrients"]
-
-                # Add extra info
-                for recipe in recipeInfo:
-
-                    if int(recipe["id"]) == int(item["value"]["id"]):
-                        breakfast["value"]["instructions"] = recipe["analyzedInstructions"]
-                        breakfast["value"]["ingredients"] = recipe["extendedIngredients"]
-                        breakfast["value"]["image"] = recipe["image"]
-
-            elif item["slot"] == 2:
-                lunch = item
-                lunch["nutrients"] = day["nutritionSummaryLunch"]["nutrients"]
-
-                for recipe in recipeInfo:
-
-                    if int(recipe["id"]) == int(item["value"]["id"]):
-                        lunch["value"]["instructions"] = recipe["analyzedInstructions"]
-                        lunch["value"]["ingredients"] = recipe["extendedIngredients"]
-                        lunch["value"]["image"] = recipe["image"]
-
-            else:
-                dinner = item
-                dinner["nutrients"] = day["nutritionSummaryDinner"]["nutrients"]
-
-                for recipe in recipeInfo:
-
-                    if int(recipe["id"]) == int(item["value"]["id"]):
-                        dinner["value"]["instructions"] = recipe["analyzedInstructions"]
-                        dinner["value"]["ingredients"] = recipe["extendedIngredients"]
-                        dinner["value"]["image"] = recipe["image"]
-        
-        # Add meals to an object using the day of the week as a key
-        days[day["day"]] = {
-            "meals": {
-                "breakfast": breakfast,
-                "lunch": lunch,
-                "dinner": dinner
-            }
-        }
-
+        days = {}
         breakfast = None
         lunch = None
         dinner = None
 
-        index = index + 1
-    
-    # Assign falsey value if day is not populated
-    if "Monday" not in days:
-        days["Monday"] = None
-    if "Tuesday" not in days:
-        days["Tuesday"] = None
-    if "Wednesday" not in days:
-        days["Wednesday"] = None
-    if "Thursday" not in days:
-        days["Thursday"] = None
-    if "Friday" not in days:
-        days["Friday"] = None
-    if "Saturday" not in days:
-        days["Saturday"] = None
-    if "Sunday" not in days:
-        days["Sunday"] = None
+        # Get meal plan
+        mealplan = mealPlanGetWeek(decoded["api"], decoded["hsh"], str(date))
 
-    # Create overall data struct
-    mealdata = {
-        'week': {
-            "Monday": days["Monday"],
-            "Tuesday": days["Tuesday"],
-            "Wednesday": days["Wednesday"],
-            "Thursday": days["Thursday"],
-            "Friday": days["Friday"],
-            "Saturday": days["Saturday"],
-            "Sunday": days["Sunday"]
+        index = 0
+
+        allids = []
+
+        for day in mealplan["days"]:
+            for item in day["items"]:
+                allids.append(item["value"]["id"])
+
+        recipeInfo = getRecipeInformationBulk(",".join(allids), False)
+        
+        # Loop through each day of mealplan
+        for day in mealplan["days"]:
+
+            # Loop through each recipe in a day 
+            for item in day["items"]:
+        
+                # Check if item is breakfast, lunch, or dinner and add nutritional info
+                if item["slot"] == 1:
+                    breakfast = item
+                    breakfast["nutrients"] = day["nutritionSummaryBreakfast"]["nutrients"]
+
+                    # Add extra info
+                    for recipe in recipeInfo:
+
+                        if int(recipe["id"]) == int(item["value"]["id"]):
+                            breakfast["value"]["instructions"] = recipe["analyzedInstructions"]
+                            breakfast["value"]["ingredients"] = recipe["extendedIngredients"]
+                            breakfast["value"]["image"] = recipe["image"]
+
+                elif item["slot"] == 2:
+                    lunch = item
+                    lunch["nutrients"] = day["nutritionSummaryLunch"]["nutrients"]
+
+                    for recipe in recipeInfo:
+
+                        if int(recipe["id"]) == int(item["value"]["id"]):
+                            lunch["value"]["instructions"] = recipe["analyzedInstructions"]
+                            lunch["value"]["ingredients"] = recipe["extendedIngredients"]
+                            lunch["value"]["image"] = recipe["image"]
+
+                else:
+                    dinner = item
+                    dinner["nutrients"] = day["nutritionSummaryDinner"]["nutrients"]
+
+                    for recipe in recipeInfo:
+
+                        if int(recipe["id"]) == int(item["value"]["id"]):
+                            dinner["value"]["instructions"] = recipe["analyzedInstructions"]
+                            dinner["value"]["ingredients"] = recipe["extendedIngredients"]
+                            dinner["value"]["image"] = recipe["image"]
+            
+            # Add meals to an object using the day of the week as a key
+            days[day["day"]] = {
+                "meals": {
+                    "breakfast": breakfast,
+                    "lunch": lunch,
+                    "dinner": dinner
+                }
+            }
+
+            breakfast = None
+            lunch = None
+            dinner = None
+
+            index = index + 1
+        
+        # Assign falsey value if day is not populated
+        if "Monday" not in days:
+            days["Monday"] = None
+        if "Tuesday" not in days:
+            days["Tuesday"] = None
+        if "Wednesday" not in days:
+            days["Wednesday"] = None
+        if "Thursday" not in days:
+            days["Thursday"] = None
+        if "Friday" not in days:
+            days["Friday"] = None
+        if "Saturday" not in days:
+            days["Saturday"] = None
+        if "Sunday" not in days:
+            days["Sunday"] = None
+
+        # Create overall data struct
+        mealdata = {
+            'week': {
+                "Monday": days["Monday"],
+                "Tuesday": days["Tuesday"],
+                "Wednesday": days["Wednesday"],
+                "Thursday": days["Thursday"],
+                "Friday": days["Friday"],
+                "Saturday": days["Saturday"],
+                "Sunday": days["Sunday"]
+            }
         }
-    }
 
-    return mealdata
+        cacheAdd(date, mealdata)
+
+        return mealdata
