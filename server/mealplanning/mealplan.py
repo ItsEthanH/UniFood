@@ -2,7 +2,7 @@ import re, requests, time
 import jwt
 from config import enc_key
 from core.spoonacular import mealPlanAddTo, mealPlanGetDay, mealPlanGetWeek, getRecipeInformationBulk
-from mealplanning.mealCache import cacheAdd, cacheFetch
+from mealplanning.mealCache import cacheAdd, cacheFetch, cacheRemove
 #token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJFdGllbm5lIEJyYW5kIiwibHZsIjowLCJ0bXoiOiJFdXJvcGUvTG9uZG9uIiwidGhtIjowLCJhcGkiOiJmZGM3ZWZhYy1hM2RlLTQxYTYtYTFmYy0zNTc0MzU4ODA1YWQiLCJoc2giOiIwYWRjMTdkZmVmNTYwMmJkNzEwOGNiZWNiMjMwYmI3ZDQ2MGYwZTM0IiwiZXhwIjoxNjU3NzYyMDMwfQ.q6U4pJOQ2KuadsfwhUZHMaBXLbmbZN220BRDLETnFEk"
 
 def addToMealPlan(t, i):
@@ -29,95 +29,11 @@ def addToMealPlan(t, i):
     decoded = jwt.decode(t, enc_key, algorithms=["HS256"])
 
     try:
-        mealPlanAddTo(decoded["api"], decoded["hsh"], payload)   
+        mealPlanAddTo(decoded["api"], decoded["hsh"], payload)
+        cacheRemove(i["date"]/1000)
         return True
     except:
         return False
-
-
-def getMealPlanDay(t, date):
-
-    # Decode JWT
-    decoded = jwt.decode(t, enc_key, algorithms=["HS256"])
-
-    # Get users meal plan
-    mealplan = mealPlanGetDay(decoded["api"], decoded["hsh"], str(date))
-
-    # Meal variable initialisation
-    breakfast = None
-    lunch = None
-    dinner = None
-    ids = []
-
-    # Get the recipe IDs of each recipie in the meal plan
-    for item in mealplan["items"]:
-        ids.append(item["value"]["id"])
-
-    idString = ",".join(ids)
-
-    # Fetch recipe information
-    recipeInfo = getRecipeInformationBulk(idString, False)
-
-    for item in mealplan["items"]:
-
-        if item['slot'] == 1:
-            breakfast = item
-            breakfast["nutrients"] = mealplan["nutritionSummaryBreakfast"]["nutrients"]
-
-            for recipe in recipeInfo:
-
-                if int(recipe["id"]) == int(item["value"]["id"]):
-                    breakfast["value"]["instructions"] = recipe["analyzedInstructions"]
-                    breakfast["value"]["ingredients"] = recipe["extendedIngredients"]
-                    breakfast["value"]["image"] = recipe["image"]
-
-        elif item['slot'] == 2:
-            lunch = item
-            lunch["nutrients"] = mealplan["nutritionSummaryLunch"]["nutrients"]
-
-            for recipe in recipeInfo:
-                if int(recipe["id"]) == int(item["value"]["id"]):
-                    lunch["value"]["i3nstructions"] = recipe["analyzedInstructions"]
-                    lunch["value"]["ingredients"] = recipe["extendedIngredients"]
-                    lunch["value"]["image"] = recipe["image"]
-        else:
-            dinner = item
-            dinner["nutrients"] = mealplan["nutritionSummaryDinner"]["nutrients"]
-
-            for recipe in recipeInfo:
-                if int(recipe["id"]) == int(item["value"]["id"]):
-                    dinner["value"]["instructions"] = recipe["analyzedInstructions"]
-                    dinner["value"]["ingredients"] = recipe["extendedIngredients"]
-                    dinner["value"]["image"] = recipe["image"]
-
-    mealdata = {
-        'week': [
-            {
-                "day": mealplan["day"],
-                "meals": {
-                    "breakfast": breakfast,
-                    "lunch": lunch,
-                    "dinner": dinner
-                }
-            }
-        ]
-    }
-
-    meals = {
-        "meals": {
-            "breakfast": breakfast,
-            "lunch": lunch,
-            "dinner": dinner
-        }
-    }
-
-    mealdata = {
-        "week": {
-            mealplan["day"]: meals
-        }
-    }
-
-    return mealdata
 
 
 def getMealPlanWeek(t, date):

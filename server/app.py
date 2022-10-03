@@ -4,7 +4,6 @@ from recipes.recipes import getRecipes, getRecipeInfo, getRelatedRecipes
 from core.dataAccess import registerUser, authenticateUser
 from mealplanning.mealplan import addToMealPlan, getMealPlanWeek
 from config import enc_key
-from mealplanning.mealplan import getMealPlanDay
 from mealplanning.mealCache import cacheClear
 from datetime import date
 from core.tokens import jwtRemove, jwtValidate
@@ -102,7 +101,6 @@ def mealplan():
         resp = make_response({'results': 'JWTError'})
         resp.headers['Access-Control-Allow-Origin'] = '*'
         return resp
-    # validToken = True
 
     if validToken:
         jwt = request.headers.get('Authorization').split()[1]
@@ -110,23 +108,11 @@ def mealplan():
 
         if request.method == 'GET':
 
-            if request.args.get('period') == 'day':
+            results = getMealPlanWeek(jwt, request.args.get('date'))
+            resp = make_response({"results": results})
+            resp.headers['Access-Control-Allow-Origin'] = '*'
 
-                results = getMealPlanDay(jwt, request.args.get('date'))
-                resp = make_response({"results": results})
-                resp.headers['Access-Control-Allow-Origin'] = '*'
-
-                changed = False
-                return resp
-            
-            elif request.args.get('period') == 'week':
-
-                results = getMealPlanWeek(jwt, request.args.get('date'))
-                resp = make_response({"results": results})
-                resp.headers['Access-Control-Allow-Origin'] = '*'
-
-                changed = False
-                return resp
+            return resp
 
         elif request.method == 'POST':
 

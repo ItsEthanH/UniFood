@@ -29,3 +29,18 @@ def cacheClear():
     f.close()
 
 
+def cacheRemove(date):
+    print(date)
+    f = open('../database/cacheMealPlan.json', 'r')
+    mealPlan = json.loads(f.read())
+    f.close()
+
+    date = datetime.datetime.fromtimestamp(date).strftime('%Y-%m-%d')
+    print(date)
+    mealPlan.pop(str(date))
+    f = open('../database/cacheMealPlan.json', 'w')
+    f.write(json.dumps(mealPlan, indent=4))
+    f.close()
+
+
+
