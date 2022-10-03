@@ -1,11 +1,11 @@
-import time, json
+import json
 from flask import Flask, make_response, request, redirect, url_for
 from recipes.recipes import getRecipes, getRecipeInfo, getRelatedRecipes
 from core.dataAccess import registerUser, authenticateUser
 from mealplanning.mealplan import addToMealPlan, getMealPlanWeek
 from config import enc_key
-from mealplanning.mealplan import getMealPlanDay
-from datetime import datetime
+from mealplanning.mealCache import cacheClear
+from datetime import date
 from core.tokens import jwtRemove, jwtValidate
 
 app = Flask(__name__)
@@ -14,10 +14,25 @@ app.secret_key = enc_key
 @app.route('/dashboard', methods = ['GET'])
 def dashboard():
 
-    resp = make_response()
-    resp.headers['Access-Control-Allow-Origin'] = '*'
+    try: validToken = jwtValidate(request.headers.get('Authorization'))
+    except: 
+        resp = make_response({'results': 'JWTError'})
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        return resp
 
-    return resp
+    if validToken:
+        today = date.today()
+        jwt = request.headers.get('Authorization').split()[1]
+
+        results = getMealPlanWeek(jwt, str(today))
+        resp = make_response({"results": results})
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+
+        return resp
+    else:
+        resp = make_response({'results': 'JWTError'})
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        return resp
     
 
 @app.route('/search', methods = ['GET'])
@@ -86,7 +101,6 @@ def mealplan():
         resp = make_response({'results': 'JWTError'})
         resp.headers['Access-Control-Allow-Origin'] = '*'
         return resp
-    # validToken = True
 
     if validToken:
         jwt = request.headers.get('Authorization').split()[1]
@@ -94,26 +108,16 @@ def mealplan():
 
         if request.method == 'GET':
 
-            if request.args.get('period') == 'day':
+            results = getMealPlanWeek(jwt, request.args.get('date'))
+            resp = make_response({"results": results})
+            resp.headers['Access-Control-Allow-Origin'] = '*'
 
-                results = getMealPlanDay(jwt, request.args.get('date'))
-                resp = make_response({"results": results})
-                resp.headers['Access-Control-Allow-Origin'] = '*'
-
-                return resp
-            
-            elif request.args.get('period') == 'week':
-
-                results = getMealPlanWeek(jwt, request.args.get('date'))
-                resp = make_response({"results": results})
-                resp.headers['Access-Control-Allow-Origin'] = '*'
-
-                return resp
+            return resp
 
         elif request.method == 'POST':
 
-            results = addToMealPlan(jwt, json.loads(request.data)[0])
-            resp = make_response({"results": results})
+            changed = addToMealPlan(jwt, json.loads(request.data)[0])
+            resp = make_response({"results": changed})
             resp.headers['Access-Control-Allow-Origin'] = '*'
 
             return resp
@@ -152,6 +156,8 @@ def logout():
 
     try: jwtRemove(request.headers.get('Authorization').split()[1])
     except: pass
+
+    cacheClear()
 
     resp = make_response()
     resp.headers['Access-Control-Allow-Origin'] = '*'
