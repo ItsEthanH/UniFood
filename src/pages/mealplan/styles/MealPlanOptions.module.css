@@ -26,12 +26,6 @@
   color: var(--clr-primary);
 }
 
-.hr {
-  color: var(--clr-hr);
-  width: 100%;
-  margin: 0;
-}
-
 @media screen and (max-width: 1500px) {
   .options a,
   .options button,

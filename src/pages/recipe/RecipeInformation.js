@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import RecipeSection from './RecipeSection';
-import RecipeIcon from './RecipeIcon';
 import PlanOverlay from '../search/PlanOverlay';
+import IconWithTooltip from '../../components/ui/IconWithTooltip';
 
 import classes from './styles/RecipeInformation.module.css';
 import viewIcon from '../../assets/icons/view.png';
@@ -48,10 +48,14 @@ function RecipeInformation(props) {
       </div>
       <hr className={classes.hr} />
       <div className={`${classes.actions} margin-1r0`}>
-        <RecipeIcon icon={viewIcon}></RecipeIcon>
-        <RecipeIcon icon={favouriteIcon}></RecipeIcon>
-        <RecipeIcon onClick={toggleMealPlanModal} icon={planIcon}></RecipeIcon>
-        <RecipeIcon icon={cartIcon}></RecipeIcon>
+        <IconWithTooltip icon={viewIcon} tooltipText="View" />
+        <IconWithTooltip icon={favouriteIcon} tooltipText="Favourite" />
+        <IconWithTooltip
+          icon={planIcon}
+          tooltipText="Add to Meal Plan"
+          onClick={toggleMealPlanModal}
+        />
+        <IconWithTooltip icon={cartIcon} tooltipText="Add to Shopping Cart" />
       </div>
       <hr className={classes.hr} />
       <div className={`${classes.ingredients} margin-1r0 centered`}>

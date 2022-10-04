@@ -16,7 +16,7 @@ function MealPlanOptions({ isDayView, setIsDayView }) {
         <a href="/app/meal-plan">Create New Plan</a>
         <a href="/app/meal-plan">Upload Plan</a>
       </div>
-      <hr className={classes.hr} />
+      <hr className="app-rule" />
     </section>
   );
 }

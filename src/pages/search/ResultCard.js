@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import RecipeIcon from '../recipe/RecipeIcon';
+import IconWithTooltip from '../../components/ui/IconWithTooltip';
 import PlanOverlay from './PlanOverlay';
 
 import classes from './styles/ResultCard.module.css';
@@ -11,7 +11,6 @@ import planIcon from '../../assets/icons/plan.png';
 import cartIcon from '../../assets/icons/cart.png';
 
 function ResultCard(props) {
-  const [tooltip, setTooltip] = useState('');
   const [planOverlayShown, setPlanOverlayShown] = useState(false);
   const navigate = useNavigate();
 
@@ -43,18 +42,10 @@ function ResultCard(props) {
       <div className="centered margin-1r">
         <h5 className="body-bold margin-1r0">{props.title}</h5>
         <div className={classes.buttons}>
-          <RecipeIcon onClick={viewRecipe} setTooltip={setTooltip} tooltip="View" icon={viewIcon} />
-          <RecipeIcon setTooltip={setTooltip} tooltip="Favourite" icon={favouriteIcon} />
-          <RecipeIcon
-            onClick={toggleMealPlanModal}
-            setTooltip={setTooltip}
-            tooltip="Meal Plan"
-            icon={planIcon}
-          />
-          <RecipeIcon setTooltip={setTooltip} tooltip="Cart" icon={cartIcon} />
-        </div>
-        <div className="margin-1r0">
-          <p className="body">{tooltip}</p>
+          <IconWithTooltip tooltipText="View" icon={viewIcon} onClick={viewRecipe} />
+          <IconWithTooltip tooltipText="Favourite" icon={favouriteIcon} />
+          <IconWithTooltip tooltipText="Meal Plan" icon={planIcon} />
+          <IconWithTooltip tooltipText="Shopping Cart" icon={cartIcon} />
         </div>
       </div>
     </li>
