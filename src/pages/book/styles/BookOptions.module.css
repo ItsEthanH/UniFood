@@ -1,11 +1,11 @@
-.section {
+.wrapper {
   display: flex;
   justify-content: space-between;
   margin: 1rem 0;
   padding: 0 2rem;
 }
 
-.section > div {
+.wrapper > div {
   display: flex;
   gap: 2rem;
 }

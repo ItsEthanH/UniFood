@@ -5,8 +5,8 @@ import addIcon from '../../assets/svgs/add.svg';
 
 function BookOptions(props) {
   return (
-    <>
-      <section className={classes.section}>
+    <section className={classes.section}>
+      <div className={classes.wrapper}>
         <div>
           <button className={classes.option}>
             <img src={sortIcon} alt="" />
@@ -25,9 +25,9 @@ function BookOptions(props) {
           <img src={addIcon} alt="" />
           <p className="body">Create Custom Recipe</p>
         </button>
-      </section>
+      </div>
       <hr className="app-rule" />
-    </>
+    </section>
   );
 }
 

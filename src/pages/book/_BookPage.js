@@ -9,6 +9,17 @@ function _BookPage(props) {
       <BookOptions />
       <section className={classes.recipes}>
         <BookCard />
+        <BookCard />
+        <BookCard />
+        <BookCard />
+        <BookCard />
+        <BookCard />
+        <BookCard />
+        <BookCard />
+        <BookCard />
+        <BookCard />
+        <BookCard />
+        <BookCard />
       </section>
     </main>
   );
