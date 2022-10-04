@@ -1,12 +1,15 @@
 import BookOptions from './BookOptions';
+import BookCard from './BookCard';
 
 import classes from './styles/BookPage.module.css';
 
 function _BookPage(props) {
   return (
-    <main>
+    <main className={classes.main}>
       <BookOptions />
-      <h1>page</h1>
+      <section className={classes.recipes}>
+        <BookCard />
+      </section>
     </main>
   );
 }
