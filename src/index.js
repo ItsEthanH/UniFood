@@ -10,6 +10,7 @@ import DashboardPage from './pages/dashboard/_DashboardPage';
 import SearchPage from './pages/search/_SearchPage';
 import RecipePage from './pages/recipe/_RecipePage';
 import MealPlanPage from './pages/mealplan/_MealPlanPage';
+import BookPage from './pages/book/_BookPage';
 
 import LoginForm from './pages/portal/LoginForm';
 import RegisterForm from './pages/portal/RegisterForm';
@@ -36,6 +37,7 @@ function Index() {
             </Route>
             <Route path="/app/recipe/:recipeid" element={<RecipePage />} />
             <Route path="/app/meal-plan" element={<MealPlanPage />} />
+            <Route path="/app/recipe-book" element={<BookPage />} />
             <Route path="/app/*" element={<Navigate to="/app" />} />
           </Route>
         )}
