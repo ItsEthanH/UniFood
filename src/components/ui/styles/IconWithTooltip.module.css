@@ -10,7 +10,7 @@
 .button p {
   position: absolute;
   object-position: left;
-  top: 105%;
+  top: 130%;
   left: 50%;
   right: 50%;
   transform: translateX(-50%);
@@ -22,4 +22,10 @@
   background: var(--clr-primary);
   z-index: 10;
   color: white;
+}
+
+.button img:hover {
+  filter: invert(33%) sepia(99%) saturate(1494%) hue-rotate(96deg) brightness(102%) contrast(88%);
+  transform: scale(1.5);
+  transition: 0.15s;
 }
