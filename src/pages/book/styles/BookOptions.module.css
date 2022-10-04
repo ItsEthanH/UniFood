@@ -1,0 +1,22 @@
+.section {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  padding: 0 2rem;
+}
+
+.section > div {
+  display: flex;
+  gap: 2rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.option input {
+  border: none;
+  border-bottom: 1px solid var(--clr-primary);
+}
