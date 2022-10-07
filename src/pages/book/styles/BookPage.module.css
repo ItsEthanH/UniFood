@@ -1,6 +1,7 @@
 .main {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .recipes {
@@ -10,4 +11,5 @@
   padding: 2rem;
   height: 100%;
   overflow-x: scroll;
+  justify-content: space-around;
 }
