@@ -10,6 +10,8 @@ function ResultSidebar() {
 
   const { sendRequest, response, isLoading, error } = useFetch();
 
+  console.log(mealPlanItems);
+
   function sidebarSubmitHandler(id) {
     if (id === 'SHOPPING') return;
 
@@ -23,7 +25,7 @@ function ResultSidebar() {
 
   function updateMealItems(sectionId, recipeid, type, dateObj, quantity) {
     if (sectionId === 'MEAL') {
-      const foundMealPlanItem = mealPlanItems.find((item) => item.id === recipeid);
+      const foundMealPlanItem = mealPlanItems.find((item) => item.uniqueid === recipeid);
       foundMealPlanItem.type = type;
       foundMealPlanItem.date = dateObj.getTime();
       foundMealPlanItem.quantity = quantity;

@@ -31,7 +31,7 @@ function ResultSidebarCard(props) {
   }
 
   function updateItemQuantity(qty) {
-    props.onCatagorise(props.id, null, null, qty);
+    props.onCatagorise(props.uniqueid, null, null, qty);
   }
 
   function remove() {
@@ -53,7 +53,7 @@ function ResultSidebarCard(props) {
     const ordinal = getOrdinal(date);
 
     setDate(`${type} - ${days[day]} ${date}${ordinal}`);
-    props.onCatagorise(props.id, type, dateObj, quantity);
+    props.onCatagorise(props.uniqueid, type, dateObj, quantity);
   }
 
   return (
