@@ -26,4 +26,4 @@ config.py
 installation_instructions.txt
 
 # database
-/database
+# /database
